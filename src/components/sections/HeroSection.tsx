@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import { motion, useScroll, useTransform, useSpring } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
+import { siteConfig } from "@/lib/site";
 
 export default function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -141,22 +142,24 @@ export default function HeroSection() {
               className="flex flex-col sm:flex-row gap-5"
             >
               <Link 
-                href="#experience"
-                className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-white text-black rounded-full font-bold uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:-translate-y-0.5 hover:shadow-[0_0_25px_rgba(255,255,255,0.25)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
+                href="#contact"
+                className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-[#3b82f6] text-white rounded-full font-bold uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:bg-white hover:text-black hover:-translate-y-0.5 hover:shadow-[0_0_30px_rgba(59,130,246,0.35)] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
               >
-                <div className="absolute inset-0 bg-gradient-to-r from-white via-gray-100 to-white opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
                 <span className="relative z-10 flex items-center gap-2">
-                  VIEW MY RESULTS
+                  GET A FREE AD ACCOUNT AUDIT
                   <span className="inline-block transition-transform duration-300 group-hover:translate-x-1">&rarr;</span>
                 </span>
               </Link>
               
-              <Link 
-                href="#contact"
-                className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:border-[#3b82f6]/60 hover:text-[#3b82f6] hover:-translate-y-0.5 hover:bg-[#3b82f6]/[0.05] active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
+              <a 
+                suppressHydrationWarning
+                href={siteConfig.whatsappAuditUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:border-[#25D366] hover:text-[#25D366] hover:bg-[#25D366]/[0.05] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
               >
-                <span className="relative z-10">LET&apos;S WORK TOGETHER</span>
-              </Link>
+                <span className="relative z-10">CHAT ON WHATSAPP &rarr;</span>
+              </a>
             </motion.div>
           </motion.div>
 
