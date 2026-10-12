@@ -46,9 +46,10 @@ export default function HeroSection() {
   const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
   const headlineLines = [
-    ["I", "TURN", "AD", "SPEND"],
-    ["INTO", "MEASURABLE"],
-    ["BUSINESS", "GROWTH."]
+    { words: ["PERFORMANCE"], isHighlight: false },
+    { words: ["MARKETER"], isHighlight: true },
+    { words: ["TURNING", "AD", "SPEND", "INTO"], isSubLine: true },
+    { words: ["MEASURABLE", "BUSINESS", "GROWTH."], isSubLine: false }
   ];
 
   let wordCounter = 0;
@@ -92,22 +93,30 @@ export default function HeroSection() {
             </motion.div>
 
             {/* Headline with Word-by-Word Reveal */}
-            <h1 className="mb-6 flex flex-col gap-1 sm:gap-2">
-              {headlineLines.map((lineWords, lineIdx) => (
+            <h1 className="mb-6 flex flex-col gap-1 sm:gap-1.5">
+              {headlineLines.map((lineObj, lineIdx) => (
                 <div key={lineIdx} className="flex flex-wrap overflow-hidden">
-                  {lineWords.map((word, wordIdx) => {
+                  {lineObj.words.map((word, wordIdx) => {
                     const currentCount = wordCounter++;
                     return (
-                      <div key={wordIdx} className="overflow-hidden inline-block mr-[0.26em] last:mr-0">
+                      <div key={wordIdx} className="overflow-hidden inline-block mr-[0.22em] last:mr-0">
                         <motion.span
                           initial={{ y: "115%", opacity: 0 }}
                           animate={{ y: "0%", opacity: 1 }}
                           transition={{
                             duration: 0.85,
-                            delay: 0.22 + currentCount * 0.055,
+                            delay: 0.22 + currentCount * 0.05,
                             ease: EASE
                           }}
-                          className="inline-block font-heading text-[11vw] leading-[0.88] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem] font-black tracking-tighter uppercase"
+                          className={`inline-block font-heading font-black tracking-tighter uppercase ${
+                            lineObj.isHighlight
+                              ? "text-[#3b82f6] text-[10.5vw] leading-[0.92] sm:text-[8.5vw] md:text-5xl lg:text-6xl xl:text-[4.75rem]"
+                              : lineObj.isSubLine
+                              ? "text-white/90 text-[6.2vw] leading-[1.05] sm:text-[4.8vw] md:text-3xl lg:text-4xl xl:text-[2.65rem] tracking-tight font-extrabold mt-1 sm:mt-1.5"
+                              : lineIdx === 0
+                              ? "text-white text-[10.5vw] leading-[0.92] sm:text-[8.5vw] md:text-5xl lg:text-6xl xl:text-[4.75rem]"
+                              : "text-white text-[7.5vw] leading-[1.0] sm:text-[6vw] md:text-4xl lg:text-5xl xl:text-[3.65rem] tracking-tight"
+                          }`}
                         >
                           {word}
                         </motion.span>
