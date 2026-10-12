@@ -1,10 +1,11 @@
+import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Shahal N — Performance Marketer",
   description: "Privacy Policy for shahaln.vercel.app — how we collect, use, and protect your personal information.",
-  alternates: { canonical: "https://shahaln.vercel.app/privacy-policy" },
+  alternates: { canonical: `${SITE_URL}/privacy-policy` },
 };
 
 export default function PrivacyPolicyPage() {

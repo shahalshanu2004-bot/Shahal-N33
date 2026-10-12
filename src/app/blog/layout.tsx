@@ -1,3 +1,4 @@
+import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -10,12 +11,12 @@ export const metadata: Metadata = {
     "SEO Expert Insights Malappuram"
   ],
   alternates: {
-    canonical: "https://shahaln.vercel.app/blog",
+    canonical: `${SITE_URL}/blog`,
   },
   openGraph: {
     title: "Digital Marketing Blog | Best Digital Marketing Expert In Malappuram, Kerala",
     description: "In-depth guides, campaign breakdowns, and strategic frameworks by Shahal N — Best Digital Marketing Expert in Malappuram, Kerala.",
-    url: "https://shahaln.vercel.app/blog",
+    url: `${SITE_URL}/blog`,
     siteName: "Shahal N",
     type: "website",
   },

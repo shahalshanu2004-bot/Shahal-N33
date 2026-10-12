@@ -1,3 +1,4 @@
+import { SITE_URL } from "../../../lib/site";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { experienceCategories, getExperienceCategory } from "@/lib/data/experience-categories";
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!category) return {};
 
   const pageTitle = `${category.title} Experience | Shahal N — Performance Marketer`;
-  const canonicalUrl = `https://shahaln.vercel.app/experience/${slug}`;
+  const canonicalUrl = `${SITE_URL}/experience/${slug}`;
   
   return {
     title: pageTitle,
@@ -54,19 +55,19 @@ export default async function ExperienceCategoryPage({ params }: { params: Promi
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://shahaln.vercel.app/"
+        "item": `${SITE_URL}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Experience",
-        "item": "https://shahaln.vercel.app/#experience"
+        "item": `${SITE_URL}/#experience`
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": category.title,
-        "item": `https://shahaln.vercel.app/experience/${category.slug}`
+        "item": `${SITE_URL}/experience/${category.slug}`
       }
     ]
   };

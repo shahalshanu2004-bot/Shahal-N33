@@ -1,3 +1,4 @@
+import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { portfolioProjects } from "@/lib/data/portfolio";
@@ -12,11 +13,11 @@ export const metadata: Metadata = {
     "App Marketing Case Studies",
     "Shahal N"
   ],
-  alternates: { canonical: "https://shahaln.vercel.app/case-studies" },
+  alternates: { canonical: `${SITE_URL}/case-studies` },
   openGraph: {
     title: "Performance Marketing Case Studies | Meta & Google Ads | Shahal N",
     description: "Explore performance marketing case studies by Shahal N. Real campaign breakdowns covering Meta Ads, App Acquisition, and Lead Generation.",
-    url: "https://shahaln.vercel.app/case-studies",
+    url: `${SITE_URL}/case-studies`,
     siteName: "Shahal N — Performance Marketer",
     type: "website",
   },
@@ -36,13 +37,13 @@ export default function CaseStudiesPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://shahaln.vercel.app/"
+        "item": `${SITE_URL}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Case Studies",
-        "item": "https://shahaln.vercel.app/case-studies"
+        "item": `${SITE_URL}/case-studies`
       }
     ]
   };

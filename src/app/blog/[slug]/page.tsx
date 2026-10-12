@@ -5,6 +5,7 @@ import { ArrowLeft, Calendar, User, Tag, ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import type { Metadata } from "next";
+import { SITE_URL } from "@/lib/site";
 
 export async function generateStaticParams() {
   return blogs.map((b) => ({ slug: b.slug }));
@@ -19,7 +20,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const pageTitle = `${blog.title} | Shahal N`;
-  const canonicalUrl = `https://shahaln.vercel.app/blog/${blog.slug}`;
+  const canonicalUrl = `${SITE_URL}/blog/${blog.slug}`;
 
   return {
     title: pageTitle,
@@ -35,7 +36,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       locale: "en_IN",
       type: "article",
       publishedTime: new Date(blog.date).toISOString(),
-      authors: ["https://shahaln.vercel.app/about"],
+      authors: [`${SITE_URL}/about`],
     },
     twitter: {
       card: "summary_large_image",
@@ -68,14 +69,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {
         "@type": "Person",
         name: blog.author,
-        url: "https://shahaln.vercel.app/about",
+        url: `${SITE_URL}/about`,
       },
     ],
     publisher: {
       "@type": "Person",
       name: "Shahal N",
       jobTitle: "Performance Marketer",
-      url: "https://shahaln.vercel.app",
+      url: SITE_URL,
     },
     description: blog.metaDescription,
   };
@@ -88,19 +89,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://shahaln.vercel.app/",
+        item: `${SITE_URL}/`,
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://shahaln.vercel.app/blog",
+        item: `${SITE_URL}/blog`,
       },
       {
         "@type": "ListItem",
         position: 3,
         name: blog.title,
-        item: `https://shahaln.vercel.app/blog/${blog.slug}`,
+        item: `${SITE_URL}/blog/${blog.slug}`,
       },
     ],
   };

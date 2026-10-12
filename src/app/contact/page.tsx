@@ -1,3 +1,4 @@
+import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
@@ -11,11 +12,11 @@ export const metadata: Metadata = {
     "Meta Ads Consultant",
     "Google Ads Consultant"
   ],
-  alternates: { canonical: "https://shahaln.vercel.app/contact" },
+  alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     title: "Contact Shahal N | Performance Marketer | Meta & Google Ads",
     description: "Get in touch with Shahal N — Performance Marketer. Schedule a consultation for Meta Ads, Google Ads, app marketing, and conversion tracking.",
-    url: "https://shahaln.vercel.app/contact",
+    url: `${SITE_URL}/contact`,
     siteName: "Shahal N — Performance Marketer",
     type: "website",
   },
@@ -50,13 +51,13 @@ export default function ContactPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://shahaln.vercel.app/"
+        "item": `${SITE_URL}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Contact",
-        "item": "https://shahaln.vercel.app/contact"
+        "item": `${SITE_URL}/contact`
       }
     ]
   };

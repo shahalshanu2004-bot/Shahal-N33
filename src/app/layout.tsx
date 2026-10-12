@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
+import { SITE_URL } from "@/lib/site";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -14,7 +15,7 @@ const spaceGrotesk = Space_Grotesk({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://shahaln.vercel.app"),
+  metadataBase: new URL(SITE_URL),
   title: {
     default: "Shahal N | Performance Marketer | Meta & Google Ads",
     template: "%s | Shahal N",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     "Digital Marketing Specialist in Kerala",
     "Shahal N"
   ],
-  authors: [{ name: "Shahal N", url: "https://shahaln.vercel.app" }],
+  authors: [{ name: "Shahal N", url: SITE_URL }],
   creator: "Shahal N",
   publisher: "Shahal N",
   formatDetection: {
@@ -45,13 +46,13 @@ export const metadata: Metadata = {
     telephone: false,
   },
   alternates: {
-    canonical: "https://shahaln.vercel.app",
+    canonical: SITE_URL,
   },
   openGraph: {
     title: "Shahal N | Performance Marketer | Meta & Google Ads",
     description:
       "Shahal N is a performance marketer focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking to help businesses improve campaign performance.",
-    url: "https://shahaln.vercel.app",
+    url: SITE_URL,
     siteName: "Shahal N — Performance Marketer",
     locale: "en_IN",
     type: "website",
@@ -100,12 +101,12 @@ export default function RootLayout({
     "@graph": [
       {
         "@type": "Person",
-        "@id": "https://shahaln.vercel.app/#person",
+        "@id": `${SITE_URL}/#person`,
         "name": "Shahal N",
         "jobTitle": "Performance Marketer",
         "description": "Shahal N is a performance marketer focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking.",
-        "url": "https://shahaln.vercel.app",
-        "image": "https://shahaln.vercel.app/favicon.ico",
+        "url": SITE_URL,
+        "image": `${SITE_URL}/favicon.ico`,
         "address": {
           "@type": "PostalAddress",
           "addressLocality": "Malappuram",
@@ -151,12 +152,12 @@ export default function RootLayout({
       },
       {
         "@type": "WebSite",
-        "@id": "https://shahaln.vercel.app/#website",
+        "@id": `${SITE_URL}/#website`,
         "name": "Shahal N — Performance Marketer",
-        "url": "https://shahaln.vercel.app",
+        "url": SITE_URL,
         "inLanguage": "en-IN",
         "publisher": {
-          "@id": "https://shahaln.vercel.app/#person"
+          "@id": `${SITE_URL}/#person`
         }
       }
     ]

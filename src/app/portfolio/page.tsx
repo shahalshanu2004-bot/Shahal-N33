@@ -1,3 +1,4 @@
+import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { portfolioProjects, projectCategories } from "@/lib/data/portfolio";
@@ -12,11 +13,11 @@ export const metadata: Metadata = {
     "Lead Generation Projects",
     "Shahal N Portfolio"
   ],
-  alternates: { canonical: "https://shahaln.vercel.app/portfolio" },
+  alternates: { canonical: `${SITE_URL}/portfolio` },
   openGraph: {
     title: "Campaign Portfolio | Performance Marketer | Shahal N",
     description: "Explore performance marketing portfolio by Shahal N. View Meta Ads, Google Ads, App Marketing, and Lead Generation client projects and campaigns.",
-    url: "https://shahaln.vercel.app/portfolio",
+    url: `${SITE_URL}/portfolio`,
     siteName: "Shahal N — Performance Marketer",
     type: "website",
   },
@@ -36,13 +37,13 @@ export default function PortfolioPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://shahaln.vercel.app/"
+        "item": `${SITE_URL}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Portfolio",
-        "item": "https://shahaln.vercel.app/portfolio"
+        "item": `${SITE_URL}/portfolio`
       }
     ]
   };

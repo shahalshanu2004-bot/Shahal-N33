@@ -1,3 +1,4 @@
+import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { blogs } from "@/lib/data/blog";
@@ -15,11 +16,11 @@ export const metadata: Metadata = {
     "Lead Generation Strategies",
     "Shahal N"
   ],
-  alternates: { canonical: "https://shahaln.vercel.app/blog" },
+  alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     title: "Performance Marketing Blog & Insights | Shahal N",
     description: "Practical performance marketing insights by Shahal N: Meta Ads strategies, Google Ads optimization, conversion tracking, app marketing, and lead generation.",
-    url: "https://shahaln.vercel.app/blog",
+    url: `${SITE_URL}/blog`,
     siteName: "Shahal N — Performance Marketer",
     images: [{ url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop", width: 1200, height: 630 }],
     locale: "en_IN",
@@ -41,13 +42,13 @@ export default function BlogPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://shahaln.vercel.app/"
+        "item": `${SITE_URL}/`
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Blog",
-        "item": "https://shahaln.vercel.app/blog"
+        "item": `${SITE_URL}/blog`
       }
     ]
   };

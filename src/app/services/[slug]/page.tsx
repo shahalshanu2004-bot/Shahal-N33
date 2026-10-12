@@ -1,3 +1,4 @@
+import { SITE_URL } from "../../../lib/site";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { services, getService } from "@/lib/data/services";
@@ -15,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!service) return {};
 
   const pageTitle = service.seoTitle;
-  const canonicalUrl = `https://shahaln.vercel.app/services/${slug}`;
+  const canonicalUrl = `${SITE_URL}/services/${slug}`;
   const description = service.seoDescription;
 
   return {
@@ -67,46 +68,46 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": `https://shahaln.vercel.app/services/${service.slug}#breadcrumb`,
+        "@id": `${SITE_URL}/services/${service.slug}#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://shahaln.vercel.app/"
+            "item": `${SITE_URL}/`
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Services",
-            "item": "https://shahaln.vercel.app/services"
+            "item": `${SITE_URL}/services`
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": serviceTitle,
-            "item": `https://shahaln.vercel.app/services/${service.slug}`
+            "item": `${SITE_URL}/services/${service.slug}`
           }
         ]
       },
       {
         "@type": "Service",
-        "@id": `https://shahaln.vercel.app/services/${service.slug}#service`,
+        "@id": `${SITE_URL}/services/${service.slug}#service`,
         "name": serviceTitle,
         "serviceType": service.category,
         "description": service.seoDescription,
         "provider": {
           "@type": "Person",
-          "@id": "https://shahaln.vercel.app/#person",
+          "@id": `${SITE_URL}/#person`,
           "name": "Shahal N",
           "jobTitle": "Performance Marketer",
-          "url": "https://shahaln.vercel.app"
+          "url": SITE_URL
         },
-        "url": `https://shahaln.vercel.app/services/${service.slug}`
+        "url": `${SITE_URL}/services/${service.slug}`
       },
       {
         "@type": "FAQPage",
-        "@id": `https://shahaln.vercel.app/services/${service.slug}#faq`,
+        "@id": `${SITE_URL}/services/${service.slug}#faq`,
         "mainEntity": service.faqs.map((faq) => ({
           "@type": "Question",
           "name": faq.question,
