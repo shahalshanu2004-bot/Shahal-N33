@@ -25,12 +25,12 @@ export default function Home() {
       {/* Marquee is inside HeroSection */}
       <AboutSection />
       <ServicesSection />
+      <StatisticsSection />
       <ExperienceSection />
       <EndToEndSection />
       <ProcessSection />
       <SkillsSection />
       <EducationSection />
-      <StatisticsSection />
       <WhyChooseSection />
       <FaqSection />
       <ContactSection />
