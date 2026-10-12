@@ -3,22 +3,11 @@
 import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
+import { siteConfig } from "@/lib/site";
 
 const navLinks = [
   { name: "Home", href: "/" },
   { name: "About", href: "/about" },
-  {
-    name: "Experience",
-    href: "/#experience",
-    children: [
-      { name: "App Marketing", href: "/experience/app-marketing" },
-      { name: "Real Estate", href: "/experience/real-estate" },
-      { name: "Lead Generation", href: "/experience/lead-generation" },
-      { name: "Google Ads", href: "/experience/google-ads" },
-      { name: "Meta Ads", href: "/experience/meta-ads" },
-      { name: "Other Campaigns", href: "/experience/other-campaigns" },
-    ]
-  },
   {
     name: "Case Studies",
     href: "/case-studies",
@@ -154,7 +143,7 @@ export default function Navbar() {
               )}
             </div>
 
-            <a suppressHydrationWarning href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20visited%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase hover:bg-white hover:text-black hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <a suppressHydrationWarning href={siteConfig.whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase hover:bg-white hover:text-black hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
               Message on WhatsApp
             </a>
           </div>
@@ -212,7 +201,7 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              <a suppressHydrationWarning href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20visited%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)} className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase w-fit hover:bg-white hover:text-black transition-colors">
+              <a suppressHydrationWarning href={siteConfig.whatsappUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)} className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase w-fit hover:bg-white hover:text-black transition-colors">
                 Message on WhatsApp
               </a>
             </div>

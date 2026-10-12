@@ -3,83 +3,93 @@
 import { useRef } from "react";
 import { motion, useInView, Variants } from "framer-motion";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Sparkles } from "lucide-react";
 
-const performanceServices = [
+// Core 4 Services
+const coreServices = [
   {
     num: "01",
     slug: "meta-ads",
     title: "META ADS",
-    description: "Performance-focused Meta campaigns built around audience testing, creative testing and conversion.",
+    highlight: "AUDIENCE & CREATIVE TESTING",
+    description: "Performance-driven Meta (Facebook & Instagram) campaigns built on multi-hook creative testing, lookalike architectures, and conversion-optimized funnels.",
+    badge: "CORE ACQUISITION"
   },
   {
     num: "02",
     slug: "google-ads",
     title: "GOOGLE ADS",
-    description: "High-intent search campaigns focused on efficient acquisition and measurable conversions.",
+    highlight: "HIGH-INTENT CONVERSIONS",
+    description: "Search and Performance Max campaigns targeting high-intent buyers, eliminating negative keyword waste, and driving qualified revenue.",
+    badge: "HIGH INTENT"
   },
   {
     num: "03",
     slug: "app-marketing",
     title: "APP MARKETING",
-    description: "User acquisition campaigns for apps with event tracking, audience testing and purchase optimization.",
+    highlight: "USER ACQUISITION & CPI/CPA",
+    description: "Scalable app acquisition with custom in-app event tracking, purchase optimization, and post-install retention signals on Google Play and Meta.",
+    badge: "SCALE & RETENTION"
   },
   {
     num: "04",
     slug: "lead-generation",
     title: "LEAD GENERATION",
-    description: "Campaigns designed to generate qualified leads through forms, landing pages and WhatsApp.",
+    highlight: "QUALIFIED PIPELINE ENGINE",
+    description: "High-intent lead generation funnels using instant forms, customized landing pages, and direct Click-to-WhatsApp automation to slash sales friction.",
+    badge: "DIRECT PIPELINE"
   },
+];
+
+// Secondary / Additional Services
+const additionalServices = [
   {
     num: "05",
     slug: "conversion-tracking",
-    title: "CONVERSION TRACKING",
-    description: "Track meaningful actions and conversion events to understand what actually drives results.",
+    title: "Conversion Tracking",
+    description: "Server-side CAPI, GA4, pixel configuration, and verified event signals.",
   },
   {
     num: "06",
     slug: "campaign-optimization",
-    title: "CAMPAIGN OPTIMIZATION",
-    description: "Continuous testing and optimization to reduce wasted spend and improve campaign efficiency.",
+    title: "Campaign Optimization",
+    description: "Audience pruning, bid strategy refinement, and continuous CPL reduction.",
   },
   {
     num: "07",
     slug: "performance-strategy",
-    title: "PERFORMANCE STRATEGY",
-    description: "Build a measurable acquisition strategy across channels, audiences, creatives and conversion paths.",
+    title: "Performance Strategy",
+    description: "Unit economics, CAC targets, and cross-channel growth architecture.",
   },
-];
-
-const digitalServices = [
   {
     num: "08",
     slug: "seo",
-    title: "SEO",
-    description: "Search-focused optimization designed to improve visibility, organic traffic and long-term discoverability.",
+    title: "Technical SEO",
+    description: "Search optimization to build durable organic authority and intent capture.",
   },
   {
     num: "09",
     slug: "website-development",
-    title: "WEBSITE DEVELOPMENT",
-    description: "Conversion-focused websites and landing pages built around performance, usability and business goals.",
+    title: "Website Development",
+    description: "High-converting, performance-optimized landers built for speed and ROI.",
   },
   {
     num: "10",
     slug: "content-creation",
-    title: "CONTENT CREATION",
-    description: "Strategic content designed for social media, campaigns, brands and digital platforms.",
+    title: "Content Creation",
+    description: "Strategic creative angles, hooks, and direct-response social assets.",
   },
   {
     num: "11",
     slug: "ai-automation",
-    title: "AI AUTOMATION",
-    description: "AI-powered workflows that reduce repetitive work, improve efficiency and connect marketing processes.",
+    title: "AI Automation",
+    description: "AI lead qualification and automated marketing response workflows.",
   },
   {
     num: "12",
     slug: "ai-video-marketing",
-    title: "AI VIDEO MARKETING",
-    description: "AI-assisted video concepts, creatives and short-form content designed for modern digital campaigns.",
+    title: "AI Video Marketing",
+    description: "AI-assisted short-form video creatives engineered for high hook retention.",
   },
 ];
 
@@ -110,38 +120,37 @@ export default function ServicesSection() {
           initial={{ opacity: 0, y: 24 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
           transition={{ duration: 0.75, ease: [0.16, 1, 0.3, 1] }}
-          className="mb-20 md:mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8"
+          className="mb-16 md:mb-20 flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <div>
-            <h2 className="font-heading text-5xl md:text-7xl font-black text-white uppercase tracking-tighter leading-none mb-4">
-              WHAT <span className="text-[#3b82f6]">I DO</span>
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/30 text-[#3b82f6] text-xs font-bold uppercase tracking-widest mb-4">
+              <Sparkles className="w-3 h-3" /> CORE CAPABILITIES
+            </div>
+            <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black text-white uppercase tracking-tighter leading-tight">
+              PERFORMANCE <span className="text-[#3b82f6]">SERVICES</span>
             </h2>
-            <p className="text-white/50 text-lg font-light max-w-lg">
-              Acquisition, Content, SEO, Websites, AI, and Optimization.
+            <p className="text-white/60 text-base sm:text-lg font-light max-w-xl mt-3">
+              Direct-response advertising engineered for measurable revenue and scalable acquisition.
             </p>
           </div>
+          <Link
+            href="/services"
+            className="text-xs uppercase tracking-widest text-[#3b82f6] hover:text-white font-bold flex items-center gap-2 group transition-colors"
+          >
+            <span>View All Services Guide</span>
+            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-1 transition-transform" />
+          </Link>
         </motion.div>
 
-        {/* 01 - PERFORMANCE MARKETING */}
+        {/* 01 - 4 CORE SERVICES (MAIN PROMINENT GRID) */}
         <div className="mb-24">
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.7, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-4 mb-10"
-          >
-            <h3 className="font-heading text-xl md:text-2xl font-bold uppercase tracking-widest text-white">
-              01 &mdash; PERFORMANCE MARKETING
-            </h3>
-          </motion.div>
-          
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
           >
-            {performanceServices.map((service, index) => (
+            {coreServices.map((service, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -149,20 +158,37 @@ export default function ServicesSection() {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group relative p-8 md:p-10 rounded-[24px] bg-[#0c0c0e] border border-white/5 hover:border-[#3b82f6]/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden shadow-lg shadow-black/20 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)] flex flex-col h-full block"
+                  className="group relative p-8 md:p-10 rounded-[28px] bg-[#0c0c0e] border border-white/10 hover:border-[#3b82f6]/60 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden shadow-xl shadow-black/40 hover:shadow-[0_0_35px_rgba(59,130,246,0.18)] flex flex-col h-full block"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[24px]" />
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/[0.08] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[28px]" />
                   <div className="relative z-10 flex flex-col h-full">
                     <div className="flex items-center justify-between mb-6">
-                      <span className="text-[#3b82f6]/50 font-heading font-black text-lg group-hover:text-[#3b82f6] transition-colors duration-300">{service.num}</span>
-                      <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-[#3b82f6] group-hover:translate-x-1 transition-all" />
+                      <div className="flex items-center gap-3">
+                        <span className="text-[#3b82f6] font-heading font-black text-xl">{service.num}</span>
+                        <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70">
+                          {service.badge}
+                        </span>
+                      </div>
+                      <span className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-[#3b82f6] text-white/50 group-hover:text-white flex items-center justify-center transition-all duration-300">
+                        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
+                      </span>
                     </div>
-                    <h4 className="font-heading text-xl font-bold mb-3 text-white uppercase tracking-wider group-hover:text-[#3b82f6] transition-colors duration-300">
+
+                    <h3 className="font-heading text-2xl md:text-3xl font-black mb-2 text-white uppercase tracking-tight group-hover:text-[#3b82f6] transition-colors duration-300">
                       {service.title}
-                    </h4>
-                    <p className="text-white/50 text-sm leading-relaxed font-light group-hover:text-white/70 transition-colors duration-300 mt-auto">
+                    </h3>
+                    
+                    <p className="text-[#3b82f6]/80 text-xs font-bold uppercase tracking-wider mb-4">
+                      {service.highlight}
+                    </p>
+
+                    <p className="text-white/60 text-sm md:text-base leading-relaxed font-light group-hover:text-white/80 transition-colors duration-300 mb-6">
                       {service.description}
                     </p>
+
+                    <div className="mt-auto pt-4 border-t border-white/5 flex items-center text-xs font-bold uppercase tracking-widest text-[#3b82f6] group-hover:text-white transition-colors">
+                      <span>Explore Strategy & Process &rarr;</span>
+                    </div>
                   </div>
                 </Link>
               </motion.div>
@@ -170,28 +196,27 @@ export default function ServicesSection() {
           </motion.div>
         </div>
 
-        {/* 02 - DIGITAL & AI */}
+        {/* 02 - ADDITIONAL SERVICES (COMPACT SECONDARY GROUP) */}
         <div>
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-80px" }}
-            transition={{ duration: 0.7, ease: [0.16, 1, 0.3, 1] }}
-            className="flex items-center gap-4 mb-10"
-          >
-            <h3 className="font-heading text-xl md:text-2xl font-bold uppercase tracking-widest text-white">
-              02 &mdash; DIGITAL & AI
-            </h3>
-          </motion.div>
+          <div className="mb-8 flex items-center justify-between">
+            <div>
+              <h3 className="font-heading text-lg md:text-xl font-bold uppercase tracking-widest text-white/90">
+                ADDITIONAL & SPECIALIZED SERVICES
+              </h3>
+              <p className="text-white/40 text-xs md:text-sm font-light mt-1">
+                Supporting technical infrastructure, tracking, and creative capabilities.
+              </p>
+            </div>
+          </div>
 
           <motion.div
             variants={containerVariants}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"
+            viewport={{ once: true, margin: "-60px" }}
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
           >
-            {digitalServices.map((service, index) => (
+            {additionalServices.map((service, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}
@@ -199,21 +224,18 @@ export default function ServicesSection() {
               >
                 <Link
                   href={`/services/${service.slug}`}
-                  className="group relative p-8 md:p-10 rounded-[24px] bg-[#0c0c0e] border border-white/5 hover:border-[#3b82f6]/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden shadow-lg shadow-black/20 hover:shadow-[0_0_25px_rgba(59,130,246,0.1)] flex flex-col h-full block"
+                  className="group relative p-6 rounded-2xl bg-[#09090c] border border-white/5 hover:border-[#3b82f6]/40 hover:-translate-y-1 transition-all duration-300 overflow-hidden shadow-md flex flex-col h-full block"
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/[0.06] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[24px]" />
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-6">
-                      <span className="text-white/20 font-heading font-black text-lg group-hover:text-[#3b82f6] transition-colors duration-300">{service.num}</span>
-                      <ArrowRight className="w-4 h-4 text-white/20 group-hover:text-[#3b82f6] group-hover:translate-x-1 transition-all" />
-                    </div>
-                    <h4 className="font-heading text-xl font-bold mb-3 text-white uppercase tracking-wider group-hover:text-white transition-colors duration-300">
-                      {service.title}
-                    </h4>
-                    <p className="text-white/40 text-sm leading-relaxed font-light group-hover:text-white/65 transition-colors duration-300 mt-auto">
-                      {service.description}
-                    </p>
+                  <div className="flex items-center justify-between mb-3">
+                    <span className="text-white/30 text-xs font-mono font-bold">{service.num}</span>
+                    <ArrowRight className="w-3.5 h-3.5 text-white/20 group-hover:text-[#3b82f6] group-hover:translate-x-1 transition-all" />
                   </div>
+                  <h4 className="font-heading text-base font-bold mb-2 text-white uppercase tracking-wide group-hover:text-[#3b82f6] transition-colors duration-300">
+                    {service.title}
+                  </h4>
+                  <p className="text-white/50 text-xs leading-relaxed font-light group-hover:text-white/70 transition-colors duration-300">
+                    {service.description}
+                  </p>
                 </Link>
               </motion.div>
             ))}

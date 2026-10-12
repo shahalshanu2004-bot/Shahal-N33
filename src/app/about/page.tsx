@@ -2,6 +2,7 @@ import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
+import EducationSection from "@/components/sections/EducationSection";
 
 export const metadata: Metadata = {
   title: "About Shahal N | Performance Marketer & Paid Ads Specialist",
@@ -223,6 +224,9 @@ export default function AboutPage() {
           </div>
         </div>
       </section>
+
+      {/* Formal Education & Career Milestones */}
+      <EducationSection />
 
       {/* Why Work With Me */}
       <section className="py-24 md:py-32 bg-[#0c0c0e] border-y border-white/5">

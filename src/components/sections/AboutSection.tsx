@@ -75,8 +75,8 @@ export default function AboutSection() {
                 Meta Ads &middot; Google Ads &middot; App Marketing &middot; Analytics
               </p>
               
-              <p className="text-white/60 text-lg leading-relaxed font-light max-w-xl">
-                I treat advertising as a measurable growth system &mdash; from audience and creative to tracking, optimization and scale.
+              <p className="text-white/60 text-base md:text-lg leading-relaxed font-light max-w-xl">
+                Currently Digital Marketing Executive at First Logic Meta Lab &middot; Available for select freelance performance projects. I treat advertising as a measurable growth system &mdash; from audience and creative to tracking, optimization, and scale.
               </p>
             </motion.div>
 
@@ -97,16 +97,16 @@ export default function AboutSection() {
               </div>
             </motion.div>
 
-            {/* Key Statement */}
+            {/* Proof-Based Statement */}
             <motion.div
               initial={{ opacity: 0, y: 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 24 }}
               transition={{ duration: 0.75, delay: 0.55, ease: EASE }}
               className="mt-12 p-6 md:p-8 rounded-2xl bg-white/[0.02] border border-white/5 border-l-4 border-l-[#3b82f6] shadow-2xl hover:border-l-[#60a5fa] hover:border-white/10 hover:shadow-[0_0_30px_rgba(59,130,246,0.08)] transition-all duration-500 group"
             >
-              <p className="font-heading text-lg md:text-xl font-bold uppercase tracking-wide text-white/90 leading-relaxed">
-                I DON&apos;T OPTIMIZE FOR VANITY METRICS.<br/>
-                <span className="text-[#3b82f6] group-hover:text-[#60a5fa] transition-colors duration-300">I OPTIMIZE FOR BUSINESS OUTCOMES.</span>
+              <p className="font-heading text-base md:text-lg font-bold text-white/95 leading-relaxed">
+                ₹142 CPL on a ₹55 Cr real estate project. ₹14.65 per WhatsApp conversion for a water-solutions brand.<br/>
+                <span className="text-[#3b82f6] group-hover:text-[#60a5fa] transition-colors duration-300">Results I can show, not just claim.</span>
               </p>
             </motion.div>
           </div>
