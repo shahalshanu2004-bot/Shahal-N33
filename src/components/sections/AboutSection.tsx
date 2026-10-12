@@ -1,6 +1,7 @@
 "use client";
 
 import { useRef, useEffect } from "react";
+import Image from "next/image";
 import { motion, useInView } from "framer-motion";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -10,7 +11,7 @@ gsap.registerPlugin(ScrollTrigger);
 export default function AboutSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const textRef = useRef<HTMLDivElement>(null);
-  const imageRef = useRef<HTMLImageElement>(null);
+  const imageRef = useRef<HTMLDivElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
 
   useEffect(() => {
@@ -121,15 +122,17 @@ export default function AboutSection() {
               transition={{ duration: 0.9, delay: 0.2, ease: EASE }}
               className="relative w-full max-w-[700px] z-10"
             >
-              <img 
-                ref={imageRef}
-                src="/about-laptop.jpg" 
-                alt="Performance Marketing Analytics and Campaign Optimization Dashboard"
-                width={700}
-                height={450}
-                loading="lazy"
-                className="w-full h-auto object-contain brightness-110 contrast-110 transition-transform duration-700 ease-out group-hover:scale-[1.02]"
-              />
+              <div ref={imageRef} className="w-full h-auto">
+                <Image 
+                  src="/about-laptop.jpg" 
+                  alt="Performance Marketing Analytics and Campaign Optimization Dashboard"
+                  width={700}
+                  height={450}
+                  sizes="(max-width: 768px) 100vw, 700px"
+                  loading="lazy"
+                  className="w-full h-auto object-contain brightness-110 contrast-110 transition-transform duration-700 ease-out group-hover:scale-[1.02]"
+                />
+              </div>
             </motion.div>
           </div>
           

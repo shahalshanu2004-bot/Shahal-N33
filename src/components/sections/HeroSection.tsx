@@ -45,12 +45,7 @@ export default function HeroSection() {
 
   const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-  const titleLines = [
-    { words: ["PERFORMANCE"], isHighlight: false },
-    { words: ["MARKETER"], isHighlight: true }
-  ];
 
-  let wordCounter = 0;
 
   return (
     <section ref={containerRef} id="hero" className="relative min-h-screen flex flex-col justify-center overflow-hidden bg-[#050508] text-white pt-24 pb-0">
@@ -90,35 +85,28 @@ export default function HeroSection() {
               <p className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/90">AVAILABLE FOR FREELANCE PROJECTS</p>
             </motion.div>
 
-            {/* Main Title (H1) with Word-by-Word Reveal */}
-            <h1 className="mb-5 sm:mb-6 flex flex-col">
-              {titleLines.map((lineObj, lineIdx) => (
-                <div key={lineIdx} className="flex flex-wrap overflow-hidden mb-1 sm:mb-2 last:mb-0">
-                  {lineObj.words.map((word, wordIdx) => {
-                    const currentCount = wordCounter++;
-                    return (
-                      <div key={wordIdx} className="overflow-hidden inline-block mr-[0.24em] last:mr-0">
-                        <motion.span
-                          initial={{ y: "115%", opacity: 0 }}
-                          animate={{ y: "0%", opacity: 1 }}
-                          transition={{
-                            duration: 0.85,
-                            delay: 0.22 + currentCount * 0.08,
-                            ease: EASE
-                          }}
-                          className={`inline-block font-heading font-black tracking-tighter uppercase ${
-                            lineObj.isHighlight
-                              ? "text-[#3b82f6] text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]"
-                              : "text-white text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]"
-                          }`}
-                        >
-                          {word}
-                        </motion.span>
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
+            {/* Main Title (H1) with semantic text in DOM */}
+            <h1 className="mb-5 sm:mb-6 flex flex-col font-heading font-black tracking-tighter uppercase text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]">
+              <div className="overflow-hidden">
+                <motion.span
+                  initial={{ y: "115%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  transition={{ duration: 0.85, delay: 0.22, ease: EASE }}
+                  className="inline-block text-white"
+                >
+                  Performance
+                </motion.span>{" "}
+              </div>
+              <div className="overflow-hidden">
+                <motion.span
+                  initial={{ y: "115%", opacity: 0 }}
+                  animate={{ y: "0%", opacity: 1 }}
+                  transition={{ duration: 0.85, delay: 0.30, ease: EASE }}
+                  className="inline-block text-[#3b82f6]"
+                >
+                  Marketer
+                </motion.span>
+              </div>
             </h1>
 
             {/* Supporting Headline */}
@@ -197,6 +185,7 @@ export default function HeroSection() {
                      src="/images/profile.jpg" 
                      alt="Shahal N - Performance Marketer, Meta & Google Ads Specialist" 
                      fill 
+                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
                      className="object-cover object-[75%_top]"
                      priority
                    />

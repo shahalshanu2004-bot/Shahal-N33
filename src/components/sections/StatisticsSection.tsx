@@ -1,7 +1,8 @@
 "use client";
 
-import { useRef, useEffect } from "react";
+import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
+import { siteConfig } from "@/lib/site";
 
 interface CounterProps {
   value: number;
@@ -11,6 +12,7 @@ interface CounterProps {
 
 function Counter({ value, suffix = "+", duration = 2 }: CounterProps) {
   const ref = useRef<HTMLSpanElement>(null);
+  const [hasStarted, setHasStarted] = useState(false);
   const motionVal = useMotionValue(0);
   const springVal = useSpring(motionVal, {
     damping: 30,
@@ -22,22 +24,24 @@ function Counter({ value, suffix = "+", duration = 2 }: CounterProps) {
   const inView = useInView(ref, { once: true, margin: "-60px" });
 
   useEffect(() => {
-    if (inView) {
+    if (inView && !hasStarted) {
+      setHasStarted(true);
       motionVal.set(value);
     }
-  }, [inView, motionVal, value]);
+  }, [inView, hasStarted, motionVal, value]);
 
   useEffect(() => {
+    if (!hasStarted) return;
     return displayVal.on("change", (latest) => {
       if (ref.current) {
         ref.current.textContent = `${latest}${suffix}`;
       }
     });
-  }, [displayVal, suffix]);
+  }, [displayVal, suffix, hasStarted]);
 
   return (
     <span ref={ref} className="tabular-nums">
-      0{suffix}
+      {value}{suffix}
     </span>
   );
 }
@@ -45,6 +49,16 @@ function Counter({ value, suffix = "+", duration = 2 }: CounterProps) {
 export default function StatisticsSection() {
   const sectionRef = useRef<HTMLElement>(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-80px" });
+
+  const { stats } = siteConfig;
+  const hasClients = typeof stats.clientsWorkedWith === "number" && stats.clientsWorkedWith > 0;
+  const hasProjects = typeof stats.projectsCompleted === "number" && stats.projectsCompleted > 0;
+  const hasAdSpend = typeof stats.totalAdSpendManaged === "string" && stats.totalAdSpendManaged.length > 0;
+
+  // If no stats are configured, hide the section entirely
+  if (!hasClients && !hasProjects && !hasAdSpend) {
+    return null;
+  }
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -88,35 +102,50 @@ export default function StatisticsSection() {
           animate={isInView ? "visible" : "hidden"}
           className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12 text-center"
         >
-          {/* Stat 01: 15+ Clients Worked With */}
-          <motion.div variants={itemVariants} className="flex flex-col items-center">
-            <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-3">
-              <Counter value={15} suffix="+" />
-            </div>
-            <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
-              Clients Worked With
-            </p>
-          </motion.div>
+          {/* Stat 01: Clients Worked With (conditional) */}
+          {hasClients && (
+            <motion.div variants={itemVariants} className="flex flex-col items-center">
+              <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-3">
+                <Counter value={stats.clientsWorkedWith as number} suffix="+" />
+              </div>
+              <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
+                Clients Worked With
+              </p>
+            </motion.div>
+          )}
 
-          {/* Stat 02: 20+ Projects Completed */}
-          <motion.div variants={itemVariants} className="flex flex-col items-center">
-            <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-3">
-              <Counter value={20} suffix="+" />
-            </div>
-            <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
-              Projects Completed
-            </p>
-          </motion.div>
+          {/* Stat 02: Projects Completed (conditional) */}
+          {hasProjects && (
+            <motion.div variants={itemVariants} className="flex flex-col items-center">
+              <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-3">
+                <Counter value={stats.projectsCompleted as number} suffix="+" />
+              </div>
+              <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
+                Projects Completed
+              </p>
+            </motion.div>
+          )}
 
-          {/* Stat 03: DATA-DRIVEN Performance Focused */}
-          <motion.div variants={itemVariants} className="flex flex-col items-center">
-            <div className="font-heading text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-black text-white tracking-wider leading-none mb-3 pt-2 md:pt-3">
-              <span className="text-[#3b82f6]">DATA-</span>DRIVEN
-            </div>
-            <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
-              Performance Focused
-            </p>
-          </motion.div>
+          {/* Stat 03: Total Ad Spend Managed (conditional) or DATA-DRIVEN banner */}
+          {hasAdSpend ? (
+            <motion.div variants={itemVariants} className="flex flex-col items-center">
+              <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-[#3b82f6] tracking-tight leading-none mb-3">
+                {stats.totalAdSpendManaged}
+              </div>
+              <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
+                Ad Spend Managed
+              </p>
+            </motion.div>
+          ) : (
+            <motion.div variants={itemVariants} className="flex flex-col items-center">
+              <div className="font-heading text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-black text-white tracking-wider leading-none mb-3 pt-2 md:pt-3">
+                <span className="text-[#3b82f6]">DATA-</span>DRIVEN
+              </div>
+              <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
+                Performance Focused
+              </p>
+            </motion.div>
+          )}
         </motion.div>
       </div>
     </section>

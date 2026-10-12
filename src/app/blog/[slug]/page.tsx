@@ -1,6 +1,7 @@
 import { blogs } from "@/lib/data/blog";
 import { notFound } from "next/navigation";
 import Link from "next/link";
+import Image from "next/image";
 import { ArrowLeft, Calendar, User, Tag, ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
@@ -159,11 +160,13 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Featured Image */}
         <div className="container mx-auto px-4 md:px-6 max-w-5xl mb-16">
           <div className="relative aspect-video rounded-3xl overflow-hidden border border-white/10 bg-[#0c0c0e]">
-            <img
+            <Image
               src={blog.image}
               alt={blog.title}
-              className="object-cover w-full h-full"
-              loading="eager"
+              fill
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover"
+              priority
             />
           </div>
         </div>
@@ -241,10 +244,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   className="group flex flex-col bg-[#111116] rounded-2xl border border-white/5 overflow-hidden hover:border-[#3b82f6]/30 transition-all"
                 >
                   <div className="relative h-48 overflow-hidden">
-                    <img
+                    <Image
                       src={related.image}
                       alt={related.title}
-                      className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                      fill
+                      sizes="(max-width: 768px) 100vw, 33vw"
+                      className="object-cover group-hover:scale-105 transition-transform duration-500"
                       loading="lazy"
                     />
                     <div className="absolute top-4 left-4">

@@ -29,5 +29,13 @@ export const siteConfig = {
     title: "Digital Marketing Executive",
     company: "First Logic Meta Lab",
     status: "Available for select freelance projects"
+  },
+  // Stats - leave as null to hide that stat block entirely
+  stats: {
+    clientsWorkedWith: 15, // TODO: set real numbers or null to hide
+    projectsCompleted: 20, // TODO: set real numbers or null to hide
+    totalAdSpendManaged: null as string | null, // TODO: set real numbers (e.g. "₹50L+")
+    campaignsRun: null as number | null, // TODO: set real numbers
+    industriesServed: 8, // TODO: set real numbers or null to hide
   }
 };
