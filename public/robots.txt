@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /api/
+
+Sitemap: https://shahaln.com/sitemap.xml
+Host: https://shahaln.com
