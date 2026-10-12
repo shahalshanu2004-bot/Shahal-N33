@@ -17,26 +17,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Shahal N | Performance Marketer | Meta & Google Ads",
+    default: "Performance Marketer in Kerala | Meta & Google Ads – Shahal N",
     template: "%s | Shahal N",
   },
   description:
-    "Shahal N offers performance marketing services focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking for businesses across Kerala, India, and relevant GCC markets.",
-  keywords: [
-    "Performance Marketer",
-    "Performance Marketing Specialist",
-    "Meta Ads Specialist",
-    "Google Ads Specialist",
-    "App Marketing Specialist",
-    "Lead Generation Specialist",
-    "Conversion Tracking Specialist",
-    "Performance Marketer in Kerala",
-    "Performance Marketing in India",
-    "Performance Marketing in UAE",
-    "Performance Marketing in GCC",
-    "Digital Marketing Specialist in Kerala",
-    "Shahal N"
-  ],
+    "Meta & Google Ads specialist in Malappuram, Kerala. Lead generation and app install campaigns with measurable results. Get a free ad audit.",
   authors: [{ name: "Shahal N", url: SITE_URL }],
   creator: "Shahal N",
   publisher: "Shahal N",
@@ -49,28 +34,19 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Shahal N | Performance Marketer | Meta & Google Ads",
+    title: "Performance Marketer in Kerala | Meta & Google Ads – Shahal N",
     description:
-      "Shahal N is a performance marketer focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking to help businesses improve campaign performance.",
+      "Meta & Google Ads specialist in Malappuram, Kerala. Lead generation and app install campaigns with measurable results. Get a free ad audit.",
     url: SITE_URL,
     siteName: "Shahal N — Performance Marketer",
     locale: "en_IN",
     type: "website",
-    images: [
-      {
-        url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
-        width: 1200,
-        height: 630,
-        alt: "Shahal N | Performance Marketer | Meta & Google Ads",
-      },
-    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "Shahal N | Performance Marketer | Meta & Google Ads",
+    title: "Performance Marketer in Kerala | Meta & Google Ads – Shahal N",
     description:
-      "Shahal N is a performance marketer focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking to help businesses improve campaign performance.",
-    images: ["https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"],
+      "Meta & Google Ads specialist in Malappuram, Kerala. Lead generation and app install campaigns with measurable results. Get a free ad audit.",
   },
   robots: {
     index: true,
@@ -82,12 +58,6 @@ export const metadata: Metadata = {
       "max-image-preview": "large",
       "max-snippet": -1,
     },
-  },
-  other: {
-    "geo.region": "IN-KL",
-    "geo.placename": "Malappuram, Kerala, India",
-    "geo.position": "11.0728;76.0740",
-    "ICBM": "11.0728, 76.0740",
   },
 };
 

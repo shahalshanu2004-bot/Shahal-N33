@@ -22,7 +22,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: pageTitle,
     description: description,
-    keywords: service.targetKeywords,
     alternates: {
       canonical: canonicalUrl,
     },
@@ -32,20 +31,11 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       url: canonicalUrl,
       type: "website",
       siteName: "Shahal N — Performance Marketer",
-      images: [
-        {
-          url: "https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop",
-          width: 1200,
-          height: 630,
-          alt: pageTitle,
-        },
-      ],
     },
     twitter: {
       card: "summary_large_image",
       title: pageTitle,
       description: description,
-      images: ["https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=1200&auto=format&fit=crop"],
     },
   };
 }

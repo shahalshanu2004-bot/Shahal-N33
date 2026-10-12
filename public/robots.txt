@@ -1,6 +1,0 @@
-﻿User-agent: *
-Allow: /
-Disallow: /api/
-
-Sitemap: https://shahaln.vercel.app/sitemap.xml
-Host: https://shahaln.vercel.app
