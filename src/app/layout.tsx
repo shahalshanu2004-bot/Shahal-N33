@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
-import { SITE_URL } from "@/lib/site";
+import { SITE_URL, siteConfig } from "@/lib/site";
+import { homeFaqs } from "@/lib/data/faqs";
+import JsonLd from "@/components/ui/JsonLd";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -72,74 +74,97 @@ export default function RootLayout({
       {
         "@type": "Person",
         "@id": `${SITE_URL}/#person`,
-        "name": "Shahal N",
-        "jobTitle": "Performance Marketer",
-        "description": "Shahal N is a performance marketer focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking.",
-        "url": SITE_URL,
-        "image": `${SITE_URL}/favicon.ico`,
-        "address": {
+        name: siteConfig.name,
+        jobTitle: "Performance Marketer",
+        description: siteConfig.description,
+        url: SITE_URL,
+        email: siteConfig.email,
+        telephone: siteConfig.phone,
+        image: `${SITE_URL}/favicon.ico`,
+        address: {
           "@type": "PostalAddress",
-          "addressLocality": "Malappuram",
-          "addressRegion": "Kerala",
-          "addressCountry": "India"
+          addressLocality: siteConfig.location.locality,
+          addressRegion: siteConfig.location.region,
+          addressCountry: siteConfig.location.country,
         },
-        "areaServed": [
-          {
-            "@type": "AdministrativeArea",
-            "name": "Kerala"
-          },
-          {
-            "@type": "Country",
-            "name": "India"
-          },
-          {
-            "@type": "Country",
-            "name": "United Arab Emirates"
-          },
-          {
-            "@type": "Country",
-            "name": "Saudi Arabia"
-          },
-          {
-            "@type": "Country",
-            "name": "Qatar"
-          }
+        areaServed: [
+          { "@type": "AdministrativeArea", name: "Kerala" },
+          { "@type": "Country", name: "India" },
+          { "@type": "Country", name: "United Arab Emirates" },
+          { "@type": "Country", name: "Saudi Arabia" },
+          { "@type": "Country", name: "Qatar" },
         ],
-        "knowsAbout": [
-          "Performance Marketing",
+        knowsAbout: [
           "Meta Ads",
           "Google Ads",
           "App Marketing",
           "Lead Generation",
           "Conversion Tracking",
-          "Campaign Optimization",
-          "Search Engine Optimization (SEO)"
+          "ROAS Optimization",
+          "Search Engine Optimization (SEO)",
         ],
-        "sameAs": [
-          "https://www.linkedin.com/in/shahal-n/",
-          "https://www.instagram.com/shahal_n/"
-        ]
+        sameAs: [
+          siteConfig.socials.linkedin,
+          siteConfig.socials.instagram,
+          siteConfig.socials.github,
+        ],
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": `${SITE_URL}/#service`,
+        name: "Shahal N — Performance Marketing Services",
+        url: SITE_URL,
+        telephone: siteConfig.phone,
+        email: siteConfig.email,
+        address: {
+          "@type": "PostalAddress",
+          addressLocality: siteConfig.location.locality,
+          addressRegion: siteConfig.location.region,
+          addressCountry: siteConfig.location.country,
+        },
+        areaServed: [
+          { "@type": "AdministrativeArea", name: "Kerala" },
+          { "@type": "Country", name: "India" },
+          { "@type": "Country", name: "United Arab Emirates" },
+          { "@type": "AdministrativeArea", name: "GCC" },
+        ],
+        serviceType: [
+          "Meta Ads Management",
+          "Google Ads Management",
+          "App Performance Marketing",
+          "Lead Generation Funnels",
+          "Conversion Tracking & CAPI Setup",
+        ],
       },
       {
         "@type": "WebSite",
         "@id": `${SITE_URL}/#website`,
-        "name": "Shahal N — Performance Marketer",
-        "url": SITE_URL,
-        "inLanguage": "en-IN",
-        "publisher": {
-          "@id": `${SITE_URL}/#person`
-        }
-      }
-    ]
+        name: siteConfig.shortTitle,
+        url: SITE_URL,
+        inLanguage: "en-IN",
+        publisher: {
+          "@id": `${SITE_URL}/#person`,
+        },
+      },
+      {
+        "@type": "FAQPage",
+        "@id": `${SITE_URL}/#faq`,
+        mainEntity: homeFaqs.map((faq) => ({
+          "@type": "Question",
+          name: faq.q,
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.a,
+          },
+        })),
+      },
+    ],
   };
 
   return (
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-        />
+        <JsonLd data={jsonLd} />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased min-h-screen bg-[#050508] text-white selection:bg-[#3b82f6] selection:text-white overflow-x-hidden font-sans`}

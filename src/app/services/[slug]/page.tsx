@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { services, getService } from "@/lib/data/services";
 import PageHero from "@/components/ui/PageHero";
 import Link from "next/link";
+import JsonLd from "@/components/ui/JsonLd";
 import { ArrowRight, CheckCircle2, AlertCircle, HelpCircle, Briefcase } from "lucide-react";
 
 export async function generateStaticParams() {
@@ -113,10 +114,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
   return (
     <main className="bg-[#050508] min-h-screen">
       {/* JSON-LD Schema */}
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
 
       {/* Dynamic Hero with semantic H1 */}
       <PageHero

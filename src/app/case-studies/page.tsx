@@ -1,6 +1,7 @@
 import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
+import JsonLd from "@/components/ui/JsonLd";
 import { portfolioProjects } from "@/lib/data/portfolio";
 
 export const metadata: Metadata = {
@@ -77,10 +78,10 @@ export default function CaseStudiesPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
+
+
+
       <PageHero
         badge="Campaign Intelligence"
         title="Real Campaigns."

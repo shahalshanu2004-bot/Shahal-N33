@@ -1,6 +1,7 @@
 import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
+import JsonLd from "@/components/ui/JsonLd";
 
 export const metadata: Metadata = {
   title: "Contact Shahal N | Performance Marketer | Meta & Google Ads",
@@ -64,10 +65,10 @@ export default function ContactPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
+
+
+
       <PageHero
         badge="Let's Collaborate"
         title="Start the"

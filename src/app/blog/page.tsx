@@ -1,6 +1,7 @@
 import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
+import JsonLd from "@/components/ui/JsonLd";
 import { blogs } from "@/lib/data/blog";
 import Link from "next/link";
 import { ArrowRight, Calendar, Tag } from "lucide-react";
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     description: "Practical performance marketing insights by Shahal N: Meta Ads strategies, Google Ads optimization, conversion tracking, app marketing, and lead generation.",
     url: `${SITE_URL}/blog`,
     siteName: "Shahal N — Performance Marketer",
-    images: [{ url: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200&auto=format&fit=crop", width: 1200, height: 630 }],
+
     locale: "en_IN",
     type: "website",
   },
@@ -55,10 +56,10 @@ export default function BlogPage() {
 
   return (
     <>
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
+
+
+
       <PageHero
         badge="Insights & Strategies"
         title="Performance Marketing"

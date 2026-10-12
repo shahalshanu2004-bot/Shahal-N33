@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Calendar, User, Tag, ArrowRight } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
+import JsonLd from "@/components/ui/JsonLd";
 import type { Metadata } from "next";
 import { SITE_URL } from "@/lib/site";
 
@@ -111,8 +112,12 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       <Navbar />
 
       {/* Schema Injection */}
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(articleSchema) }} />
-      <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbSchema) }} />
+      <JsonLd
+        data={{
+          "@context": "https://schema.org",
+          "@graph": [articleSchema, breadcrumbSchema],
+        }}
+      />
 
       <article className="pt-32 pb-24">
         {/* Article Header */}

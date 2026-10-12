@@ -1,6 +1,7 @@
 import { SITE_URL } from "../../lib/site";
 ﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
+import JsonLd from "@/components/ui/JsonLd";
 
 export const metadata: Metadata = {
   title: "About Shahal N | Performance Marketer & Paid Ads Specialist",
@@ -111,10 +112,10 @@ export default function AboutPage() {
 
   return (
     <main className="bg-[#050508] min-h-screen">
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
+      <JsonLd data={jsonLd} />
+
+
+
       <PageHero
         badge="MY STORY"
         title="BUILT TO DRIVE"
