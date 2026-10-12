@@ -45,12 +45,9 @@ export default function HeroSection() {
 
   const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
-  const headlineLines = [
-    { words: ["PERFORMANCE"], type: "title", isHighlight: false },
-    { words: ["MARKETER"], type: "title", isHighlight: true },
-    { words: ["TURNING", "AD", "SPEND", "INTO"], type: "subhead-intro", isHighlight: false },
-    { words: ["MEASURABLE", "BUSINESS"], type: "subhead-main", isHighlight: false },
-    { words: ["GROWTH."], type: "subhead-main", isHighlight: false }
+  const titleLines = [
+    { words: ["PERFORMANCE"], isHighlight: false },
+    { words: ["MARKETER"], isHighlight: true }
   ];
 
   let wordCounter = 0;
@@ -93,62 +90,55 @@ export default function HeroSection() {
               <p className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/90">AVAILABLE FOR FREELANCE PROJECTS</p>
             </motion.div>
 
-            {/* Headline with Word-by-Word Reveal & Refined Spacing */}
-            <h1 className="mb-8 md:mb-10 flex flex-col">
-              {headlineLines.map((lineObj, lineIdx) => {
-                const isTitle = lineObj.type === "title";
-                const isSubheadIntro = lineObj.type === "subhead-intro";
-                const isSubheadMain = lineObj.type === "subhead-main";
-
-                return (
-                  <div 
-                    key={lineIdx} 
-                    className={`flex flex-wrap overflow-hidden ${
-                      isSubheadIntro ? "mt-4 sm:mt-5 md:mt-6 mb-1 sm:mb-1.5" : 
-                      isTitle ? "mb-0.5 sm:mb-1" : 
-                      "mb-0.5 sm:mb-1"
-                    }`}
-                  >
-                    {lineObj.words.map((word, wordIdx) => {
-                      const currentCount = wordCounter++;
-                      return (
-                        <div key={wordIdx} className="overflow-hidden inline-block mr-[0.24em] last:mr-0">
-                          <motion.span
-                            initial={{ y: "115%", opacity: 0 }}
-                            animate={{ y: "0%", opacity: 1 }}
-                            transition={{
-                              duration: 0.85,
-                              delay: 0.22 + currentCount * 0.048,
-                              ease: EASE
-                            }}
-                            className={`inline-block font-heading font-black uppercase ${
-                              lineObj.isHighlight
-                                ? "text-[#3b82f6] text-[10vw] leading-[1.06] sm:text-[8vw] md:text-5xl lg:text-6xl xl:text-[4.5rem] tracking-tight"
-                                : isTitle
-                                ? "text-white text-[10vw] leading-[1.06] sm:text-[8vw] md:text-5xl lg:text-6xl xl:text-[4.5rem] tracking-tight"
-                                : isSubheadIntro
-                                ? "text-white/85 text-[5.2vw] leading-[1.12] sm:text-[4vw] md:text-2xl lg:text-3xl xl:text-[2.15rem] tracking-normal font-bold"
-                                : "text-white text-[6.8vw] leading-[1.08] sm:text-[5.2vw] md:text-3xl lg:text-4xl xl:text-[2.85rem] tracking-tight font-extrabold"
-                            }`}
-                          >
-                            {word}
-                          </motion.span>
-                        </div>
-                      );
-                    })}
-                  </div>
-                );
-              })}
+            {/* Main Title (H1) with Word-by-Word Reveal */}
+            <h1 className="mb-5 sm:mb-6 flex flex-col">
+              {titleLines.map((lineObj, lineIdx) => (
+                <div key={lineIdx} className="flex flex-wrap overflow-hidden mb-1 sm:mb-2 last:mb-0">
+                  {lineObj.words.map((word, wordIdx) => {
+                    const currentCount = wordCounter++;
+                    return (
+                      <div key={wordIdx} className="overflow-hidden inline-block mr-[0.24em] last:mr-0">
+                        <motion.span
+                          initial={{ y: "115%", opacity: 0 }}
+                          animate={{ y: "0%", opacity: 1 }}
+                          transition={{
+                            duration: 0.85,
+                            delay: 0.22 + currentCount * 0.08,
+                            ease: EASE
+                          }}
+                          className={`inline-block font-heading font-black tracking-tighter uppercase ${
+                            lineObj.isHighlight
+                              ? "text-[#3b82f6] text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]"
+                              : "text-white text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]"
+                          }`}
+                        >
+                          {word}
+                        </motion.span>
+                      </div>
+                    );
+                  })}
+                </div>
+              ))}
             </h1>
 
-            {/* Supporting Text */}
+            {/* Supporting Headline */}
+            <motion.p
+              initial={{ opacity: 0, y: 18 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.75, delay: 0.55, ease: EASE }}
+              className="text-white/90 font-heading text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-5 max-w-xl"
+            >
+              Driving Measurable Growth Through Paid Media.
+            </motion.p>
+
+            {/* Supporting Description */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.72, ease: EASE }}
             >
-              <p className="text-white/70 text-base sm:text-lg md:text-xl leading-relaxed max-w-xl mb-4 font-light">
-                Performance marketer helping businesses across Kerala, India, and the GCC acquire customers through Meta Ads, Google Ads, app marketing, and conversion tracking — built on data, structured testing, and measurable outcomes.
+              <p className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mb-4 font-light">
+                Data-driven campaigns across Meta Ads, Google Ads, and app marketing &mdash; focused on customer acquisition, conversion tracking, and sustainable growth.
               </p>
               <p className="text-white/40 text-xs md:text-sm font-medium tracking-widest uppercase mb-10">
                 SHAHAL N — PERFORMANCE MARKETER
