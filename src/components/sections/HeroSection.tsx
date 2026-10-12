@@ -125,7 +125,7 @@ export default function HeroSection() {
               transition={{ duration: 0.75, delay: 0.72, ease: EASE }}
             >
               <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-xl mb-4 font-light">
-                Performance marketer helping businesses acquire customers through Meta Ads, Google Ads, app marketing and conversion-focused campaigns — backed by data, testing and continuous optimization.
+                Performance marketer helping businesses across Kerala, India, and the GCC acquire customers through Meta Ads, Google Ads, app marketing, and conversion tracking — built on data, structured testing, and measurable outcomes.
               </p>
               <p className="text-white/40 text-xs md:text-sm font-medium tracking-widest uppercase mb-10">
                 SHAHAL N — PERFORMANCE MARKETER

@@ -1,4 +1,4 @@
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import { Inter, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 import SmoothScroll from "@/components/SmoothScroll";
@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | Shahal N",
   },
   description:
-    "Shahal N is a performance marketer focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking to help businesses improve campaign performance.",
+    "Shahal N offers performance marketing services focused on Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking for businesses across Kerala, India, and relevant GCC markets.",
   keywords: [
     "Performance Marketer",
     "Performance Marketing Specialist",
@@ -30,9 +30,10 @@ export const metadata: Metadata = {
     "Lead Generation Specialist",
     "Conversion Tracking Specialist",
     "Performance Marketer in Kerala",
-    "Performance Marketer in Malappuram",
+    "Performance Marketing in India",
+    "Performance Marketing in UAE",
+    "Performance Marketing in GCC",
     "Digital Marketing Specialist in Kerala",
-    "Meta Ads Specialist in Kerala",
     "Shahal N"
   ],
   authors: [{ name: "Shahal N", url: "https://shahaln.vercel.app" }],
@@ -111,6 +112,28 @@ export default function RootLayout({
           "addressRegion": "Kerala",
           "addressCountry": "India"
         },
+        "areaServed": [
+          {
+            "@type": "AdministrativeArea",
+            "name": "Kerala"
+          },
+          {
+            "@type": "Country",
+            "name": "India"
+          },
+          {
+            "@type": "Country",
+            "name": "United Arab Emirates"
+          },
+          {
+            "@type": "Country",
+            "name": "Saudi Arabia"
+          },
+          {
+            "@type": "Country",
+            "name": "Qatar"
+          }
+        ],
         "knowsAbout": [
           "Performance Marketing",
           "Meta Ads",
