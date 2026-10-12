@@ -46,10 +46,11 @@ export default function HeroSection() {
   const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
 
   const headlineLines = [
-    { words: ["PERFORMANCE"], isHighlight: false },
-    { words: ["MARKETER"], isHighlight: true },
-    { words: ["TURNING", "AD", "SPEND", "INTO"], isSubLine: true },
-    { words: ["MEASURABLE", "BUSINESS", "GROWTH."], isSubLine: false }
+    { words: ["PERFORMANCE"], type: "title", isHighlight: false },
+    { words: ["MARKETER"], type: "title", isHighlight: true },
+    { words: ["TURNING", "AD", "SPEND", "INTO"], type: "subhead-intro", isHighlight: false },
+    { words: ["MEASURABLE", "BUSINESS"], type: "subhead-main", isHighlight: false },
+    { words: ["GROWTH."], type: "subhead-main", isHighlight: false }
   ];
 
   let wordCounter = 0;
@@ -83,7 +84,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
-              className="flex items-center gap-3 mb-6 w-max px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm shadow-sm"
+              className="flex items-center gap-3 mb-6 sm:mb-8 w-max px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm shadow-sm"
             >
               <span className="relative flex h-2 w-2">
                 <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
@@ -92,39 +93,52 @@ export default function HeroSection() {
               <p className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/90">AVAILABLE FOR FREELANCE PROJECTS</p>
             </motion.div>
 
-            {/* Headline with Word-by-Word Reveal */}
-            <h1 className="mb-6 flex flex-col gap-1 sm:gap-1.5">
-              {headlineLines.map((lineObj, lineIdx) => (
-                <div key={lineIdx} className="flex flex-wrap overflow-hidden">
-                  {lineObj.words.map((word, wordIdx) => {
-                    const currentCount = wordCounter++;
-                    return (
-                      <div key={wordIdx} className="overflow-hidden inline-block mr-[0.22em] last:mr-0">
-                        <motion.span
-                          initial={{ y: "115%", opacity: 0 }}
-                          animate={{ y: "0%", opacity: 1 }}
-                          transition={{
-                            duration: 0.85,
-                            delay: 0.22 + currentCount * 0.05,
-                            ease: EASE
-                          }}
-                          className={`inline-block font-heading font-black tracking-tighter uppercase ${
-                            lineObj.isHighlight
-                              ? "text-[#3b82f6] text-[10.5vw] leading-[0.92] sm:text-[8.5vw] md:text-5xl lg:text-6xl xl:text-[4.75rem]"
-                              : lineObj.isSubLine
-                              ? "text-white/90 text-[6.2vw] leading-[1.05] sm:text-[4.8vw] md:text-3xl lg:text-4xl xl:text-[2.65rem] tracking-tight font-extrabold mt-1 sm:mt-1.5"
-                              : lineIdx === 0
-                              ? "text-white text-[10.5vw] leading-[0.92] sm:text-[8.5vw] md:text-5xl lg:text-6xl xl:text-[4.75rem]"
-                              : "text-white text-[7.5vw] leading-[1.0] sm:text-[6vw] md:text-4xl lg:text-5xl xl:text-[3.65rem] tracking-tight"
-                          }`}
-                        >
-                          {word}
-                        </motion.span>
-                      </div>
-                    );
-                  })}
-                </div>
-              ))}
+            {/* Headline with Word-by-Word Reveal & Refined Spacing */}
+            <h1 className="mb-8 md:mb-10 flex flex-col">
+              {headlineLines.map((lineObj, lineIdx) => {
+                const isTitle = lineObj.type === "title";
+                const isSubheadIntro = lineObj.type === "subhead-intro";
+                const isSubheadMain = lineObj.type === "subhead-main";
+
+                return (
+                  <div 
+                    key={lineIdx} 
+                    className={`flex flex-wrap overflow-hidden ${
+                      isSubheadIntro ? "mt-4 sm:mt-5 md:mt-6 mb-1 sm:mb-1.5" : 
+                      isTitle ? "mb-0.5 sm:mb-1" : 
+                      "mb-0.5 sm:mb-1"
+                    }`}
+                  >
+                    {lineObj.words.map((word, wordIdx) => {
+                      const currentCount = wordCounter++;
+                      return (
+                        <div key={wordIdx} className="overflow-hidden inline-block mr-[0.24em] last:mr-0">
+                          <motion.span
+                            initial={{ y: "115%", opacity: 0 }}
+                            animate={{ y: "0%", opacity: 1 }}
+                            transition={{
+                              duration: 0.85,
+                              delay: 0.22 + currentCount * 0.048,
+                              ease: EASE
+                            }}
+                            className={`inline-block font-heading font-black uppercase ${
+                              lineObj.isHighlight
+                                ? "text-[#3b82f6] text-[10vw] leading-[1.06] sm:text-[8vw] md:text-5xl lg:text-6xl xl:text-[4.5rem] tracking-tight"
+                                : isTitle
+                                ? "text-white text-[10vw] leading-[1.06] sm:text-[8vw] md:text-5xl lg:text-6xl xl:text-[4.5rem] tracking-tight"
+                                : isSubheadIntro
+                                ? "text-white/85 text-[5.2vw] leading-[1.12] sm:text-[4vw] md:text-2xl lg:text-3xl xl:text-[2.15rem] tracking-normal font-bold"
+                                : "text-white text-[6.8vw] leading-[1.08] sm:text-[5.2vw] md:text-3xl lg:text-4xl xl:text-[2.85rem] tracking-tight font-extrabold"
+                            }`}
+                          >
+                            {word}
+                          </motion.span>
+                        </div>
+                      );
+                    })}
+                  </div>
+                );
+              })}
             </h1>
 
             {/* Supporting Text */}
@@ -133,7 +147,7 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.72, ease: EASE }}
             >
-              <p className="text-white/70 text-lg md:text-xl leading-relaxed max-w-xl mb-4 font-light">
+              <p className="text-white/70 text-base sm:text-lg md:text-xl leading-relaxed max-w-xl mb-4 font-light">
                 Performance marketer helping businesses across Kerala, India, and the GCC acquire customers through Meta Ads, Google Ads, app marketing, and conversion tracking — built on data, structured testing, and measurable outcomes.
               </p>
               <p className="text-white/40 text-xs md:text-sm font-medium tracking-widest uppercase mb-10">
