@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Terms & Conditions | Shahal N — Performance Marketer",
   description: "Terms and conditions for engaging Shahal N's performance marketing consulting services.",
-  alternates: { canonical: "https://shahaln.com/terms" },
+  alternates: { canonical: "https://shahaln.vercel.app/terms" },
 };
 
 export default function TermsPage() {

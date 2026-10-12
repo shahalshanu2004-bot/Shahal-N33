@@ -15,7 +15,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!category) return {};
 
   const pageTitle = `${category.title} Experience | Shahal N — Performance Marketer`;
-  const canonicalUrl = `https://shahaln.com/experience/${slug}`;
+  const canonicalUrl = `https://shahaln.vercel.app/experience/${slug}`;
   
   return {
     title: pageTitle,
@@ -54,19 +54,19 @@ export default async function ExperienceCategoryPage({ params }: { params: Promi
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://shahaln.com/"
+        "item": "https://shahaln.vercel.app/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Experience",
-        "item": "https://shahaln.com/#experience"
+        "item": "https://shahaln.vercel.app/#experience"
       },
       {
         "@type": "ListItem",
         "position": 3,
         "name": category.title,
-        "item": `https://shahaln.com/experience/${category.slug}`
+        "item": `https://shahaln.vercel.app/experience/${category.slug}`
       }
     ]
   };

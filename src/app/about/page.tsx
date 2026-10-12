@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 
 export const metadata: Metadata = {
@@ -12,11 +12,11 @@ export const metadata: Metadata = {
     "Google Ads Specialist",
     "Digital Marketing Consultant"
   ],
-  alternates: { canonical: "https://shahaln.com/about" },
+  alternates: { canonical: "https://shahaln.vercel.app/about" },
   openGraph: {
     title: "About Shahal N | Performance Marketer & Paid Ads Specialist",
     description: "Learn more about Shahal N — Performance Marketer focused on Meta Ads, Google Ads, app user acquisition, lead generation, and conversion tracking.",
-    url: "https://shahaln.com/about",
+    url: "https://shahaln.vercel.app/about",
     siteName: "Shahal N — Performance Marketer",
     type: "profile",
   },
@@ -78,28 +78,28 @@ export default function AboutPage() {
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": "https://shahaln.com/about#breadcrumb",
+        "@id": "https://shahaln.vercel.app/about#breadcrumb",
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://shahaln.com/"
+            "item": "https://shahaln.vercel.app/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "About",
-            "item": "https://shahaln.com/about"
+            "item": "https://shahaln.vercel.app/about"
           }
         ]
       },
       {
         "@type": "Person",
-        "@id": "https://shahaln.com/#person",
+        "@id": "https://shahaln.vercel.app/#person",
         "name": "Shahal N",
         "jobTitle": "Performance Marketer",
-        "url": "https://shahaln.com/about",
+        "url": "https://shahaln.vercel.app/about",
         "sameAs": [
           "https://www.linkedin.com/in/shahal-n/",
           "https://www.instagram.com/shahal_n/"

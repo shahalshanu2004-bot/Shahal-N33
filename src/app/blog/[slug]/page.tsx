@@ -19,7 +19,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   const pageTitle = `${blog.title} | Shahal N`;
-  const canonicalUrl = `https://shahaln.com/blog/${blog.slug}`;
+  const canonicalUrl = `https://shahaln.vercel.app/blog/${blog.slug}`;
 
   return {
     title: pageTitle,
@@ -35,7 +35,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
       locale: "en_IN",
       type: "article",
       publishedTime: new Date(blog.date).toISOString(),
-      authors: ["https://shahaln.com/about"],
+      authors: ["https://shahaln.vercel.app/about"],
     },
     twitter: {
       card: "summary_large_image",
@@ -68,14 +68,14 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {
         "@type": "Person",
         name: blog.author,
-        url: "https://shahaln.com/about",
+        url: "https://shahaln.vercel.app/about",
       },
     ],
     publisher: {
       "@type": "Person",
       name: "Shahal N",
       jobTitle: "Performance Marketer",
-      url: "https://shahaln.com",
+      url: "https://shahaln.vercel.app",
     },
     description: blog.metaDescription,
   };
@@ -88,19 +88,19 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         "@type": "ListItem",
         position: 1,
         name: "Home",
-        item: "https://shahaln.com/",
+        item: "https://shahaln.vercel.app/",
       },
       {
         "@type": "ListItem",
         position: 2,
         name: "Blog",
-        item: "https://shahaln.com/blog",
+        item: "https://shahaln.vercel.app/blog",
       },
       {
         "@type": "ListItem",
         position: 3,
         name: blog.title,
-        item: `https://shahaln.com/blog/${blog.slug}`,
+        item: `https://shahaln.vercel.app/blog/${blog.slug}`,
       },
     ],
   };

@@ -1,11 +1,11 @@
-import { MetadataRoute } from "next";
+﻿import { MetadataRoute } from "next";
 import { blogs } from "@/lib/data/blog";
 import { services } from "@/lib/data/services";
 import { experienceProjects } from "@/lib/data/experience";
 import { experienceCategories } from "@/lib/data/experience-categories";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://shahaln.com";
+  const baseUrl = "https://shahaln.vercel.app";
 
   // Core Static Pages
   const staticRoutes: MetadataRoute.Sitemap = [

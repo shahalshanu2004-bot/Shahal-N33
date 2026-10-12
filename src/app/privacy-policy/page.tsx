@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
   title: "Privacy Policy | Shahal N — Performance Marketer",
-  description: "Privacy Policy for shahaln.com — how we collect, use, and protect your personal information.",
-  alternates: { canonical: "https://shahaln.com/privacy-policy" },
+  description: "Privacy Policy for shahaln.vercel.app — how we collect, use, and protect your personal information.",
+  alternates: { canonical: "https://shahaln.vercel.app/privacy-policy" },
 };
 
 export default function PrivacyPolicyPage() {
@@ -56,7 +56,7 @@ export default function PrivacyPolicyPage() {
       <section className="py-16">
         <div className="container mx-auto px-6 md:px-12 max-w-3xl">
           <p className="text-white/60 leading-relaxed mb-12">
-            This Privacy Policy describes how Shahal N (&quot;I&quot;, &quot;me&quot;, or &quot;my&quot;) collects, uses, and protects information gathered through this website (shahaln.com). By using this website, you agree to the practices described in this policy.
+            This Privacy Policy describes how Shahal N (&quot;I&quot;, &quot;me&quot;, or &quot;my&quot;) collects, uses, and protects information gathered through this website (shahaln.vercel.app). By using this website, you agree to the practices described in this policy.
           </p>
           <div className="space-y-10">
             {sections.map((section, i) => (

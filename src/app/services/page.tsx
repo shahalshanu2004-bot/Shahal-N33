@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+﻿import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { services } from "@/lib/data/services";
 import Link from "next/link";
@@ -15,11 +15,11 @@ export const metadata: Metadata = {
     "Conversion Tracking Services",
     "Shahal N Services"
   ],
-  alternates: { canonical: "https://shahaln.com/services" },
+  alternates: { canonical: "https://shahaln.vercel.app/services" },
   openGraph: {
     title: "Performance Marketing Services | Meta & Google Ads | Shahal N",
     description: "Explore performance marketing services by Shahal N: Meta Ads, Google Ads, App Marketing, Lead Generation, Conversion Tracking, and Campaign Optimization.",
-    url: "https://shahaln.com/services",
+    url: "https://shahaln.vercel.app/services",
     siteName: "Shahal N — Performance Marketer",
     type: "website",
   },
@@ -39,13 +39,13 @@ export default function ServicesPage() {
         "@type": "ListItem",
         "position": 1,
         "name": "Home",
-        "item": "https://shahaln.com/"
+        "item": "https://shahaln.vercel.app/"
       },
       {
         "@type": "ListItem",
         "position": 2,
         "name": "Services",
-        "item": "https://shahaln.com/services"
+        "item": "https://shahaln.vercel.app/services"
       }
     ]
   };

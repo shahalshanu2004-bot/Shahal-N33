@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   if (!project) return {};
 
   const pageTitle = `${project.title} | Performance Marketing Case Study | Shahal N`;
-  const canonicalUrl = `https://shahaln.com/case-studies/${slug}`;
+  const canonicalUrl = `https://shahaln.vercel.app/case-studies/${slug}`;
   const description = `${project.title}: ${project.objective} Results: ${project.result} (${project.resultLabel}). Performance marketing strategy and execution by Shahal N.`;
 
   return {
@@ -54,44 +54,44 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     "@graph": [
       {
         "@type": "BreadcrumbList",
-        "@id": `https://shahaln.com/case-studies/${project.slug}#breadcrumb`,
+        "@id": `https://shahaln.vercel.app/case-studies/${project.slug}#breadcrumb`,
         "itemListElement": [
           {
             "@type": "ListItem",
             "position": 1,
             "name": "Home",
-            "item": "https://shahaln.com/"
+            "item": "https://shahaln.vercel.app/"
           },
           {
             "@type": "ListItem",
             "position": 2,
             "name": "Case Studies",
-            "item": "https://shahaln.com/case-studies"
+            "item": "https://shahaln.vercel.app/case-studies"
           },
           {
             "@type": "ListItem",
             "position": 3,
             "name": project.title,
-            "item": `https://shahaln.com/case-studies/${project.slug}`
+            "item": `https://shahaln.vercel.app/case-studies/${project.slug}`
           }
         ]
       },
       {
         "@type": "CreativeWork",
-        "@id": `https://shahaln.com/case-studies/${project.slug}#work`,
+        "@id": `https://shahaln.vercel.app/case-studies/${project.slug}#work`,
         "name": project.title,
         "headline": project.title,
         "description": `${project.objective} Result: ${project.result} (${project.resultLabel})`,
         "author": {
           "@type": "Person",
-          "@id": "https://shahaln.com/#person",
+          "@id": "https://shahaln.vercel.app/#person",
           "name": "Shahal N",
           "jobTitle": "Performance Marketer"
         },
         "publisher": {
-          "@id": "https://shahaln.com/#person"
+          "@id": "https://shahaln.vercel.app/#person"
         },
-        "url": `https://shahaln.com/case-studies/${project.slug}`
+        "url": `https://shahaln.vercel.app/case-studies/${project.slug}`
       }
     ]
   };
