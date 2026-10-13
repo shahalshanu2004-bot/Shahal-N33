@@ -3,7 +3,8 @@ import type { Metadata } from "next";
 import { experienceProjects } from "@/lib/data/experience";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import Image from "next/image";
+import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/ui/JsonLd";
@@ -17,14 +18,13 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = experienceProjects.find((p) => p.slug === slug);
   if (!project) return {};
 
-  const pageTitle = `${project.title} | Performance Marketing Case Study | Shahal N`;
+  const pageTitle = `${project.title} | Case Study | Shahal N`;
   const canonicalUrl = `${SITE_URL}/case-studies/${slug}`;
-  const description = `${project.title}: ${project.objective} Results: ${project.result} (${project.resultLabel}). Performance marketing strategy and execution by Shahal N.`;
+  const description = `${project.title}: ${project.objective} Results: ${project.result} (${project.resultLabel}). Performance marketing breakdown by Shahal N.`;
 
   return {
     title: pageTitle,
     description: description,
-    keywords: [...project.tags, "Performance Marketing Case Study", "Shahal N Case Studies", "Meta Ads Results"],
     alternates: {
       canonical: canonicalUrl,
     },
@@ -98,59 +98,259 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     ]
   };
 
-  const sections = [
-    {
-      num: "01",
-      title: "PROJECT",
-      content: (
-        <>
-          <p className="font-heading text-2xl mb-2">{project.title}</p>
-          <p className="text-[#3b82f6] uppercase tracking-widest text-xs font-bold">{project.category}</p>
-        </>
-      ),
-    },
-    {
-      num: "02",
-      title: "THE BRIEF",
-      content: <p className="text-white/70 leading-relaxed text-base md:text-lg">{project.objective}</p>,
-    },
-    {
-      num: "03",
-      title: "MY ROLE",
-      content: <p className="text-white/80 leading-relaxed font-bold text-base md:text-lg">{project.role}</p>,
-    },
-    {
-      num: "04",
-      title: "STRATEGY",
-      content: <p className="text-white/70 leading-relaxed text-base md:text-lg">{project.strategy}</p>,
-    },
-    {
-      num: "05",
-      title: "EXECUTION",
-      content: <p className="text-white/70 leading-relaxed text-base md:text-lg">{project.execution}</p>,
-    },
-    {
-      num: "06",
-      title: "MY WORK",
-      content: (
-        <ul className="list-disc pl-5 space-y-2 text-white/70 text-base md:text-lg">
-          {project.myWork.map((item, i) => (
-            <li key={i}>{item}</li>
-          ))}
-        </ul>
-      ),
-    },
-    {
-      num: "07",
-      title: "RESULTS",
+  // Build modular structured sections - rendered strictly when data exists
+  interface SectionItem {
+    num: string;
+    title: string;
+    content: React.ReactNode;
+  }
+
+  const dynamicSections: SectionItem[] = [];
+  let sectionIndex = 1;
+
+  const getNextNum = () => {
+    const s = sectionIndex < 10 ? `0${sectionIndex}` : `${sectionIndex}`;
+    sectionIndex++;
+    return s;
+  };
+
+  // 1. Client & Industry
+  if (project.clientIndustry) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "CLIENT & INDUSTRY",
       content: (
         <div>
-          <p className="text-[#3b82f6] font-heading text-3xl md:text-5xl font-black mb-2">{project.result}</p>
-          <p className="text-white/50 text-sm tracking-widest uppercase font-bold">{project.resultLabel}</p>
+          <p className="text-white text-lg md:text-xl font-bold mb-2">{project.clientIndustry}</p>
+          <p className="text-[#3b82f6] text-xs font-bold uppercase tracking-widest">{project.category}</p>
         </div>
-      ),
-    },
-  ];
+      )
+    });
+  }
+
+  // 2. Objective / The Brief
+  if (project.objective) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "THE BRIEF & OBJECTIVE",
+      content: (
+        <p className="text-white/80 leading-relaxed text-base md:text-lg font-light">
+          {project.objective}
+        </p>
+      )
+    });
+  }
+
+  // 3. My Role & Scope (with Contribution highlight)
+  if (project.role || project.myContribution) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "ROLE & SCOPE",
+      content: (
+        <div className="space-y-4">
+          <p className="text-white font-bold text-base md:text-lg">{project.role}</p>
+          {project.myContribution && (
+            <div className="p-5 rounded-2xl bg-[#0c0c0e] border border-[#3b82f6]/20">
+              <span className="text-[#3b82f6] text-[10px] font-bold uppercase tracking-widest block mb-1.5">
+                MY DIRECT CONTRIBUTION
+              </span>
+              <p className="text-white/70 text-sm md:text-base leading-relaxed">
+                {project.myContribution}
+              </p>
+            </div>
+          )}
+        </div>
+      )
+    });
+  }
+
+  // 4. Timeline & Ad Spend (rendered only if set)
+  if (project.timeline || project.adSpend) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "TIMELINE & SPEND",
+      content: (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          {project.timeline && (
+            <div className="p-4 rounded-xl bg-[#0c0c0e] border border-white/5">
+              <span className="text-white/40 text-[10px] uppercase tracking-widest block mb-1">Timeline</span>
+              <p className="text-white font-bold text-sm">{project.timeline}</p>
+            </div>
+          )}
+          {project.adSpend && (
+            <div className="p-4 rounded-xl bg-[#0c0c0e] border border-white/5">
+              <span className="text-white/40 text-[10px] uppercase tracking-widest block mb-1">Ad Spend Managed</span>
+              <p className="text-[#3b82f6] font-bold text-sm">{project.adSpend}</p>
+            </div>
+          )}
+        </div>
+      )
+    });
+  }
+
+  // 5. Strategy
+  if (project.strategy) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "STRATEGY ARCHITECTURE",
+      content: (
+        <p className="text-white/75 leading-relaxed text-base md:text-lg font-light">
+          {project.strategy}
+        </p>
+      )
+    });
+  }
+
+  // 6. What I Tested
+  if (project.whatITested) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "WHAT I TESTED",
+      content: (
+        <p className="text-white/75 leading-relaxed text-base md:text-lg font-light">
+          {project.whatITested}
+        </p>
+      )
+    });
+  }
+
+  // 7. Execution & Work Scope
+  if (project.execution || (project.myWork && project.myWork.length > 0)) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "EXECUTION & DELIVERABLES",
+      content: (
+        <div className="space-y-6">
+          {project.execution && (
+            <p className="text-white/75 leading-relaxed text-base md:text-lg font-light">
+              {project.execution}
+            </p>
+          )}
+          {project.myWork && project.myWork.length > 0 && (
+            <div className="space-y-2.5 pt-2">
+              <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest block mb-2">
+                Implementation Focus
+              </span>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+                {project.myWork.map((item, i) => (
+                  <div key={i} className="flex items-center gap-2.5 p-3 rounded-xl bg-[#0c0c0e] border border-white/5 text-xs text-white/80">
+                    <CheckCircle2 className="w-3.5 h-3.5 text-[#3b82f6] shrink-0" />
+                    <span>{item}</span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          )}
+        </div>
+      )
+    });
+  }
+
+  // 8. What Changed / Optimized
+  if (project.whatChangedOptimized) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "WHAT CHANGED & OPTIMIZED",
+      content: (
+        <p className="text-white/75 leading-relaxed text-base md:text-lg font-light">
+          {project.whatChangedOptimized}
+        </p>
+      )
+    });
+  }
+
+  // 9. Results & Metric Definitions
+  if (project.result) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "RESULTS & OUTCOMES",
+      content: (
+        <div className="space-y-6">
+          <div className="p-6 md:p-8 rounded-3xl bg-[#0c0c0e] border border-[#3b82f6]/30 shadow-xl">
+            <p className="text-[#3b82f6] font-heading text-4xl md:text-6xl font-black mb-2 tracking-tight">
+              {project.result}
+            </p>
+            <p className="text-white/70 text-xs md:text-sm tracking-widest uppercase font-bold mb-4">
+              {project.resultLabel}
+            </p>
+            {project.metricDefinition && (
+              <p className="text-white/50 text-xs leading-relaxed border-t border-white/10 pt-4 font-light">
+                <strong className="text-white/80 font-medium">Metric Definition:</strong> {project.metricDefinition}
+              </p>
+            )}
+          </div>
+
+          {/* App Marketing Specific Metrics (Spend, CPI, Purchase CPA) */}
+          {(project.cpi || project.purchaseCpa) && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              {project.cpi && (
+                <div className="p-4 rounded-2xl bg-[#0c0c0e] border border-white/5">
+                  <span className="text-white/40 text-[10px] uppercase tracking-widest block mb-1">Blended CPI</span>
+                  <p className="text-white font-bold text-base">{project.cpi}</p>
+                </div>
+              )}
+              {project.purchaseCpa && (
+                <div className="p-4 rounded-2xl bg-[#0c0c0e] border border-white/5">
+                  <span className="text-white/40 text-[10px] uppercase tracking-widest block mb-1">Purchase CPA</span>
+                  <p className="text-[#3b82f6] font-bold text-base">{project.purchaseCpa}</p>
+                </div>
+              )}
+            </div>
+          )}
+        </div>
+      )
+    });
+  }
+
+  // 10. Lead Quality Notes
+  if (project.leadQualityNotes) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "LEAD QUALITY ANALYSIS",
+      content: (
+        <p className="text-white/75 leading-relaxed text-base md:text-lg font-light">
+          {project.leadQualityNotes}
+        </p>
+      )
+    });
+  }
+
+  // 11. Screenshots Gallery (if provided)
+  if (project.screenshots && project.screenshots.length > 0) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "CAMPAIGN SCREENSHOTS",
+      content: (
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {project.screenshots.map((s, idx) => (
+            <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 bg-[#0c0c0e]">
+              <div className="relative aspect-video">
+                <Image src={s.url} alt={s.alt} fill className="object-cover" />
+              </div>
+              {s.caption && (
+                <p className="p-3 text-[11px] text-white/50 text-center">{s.caption}</p>
+              )}
+            </div>
+          ))}
+        </div>
+      )
+    });
+  }
+
+  // 12. Key Learnings
+  if (project.keyLearnings) {
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "KEY LEARNINGS",
+      content: (
+        <div className="p-6 rounded-2xl bg-[#0c0c0e] border border-white/5 border-l-4 border-l-[#3b82f6]">
+          <p className="text-white/80 leading-relaxed text-base md:text-lg font-light">
+            {project.keyLearnings}
+          </p>
+        </div>
+      )
+    });
+  }
 
   return (
     <main className="min-h-screen bg-[#050508] text-white">
@@ -166,18 +366,18 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <ArrowLeft className="w-4 h-4" /> Back to Case Studies
           </Link>
 
-          <div className="mb-24">
-            <span className="text-[#3b82f6] text-sm font-bold uppercase tracking-widest mb-4 block">
-              Case Study
+          <div className="mb-20">
+            <span className="text-[#3b82f6] text-xs font-bold uppercase tracking-[0.2em] mb-4 block">
+              PERFORMANCE CASE STUDY
             </span>
-            <h1 className="font-heading text-4xl sm:text-5xl md:text-7xl font-black uppercase tracking-tighter leading-none mb-8">
+            <h1 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-tight mb-8">
               {project.title}
             </h1>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2.5">
               {project.tags.map((tag) => (
                 <span
                   key={tag}
-                  className="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest text-white/60"
+                  className="px-3.5 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs font-bold uppercase tracking-widest text-white/60"
                 >
                   {tag}
                 </span>
@@ -185,37 +385,40 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             </div>
           </div>
 
-          <div className="space-y-20">
-            {sections.map((section) => (
+          {/* Modular Structured Sections */}
+          <div className="space-y-16 md:space-y-20">
+            {dynamicSections.map((section) => (
               <section
                 key={section.num}
-                className="grid grid-cols-1 md:grid-cols-12 gap-8 md:gap-16 items-start"
+                className="grid grid-cols-1 md:grid-cols-12 gap-6 md:gap-16 items-start pb-12 border-b border-white/5 last:border-b-0"
               >
-                <div className="md:col-span-3 flex md:flex-col items-center md:items-start gap-4">
-                  <span className="font-heading text-4xl font-black text-white/20">{section.num}</span>
+                <div className="md:col-span-4 flex md:flex-col items-center md:items-start gap-3">
+                  <span className="font-heading text-3xl font-black text-white/20">{section.num}</span>
                   <h2 className="text-[#3b82f6] text-xs font-bold uppercase tracking-widest">
                     {section.title}
                   </h2>
                 </div>
-                <div className="md:col-span-9">{section.content}</div>
+                <div className="md:col-span-8">{section.content}</div>
               </section>
             ))}
           </div>
 
-          {/* Bottom CTA & Navigation */}
-          <div className="mt-24 pt-12 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
+          {/* Bottom CTA & Internal Linking */}
+          <div className="mt-20 pt-12 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
             <Link
               href="/#contact"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#3b82f6] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)]"
             >
               Discuss Your Campaign &rarr;
             </Link>
-            <Link
-              href="/services"
-              className="inline-flex items-center gap-2 text-white/50 hover:text-white transition-colors text-xs uppercase tracking-widest font-bold"
-            >
-              Explore Services <ArrowRight className="w-3.5 h-3.5" />
-            </Link>
+            {project.relatedServiceSlug && (
+              <Link
+                href={`/services/${project.relatedServiceSlug}`}
+                className="inline-flex items-center gap-2 text-white/50 hover:text-[#3b82f6] transition-colors text-xs uppercase tracking-widest font-bold"
+              >
+                Related Service: {project.relatedServiceSlug.replace("-", " ")} <ArrowRight className="w-3.5 h-3.5" />
+              </Link>
+            )}
           </div>
         </div>
       </article>

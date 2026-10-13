@@ -3,29 +3,17 @@
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
 import { Quote, ChevronLeft, ChevronRight } from "lucide-react";
-
-const testimonials = [
-  {
-    quote: "Shahal completely transformed our digital acquisition strategy. We saw a 3x return on ad spend within the first quarter alone.",
-    name: "Elena Rostova",
-    role: "CMO, Maison Luxury"
-  },
-  {
-    quote: "His deep understanding of analytics coupled with a premium aesthetic approach is exactly what our luxury brand needed to scale.",
-    name: "Marcus Chen",
-    role: "Founder, Apex FinTech"
-  },
-  {
-    quote: "The most strategic and results-driven performance marketer we've worked with. Period.",
-    name: "Sarah Jenkins",
-    role: "Director of Growth, Veloce Auto"
-  }
-];
+import { testimonials } from "@/lib/data/testimonials";
 
 export default function TestimonialsSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [currentIndex, setCurrentIndex] = useState(0);
+
+  // Render ONLY when data exists in data/testimonials.ts
+  if (!testimonials || testimonials.length === 0) {
+    return null;
+  }
 
   const next = () => setCurrentIndex((prev) => (prev + 1) % testimonials.length);
   const prev = () => setCurrentIndex((prev) => (prev - 1 + testimonials.length) % testimonials.length);

@@ -2,7 +2,6 @@
 
 import { useRef } from "react";
 import { motion, useInView, Variants } from "framer-motion";
-import { CheckCircle2 } from "lucide-react";
 
 const steps = [
   { num: "01", title: "RESEARCH", desc: "Analyze unit economics, competitor angles, audience intent, and target business goals." },

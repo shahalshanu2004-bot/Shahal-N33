@@ -96,7 +96,7 @@ export default function ExperienceSection() {
                       className="overflow-hidden"
                     >
                       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 pt-8 mt-8 border-t border-white/10">
-                        {project.sections.map((sec, i) => (
+                        {project.sections?.map((sec, i) => (
                           <div key={i}>
                             <p className="text-[#3b82f6] text-[10px] font-bold uppercase tracking-widest mb-3">{sec.title}</p>
                             <p className="text-sm text-white/70 leading-relaxed">{sec.content}</p>
@@ -132,7 +132,9 @@ export default function ExperienceSection() {
                 <p className="text-white/50 text-xs mb-4">{exp.role}</p>
                 <div className="pt-4 border-t border-white/10 mt-auto">
                   <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">{exp.objective}</p>
-                  <p className="text-white font-bold text-sm">{exp.result}</p>
+                  {exp.metric ? (
+                    <p className="text-[#3b82f6] font-bold text-sm tracking-wide">{exp.metric}</p>
+                  ) : null}
                 </div>
               </motion.div>
             ))}
