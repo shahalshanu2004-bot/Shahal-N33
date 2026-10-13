@@ -17,12 +17,6 @@ const InstagramIcon = () => (
     <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor" stroke="none" />
   </svg>
 );
-const MailIcon = () => (
-  <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
-    <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z" />
-    <polyline points="22,6 12,13 2,6" />
-  </svg>
-);
 
 const serviceLinks = [
   { name: "Meta Ads", href: "/services/meta-ads" },
@@ -69,9 +63,9 @@ export default function Footer() {
               {[
                 { href: siteConfig.socials.linkedin, Icon: LinkedinIcon, label: "LinkedIn", onClick: undefined },
                 { href: siteConfig.socials.instagram, Icon: InstagramIcon, label: "Instagram", onClick: undefined },
-                { href: `mailto:${siteConfig.email}`, Icon: MailIcon, label: "Email", onClick: () => trackEmailClick("footer_social") }
-              ].map(({ href, Icon, label, onClick }) => (
-                <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label}
+              ].filter((item) => Boolean(item.href) && item.href !== "#")
+              .map(({ href, Icon, label, onClick }) => (
+                <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
                   onClick={onClick}
                   suppressHydrationWarning
                   className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#3b82f6]/60 hover:text-[#3b82f6] hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]">

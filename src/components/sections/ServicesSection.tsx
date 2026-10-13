@@ -5,7 +5,7 @@ import { motion, useInView, Variants } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Sparkles } from "lucide-react";
 
-// Core 4 Services
+// Core 7 Performance Marketing Services
 const coreServices = [
   {
     num: "01",
@@ -39,28 +39,34 @@ const coreServices = [
     description: "High-intent lead generation funnels using instant forms, customized landing pages, and direct Click-to-WhatsApp automation to slash sales friction.",
     badge: "DIRECT PIPELINE"
   },
-];
-
-// Secondary / Additional Services
-const additionalServices = [
   {
     num: "05",
     slug: "conversion-tracking",
-    title: "Conversion Tracking",
-    description: "Server-side CAPI, GA4, pixel configuration, and verified event signals.",
+    title: "CONVERSION TRACKING",
+    highlight: "SERVER-SIDE CAPI & GA4",
+    description: "Server-side Meta Conversions API (CAPI), Google Tag Manager, GA4 event architectures, and verified attribution signals to feed ad algorithms clean conversion data.",
+    badge: "CLEAN ATTRIBUTION"
   },
   {
     num: "06",
     slug: "campaign-optimization",
-    title: "Campaign Optimization",
-    description: "Audience pruning, bid strategy refinement, and continuous CPL reduction.",
+    title: "CAMPAIGN OPTIMIZATION",
+    highlight: "BID & AUDIENCE REFINEMENT",
+    description: "Systematic audience pruning, creative refresh cadences, bid strategy tuning, and continuous CPA/CPL reduction across active campaigns.",
+    badge: "EFFICIENCY & SCALE"
   },
   {
     num: "07",
     slug: "performance-strategy",
-    title: "Performance Strategy",
-    description: "Unit economics, CAC targets, and cross-channel growth architecture.",
+    title: "PERFORMANCE STRATEGY",
+    highlight: "UNIT ECONOMICS & ARCHITECTURE",
+    description: "Cross-channel paid media architecture aligned with unit economics, target CAC, and full-funnel customer lifetime value.",
+    badge: "GROWTH ROADMAP"
   },
+];
+
+// Secondary Services (Also offered)
+const alsoOfferedServices = [
   {
     num: "08",
     slug: "seo",
@@ -142,69 +148,106 @@ export default function ServicesSection() {
           </Link>
         </motion.div>
 
-        {/* 01 - 4 CORE SERVICES (MAIN PROMINENT GRID) */}
+        {/* 01 - MAIN PERFORMANCE SERVICES GRID */}
         <div className="mb-24">
           <motion.div
             variants={containerVariants}
             initial="hidden"
             animate={isInView ? "visible" : "hidden"}
-            className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
           >
-            {coreServices.map((service, index) => (
-              <motion.div
-                key={index}
-                variants={itemVariants}
-                className="h-full"
-              >
-                <Link
-                  href={`/services/${service.slug}`}
-                  className="group relative p-8 md:p-10 rounded-[28px] bg-[#0c0c0e] border border-white/10 hover:border-[#3b82f6]/60 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden shadow-xl shadow-black/40 hover:shadow-[0_0_35px_rgba(59,130,246,0.18)] flex flex-col h-full block"
+            {coreServices.map((service, index) => {
+              const isLast = index === 6;
+              return (
+                <motion.div
+                  key={index}
+                  variants={itemVariants}
+                  className={`h-full ${isLast ? "md:col-span-2 lg:col-span-3" : ""}`}
                 >
-                  <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/[0.08] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[28px]" />
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="flex items-center gap-3">
-                        <span className="text-[#3b82f6] font-heading font-black text-xl">{service.num}</span>
-                        <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70">
-                          {service.badge}
-                        </span>
-                      </div>
-                      <span className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-[#3b82f6] text-white/50 group-hover:text-white flex items-center justify-center transition-all duration-300">
-                        <ArrowRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
-                      </span>
-                    </div>
-
-                    <h3 className="font-heading text-2xl md:text-3xl font-black mb-2 text-white uppercase tracking-tight group-hover:text-[#3b82f6] transition-colors duration-300">
-                      {service.title}
-                    </h3>
+                  <Link
+                    href={`/services/${service.slug}`}
+                    className="group relative p-8 md:p-10 rounded-[28px] bg-[#0c0c0e] border border-white/10 hover:border-[#3b82f6]/60 hover:-translate-y-1.5 transition-all duration-300 overflow-hidden shadow-xl shadow-black/40 hover:shadow-[0_0_35px_rgba(59,130,246,0.18)] flex flex-col h-full block"
+                  >
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#3b82f6]/[0.08] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none rounded-[28px]" />
                     
-                    <p className="text-[#3b82f6]/80 text-xs font-bold uppercase tracking-wider mb-4">
-                      {service.highlight}
-                    </p>
+                    {isLast ? (
+                      <div className="relative z-10 flex flex-col md:flex-row md:items-center md:justify-between gap-6 h-full">
+                        <div className="max-w-2xl">
+                          <div className="flex items-center gap-3 mb-4">
+                            <span className="text-[#3b82f6] font-heading font-black text-xl">{service.num}</span>
+                            <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70">
+                              {service.badge}
+                            </span>
+                          </div>
+                          <h3 className="font-heading text-2xl md:text-3xl font-black mb-2 text-white uppercase tracking-tight group-hover:text-[#3b82f6] transition-colors duration-300">
+                            {service.title}
+                          </h3>
+                          <p className="text-[#3b82f6]/80 text-xs font-bold uppercase tracking-wider mb-3">
+                            {service.highlight}
+                          </p>
+                          <p className="text-white/60 text-sm md:text-base leading-relaxed font-light group-hover:text-white/80 transition-colors duration-300">
+                            {service.description}
+                          </p>
+                        </div>
+                        <div className="flex md:flex-col items-center md:items-end justify-between md:justify-center gap-4 pt-4 md:pt-0 border-t md:border-t-0 border-white/5 flex-shrink-0">
+                          <span className="w-12 h-12 rounded-full bg-white/5 group-hover:bg-[#3b82f6] text-white/50 group-hover:text-white flex items-center justify-center transition-all duration-300">
+                            <ArrowRight className="w-5 h-5 transform group-hover:translate-x-0.5 transition-transform" />
+                          </span>
+                          <span className="text-xs font-bold uppercase tracking-widest text-[#3b82f6] group-hover:text-white transition-colors">
+                            Explore Strategy & Process &rarr;
+                          </span>
+                        </div>
+                      </div>
+                    ) : (
+                      <div className="relative z-10 flex flex-col h-full">
+                        <div className="flex items-center justify-between mb-6">
+                          <div className="flex items-center gap-3">
+                            <span className="text-[#3b82f6] font-heading font-black text-xl">{service.num}</span>
+                            <span className="text-[10px] font-bold tracking-widest uppercase px-2.5 py-1 rounded-full bg-white/5 border border-white/10 text-white/70">
+                              {service.badge}
+                            </span>
+                          </div>
+                          <span className="w-10 h-10 rounded-full bg-white/5 group-hover:bg-[#3b82f6] text-white/50 group-hover:text-white flex items-center justify-center transition-all duration-300">
+                            <ArrowRight className="w-4 h-4 transform group-hover:translate-x-0.5 transition-transform" />
+                          </span>
+                        </div>
 
-                    <p className="text-white/60 text-sm md:text-base leading-relaxed font-light group-hover:text-white/80 transition-colors duration-300 mb-6">
-                      {service.description}
-                    </p>
+                        <h3 className="font-heading text-2xl md:text-3xl font-black mb-2 text-white uppercase tracking-tight group-hover:text-[#3b82f6] transition-colors duration-300">
+                          {service.title}
+                        </h3>
+                        
+                        <p className="text-[#3b82f6]/80 text-xs font-bold uppercase tracking-wider mb-4">
+                          {service.highlight}
+                        </p>
 
-                    <div className="mt-auto pt-4 border-t border-white/5 flex items-center text-xs font-bold uppercase tracking-widest text-[#3b82f6] group-hover:text-white transition-colors">
-                      <span>Explore Strategy & Process &rarr;</span>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
+                        <p className="text-white/60 text-sm md:text-base leading-relaxed font-light group-hover:text-white/80 transition-colors duration-300 mb-6">
+                          {service.description}
+                        </p>
+
+                        <div className="mt-auto pt-4 border-t border-white/5 flex items-center text-xs font-bold uppercase tracking-widest text-[#3b82f6] group-hover:text-white transition-colors">
+                          <span>Explore Strategy & Process &rarr;</span>
+                        </div>
+                      </div>
+                    )}
+                  </Link>
+                </motion.div>
+              );
+            })}
           </motion.div>
         </div>
 
-        {/* 02 - ADDITIONAL SERVICES (COMPACT SECONDARY GROUP) */}
+        {/* 02 - ALSO OFFERED (SECONDARY GROUP) */}
         <div>
           <div className="mb-8 flex items-center justify-between">
             <div>
-              <h3 className="font-heading text-lg md:text-xl font-bold uppercase tracking-widest text-white/90">
-                ADDITIONAL & SPECIALIZED SERVICES
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-white/60 text-[11px] font-bold uppercase tracking-widest mb-3">
+                Complementary Services
+              </div>
+              <h3 className="font-heading text-xl md:text-2xl font-bold uppercase tracking-tight text-white/90">
+                Also offered
               </h3>
               <p className="text-white/40 text-xs md:text-sm font-light mt-1">
-                Supporting technical infrastructure, tracking, and creative capabilities.
+                Supporting technical, creative, and organic capabilities that strengthen paid campaigns.
               </p>
             </div>
           </div>
@@ -214,9 +257,9 @@ export default function ServicesSection() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-60px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4"
           >
-            {additionalServices.map((service, index) => (
+            {alsoOfferedServices.map((service, index) => (
               <motion.div
                 key={index}
                 variants={itemVariants}

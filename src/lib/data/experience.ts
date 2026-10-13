@@ -11,11 +11,15 @@ export interface ExperienceProject {
   category: string;
   tags: string[];
   role: string;
+  myRole?: string; // Optional "my role" line
   clientIndustry?: string;
   timeline?: string; // e.g. "6 Weeks"
+  campaignDuration?: string | null; // Optional campaign duration
   adSpend?: string | null; // // TODO: add real ad spend if shareable
   cpi?: string | null; // // TODO: add real CPI for app campaigns
   purchaseCpa?: string | null; // // TODO: add real purchase CPA
+  conversionDefinition?: string | null; // What counts as a "conversion"
+  myCampaignResults?: string | null; // My campaign results for app case studies (CuteKaari, Relax Call)
   myContribution?: string; // Explicit scope for app / multi-stakeholder campaigns
   objective: string;
   strategy: string;
@@ -42,8 +46,11 @@ export const experienceProjects: ExperienceProject[] = [
     tags: ["META ADS", "LEAD GENERATION", "CAMPAIGN OPTIMIZATION"],
     clientIndustry: "Premium Residential Real Estate (Malappuram & Kozhikode, Kerala)",
     role: "Performance Marketer",
+    myRole: "Performance Marketer",
     timeline: "Ongoing Campaign Architecture",
-    adSpend: null, // // TODO: add real ad spend number if shareable
+    campaignDuration: "Ongoing Campaign Architecture",
+    adSpend: "₹33.9K",
+    conversionDefinition: "1 Lead = Verified inquiry with verified phone number, budget requirement, and site visit request.",
     objective: "Generate qualified leads for a high-ticket ₹55 Cr premium real-estate development with strict buyer qualification.",
     strategy: "Meta Ads architecture combining high-intent interest targeting, lookalike clusters, and localized Malayalam and English creatives.",
     whatITested: "Tested 6 multi-hook creative angles (luxury lifestyle vs. investment appreciation vs. unit tour teasers) alongside Instant Form vs. landing page qualification funnels.",
@@ -77,10 +84,14 @@ export const experienceProjects: ExperienceProject[] = [
     tags: ["META ADS", "APP ACQUISITION", "PURCHASE", "TRACKING"],
     clientIndustry: "CuteKaari (Mobile Application & Digital Entertainment)",
     role: "App Performance Marketer",
+    myRole: "App Performance Marketer",
     myContribution: "Engineered paid user acquisition strategy on Meta Ads, implemented event measurement, tested regional Malayalam visual hooks, and optimized post-install purchase conversion events.",
-    adSpend: null, // // TODO: add real ad spend
-    cpi: null, // // TODO: add real CPI
-    purchaseCpa: null, // // TODO: add real purchase CPA
+    campaignDuration: null, // // TODO: add campaign duration for CuteKaari
+    adSpend: null, // // TODO: add real ad spend for CuteKaari
+    cpi: null, // // TODO: add real CPI for CuteKaari
+    purchaseCpa: null, // // TODO: add real purchase CPA for CuteKaari
+    conversionDefinition: null, // // TODO: add what counts as a conversion for CuteKaari (e.g. In-App Purchase, Registration)
+    myCampaignResults: null, // // TODO: add real campaign results for CuteKaari (e.g. Paid Installs, In-App Purchases, CPI)
     objective: "Drive app acquisition and optimize for meaningful downstream actions and active in-app conversions.",
     strategy: "Build campaigns around measurable app actions rather than optimizing only for reach. Structure ad sets around high-intent parent demographics.",
     whatITested: "Tested short-form gameplay vs. feature demonstration reels, comparing App Install optimization vs. In-App Purchase event optimization.",
@@ -113,10 +124,14 @@ export const experienceProjects: ExperienceProject[] = [
     tags: ["META ADS", "APP ACQUISITION", "PURCHASE", "OPTIMIZATION"],
     clientIndustry: "Relax Call (Voice & Social Communication Mobile App)",
     role: "App Performance Marketer",
+    myRole: "App Performance Marketer",
     myContribution: "Structured user acquisition funnels across Android and iOS, mapped in-app purchase events, and continuously iterated ad creatives to lower acquisition costs while maximizing downstream purchase value.",
-    adSpend: null, // // TODO: add real ad spend
-    cpi: null, // // TODO: add real CPI
-    purchaseCpa: null, // // TODO: add real purchase CPA
+    campaignDuration: null, // // TODO: add campaign duration for Relax Call
+    adSpend: null, // // TODO: add real ad spend for Relax Call
+    cpi: null, // // TODO: add real CPI for Relax Call
+    purchaseCpa: null, // // TODO: add real purchase CPA for Relax Call
+    conversionDefinition: null, // // TODO: add what counts as a conversion for Relax Call (e.g. In-App Purchase)
+    myCampaignResults: null, // // TODO: add real campaign results for Relax Call (e.g. Paid Installs, Purchase CPA)
     objective: "App promotion campaigns focusing on downstream actions and purchase optimization rather than just installs.",
     strategy: "Structure campaigns around meaningful downstream actions instead of focusing only on app installs. Align creative messaging with core app utility.",
     whatITested: "Tested interest clusters in communication, entertainment, and social apps across diverse age brackets.",
@@ -149,8 +164,11 @@ export const experienceProjects: ExperienceProject[] = [
     tags: ["META ADS", "LEAD GENERATION", "WHATSAPP"],
     clientIndustry: "RS Water Solutions (Residential & Commercial Water Treatment)",
     role: "Performance Marketer",
+    myRole: "Performance Marketer",
     timeline: "Local Direct-Response Campaign",
-    adSpend: null, // // TODO: add real ad spend
+    campaignDuration: "Local Direct-Response Campaign",
+    adSpend: null, // // TODO: add real ad spend for RS Water Solutions
+    conversionDefinition: "1 Conversion = Verified customer inquiry (Click-to-WhatsApp chat initiated at ₹12.01/conv or verified Instant Form at ₹14.95/conv).",
     objective: "Generate genuine local customer enquiries efficiently for water filtration and purification systems.",
     strategy: "Test two enquiry routes side by side: INSTANT LEAD FORM vs CLICK-TO-WHATSAPP, identifying which generated higher conversion rates.",
     whatITested: "Direct Head-to-Head test: Meta Instant Lead Form with custom validation vs. Click-to-WhatsApp with automated pre-filled conversation prompts.",
@@ -183,6 +201,7 @@ export interface AdditionalExperienceItem {
   role: string;
   objective: string;
   metric?: string | null; // Data-driven verified metric (e.g. "119 Inquiries", "₹18 CPL")
+  numericResult?: string | null; // Optional numeric result field to replace vague text later
 }
 
 export const additionalExperience: AdditionalExperienceItem[] = [
@@ -191,27 +210,31 @@ export const additionalExperience: AdditionalExperienceItem[] = [
     type: "Meta Ads",
     role: "Digital Marketer",
     objective: "Lead Generation",
-    metric: null // // TODO: add real numbers (e.g. "X Leads @ ₹Y CPL")
+    metric: null, // // TODO: add real numbers (e.g. "X Leads @ ₹Y CPL")
+    numericResult: null // // TODO: add real numeric result for Fabline
   },
   {
     client: "Island Foods",
     type: "Meta Ads",
     role: "Digital Marketer",
     objective: "Brand Awareness",
-    metric: null // // TODO: add real numbers (e.g. "X Impressions / Y Local Reach")
+    metric: null, // // TODO: add real numbers (e.g. "X Impressions / Y Local Reach")
+    numericResult: null // // TODO: add real numeric result for Island Foods
   },
   {
     client: "Bserve",
     type: "Meta Ads",
     role: "Performance Marketer",
     objective: "Customer Acquisition",
-    metric: null // // TODO: add real numbers (e.g. "X Inquiries / Y CAC")
+    metric: null, // // TODO: add real numbers (e.g. "X Inquiries / Y CAC")
+    numericResult: null // // TODO: add real numeric result for Bserve
   },
   {
     client: "Al Saud",
     type: "Meta Ads",
     role: "Performance Marketer",
     objective: "Placement Enquiries",
-    metric: "119 Inquiries" // Verified count
+    metric: "119 Inquiries", // Verified count
+    numericResult: "119 Inquiries"
   }
 ];

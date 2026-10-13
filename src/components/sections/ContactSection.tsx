@@ -62,7 +62,7 @@ export default function ContactSection() {
   const calLink = process.env.NEXT_PUBLIC_CAL_LINK;
 
   return (
-    <section id="contact" className="py-28 md:py-36 bg-[#050508] relative border-t border-white/5 overflow-hidden" ref={sectionRef}>
+    <section id="contact" className="scroll-mt-24 py-28 md:py-36 bg-[#050508] relative border-t border-white/5 overflow-hidden" ref={sectionRef}>
       {/* Decorative gradient */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[700px] bg-[#3b82f6]/[0.05] rounded-full blur-[160px] pointer-events-none" />
 

@@ -143,13 +143,13 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   }
 
   // 3. My Role & Scope (with Contribution highlight)
-  if (project.role || project.myContribution) {
+  if (project.myRole || project.role || project.myContribution) {
     dynamicSections.push({
       num: getNextNum(),
       title: "ROLE & SCOPE",
       content: (
         <div className="space-y-4">
-          <p className="text-white font-bold text-base md:text-lg">{project.role}</p>
+          <p className="text-white font-bold text-base md:text-lg">{project.myRole || project.role}</p>
           {project.myContribution && (
             <div className="p-5 rounded-2xl bg-[#0c0c0e] border border-[#3b82f6]/20">
               <span className="text-[#3b82f6] text-[10px] font-bold uppercase tracking-widest block mb-1.5">
@@ -165,17 +165,17 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     });
   }
 
-  // 4. Timeline & Ad Spend (rendered only if set)
-  if (project.timeline || project.adSpend) {
+  // 4. Campaign Duration & Ad Spend (rendered only if set)
+  if (project.campaignDuration || project.timeline || project.adSpend) {
     dynamicSections.push({
       num: getNextNum(),
-      title: "TIMELINE & SPEND",
+      title: "CAMPAIGN DURATION & SPEND",
       content: (
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-          {project.timeline && (
+          {(project.campaignDuration || project.timeline) && (
             <div className="p-4 rounded-xl bg-[#0c0c0e] border border-white/5">
-              <span className="text-white/40 text-[10px] uppercase tracking-widest block mb-1">Timeline</span>
-              <p className="text-white font-bold text-sm">{project.timeline}</p>
+              <span className="text-white/40 text-[10px] uppercase tracking-widest block mb-1">Campaign Duration</span>
+              <p className="text-white font-bold text-sm">{project.campaignDuration || project.timeline}</p>
             </div>
           )}
           {project.adSpend && (
@@ -274,12 +274,34 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             <p className="text-white/70 text-xs md:text-sm tracking-widest uppercase font-bold mb-4">
               {project.resultLabel}
             </p>
-            {project.metricDefinition && (
+            {(project.conversionDefinition || project.metricDefinition) && (
               <p className="text-white/50 text-xs leading-relaxed border-t border-white/10 pt-4 font-light">
-                <strong className="text-white/80 font-medium">Metric Definition:</strong> {project.metricDefinition}
+                <strong className="text-white/80 font-medium">What Counts as a Conversion:</strong> {project.conversionDefinition || project.metricDefinition}
               </p>
             )}
           </div>
+
+          {/* App Marketing Case Studies: My Campaign Results Block */}
+          {/* // TODO: Add real campaign results for app case studies (CuteKaari, Relax Call) */}
+          {(project.slug === "cutekaari" || project.slug === "relax-call") && (
+            <div className="p-6 rounded-3xl bg-[#0c0c0e] border border-white/10">
+              <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest block mb-2">
+                My Campaign Results
+              </span>
+              {project.myCampaignResults ? (
+                <p className="text-white font-heading text-2xl font-bold text-[#3b82f6]">
+                  {project.myCampaignResults}
+                </p>
+              ) : (
+                <div className="py-2">
+                  {/* // TODO: Fill in real campaign results for this app (e.g. ad-attributed installs, CPI, purchase count) */}
+                  <p className="text-white/30 text-xs italic">
+                    Campaign results pending client data verification.
+                  </p>
+                </div>
+              )}
+            </div>
+          )}
 
           {/* App Marketing Specific Metrics (Spend, CPI, Purchase CPA) */}
           {(project.cpi || project.purchaseCpa) && (
@@ -326,7 +348,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           {project.screenshots.map((s, idx) => (
             <div key={idx} className="rounded-2xl overflow-hidden border border-white/10 bg-[#0c0c0e]">
               <div className="relative aspect-video">
-                <Image src={s.url} alt={s.alt} fill className="object-cover" />
+                <Image src={s.url} alt={s.alt} fill sizes="(max-width: 640px) 100vw, 50vw" className="object-cover" />
               </div>
               {s.caption && (
                 <p className="p-3 text-[11px] text-white/50 text-center">{s.caption}</p>

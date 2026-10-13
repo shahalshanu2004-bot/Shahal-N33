@@ -89,7 +89,8 @@ export default function HeroSection() {
 
             {/* Main Title (H1) with semantic text in DOM */}
             <h1 className="mb-5 sm:mb-6 flex flex-col font-heading font-black tracking-tighter uppercase text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]">
-              <div className="overflow-hidden">
+              <span className="sr-only">Performance Marketer</span>
+              <div className="overflow-hidden" aria-hidden="true">
                 <motion.span
                   initial={{ y: "115%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
@@ -97,9 +98,9 @@ export default function HeroSection() {
                   className="inline-block text-white"
                 >
                   Performance
-                </motion.span>{" "}
+                </motion.span>
               </div>
-              <div className="overflow-hidden">
+              <div className="overflow-hidden" aria-hidden="true">
                 <motion.span
                   initial={{ y: "115%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
@@ -251,8 +252,7 @@ export default function HeroSection() {
               {[
                 "META ADS", "GOOGLE ADS", "APP MARKETING", 
                 "LEAD GENERATION", "CONVERSION TRACKING", "CAMPAIGN OPTIMIZATION", 
-                "PERFORMANCE STRATEGY", "SEO", "WEBSITE DEVELOPMENT", 
-                "CONTENT CREATION", "AI AUTOMATION", "AI VIDEO MARKETING"
+                "PERFORMANCE STRATEGY"
               ].map((skill, index) => (
                 <div key={`${i}-${index}`} className="flex items-center">
                   <span className="font-heading font-bold text-sm sm:text-base md:text-lg uppercase tracking-[0.15em] px-8 transition-colors duration-300 cursor-default text-[#3b82f6]/60 hover:text-[#3b82f6] hover:drop-shadow-[0_0_8px_rgba(59,130,246,0.5)]">

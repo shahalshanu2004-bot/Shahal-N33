@@ -48,12 +48,21 @@ export const metadata: Metadata = {
     siteName: "Shahal N — Performance Marketer",
     locale: "en_IN",
     type: "website",
+    images: [
+      {
+        url: `${SITE_URL}/og-image.png`,
+        width: 1200,
+        height: 630,
+        alt: "Shahal N — Performance Marketer | Meta & Google Ads",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
     title: "Performance Marketer in Kerala | Meta & Google Ads – Shahal N",
     description:
       "Meta & Google Ads specialist in Malappuram, Kerala. Lead generation and app install campaigns with measurable results. Get a free ad audit.",
+    images: [`${SITE_URL}/og-image.png`],
   },
   robots: {
     index: true,
@@ -111,16 +120,19 @@ export default function RootLayout({
         sameAs: [
           siteConfig.socials.linkedin,
           siteConfig.socials.instagram,
-          siteConfig.socials.github,
         ],
       },
       {
         "@type": "ProfessionalService",
         "@id": `${SITE_URL}/#service`,
-        name: "Shahal N — Performance Marketing Services",
+        name: "Shahal N — Performance Marketer",
         url: SITE_URL,
-        telephone: siteConfig.phone,
         email: siteConfig.email,
+        telephone: siteConfig.phone,
+        sameAs: [
+          siteConfig.socials.linkedin,
+          siteConfig.socials.instagram,
+        ],
         address: {
           "@type": "PostalAddress",
           addressLocality: siteConfig.location.locality,
@@ -130,8 +142,6 @@ export default function RootLayout({
         areaServed: [
           { "@type": "AdministrativeArea", name: "Kerala" },
           { "@type": "Country", name: "India" },
-          { "@type": "Country", name: "United Arab Emirates" },
-          { "@type": "AdministrativeArea", name: "GCC" },
         ],
         serviceType: [
           "Meta Ads Management",

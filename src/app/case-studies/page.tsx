@@ -42,7 +42,25 @@ export default function CaseStudiesPage() {
     ]
   };
 
-  const cases = [
+  interface CaseStudyItem {
+    slug: string;
+    title: string;
+    category: string;
+    metric: string;
+    metricLabel: string;
+    image: string;
+    challenge: string;
+    strategy: string;
+    execution: string;
+    results: string[];
+    roi: string;
+    myRole?: string;
+    campaignDuration?: string;
+    adSpend?: string;
+    conversionDefinition?: string;
+  }
+
+  const cases: CaseStudyItem[] = [
     {
       ...portfolioProjects[0],
       challenge: "A newly launched placement consultancy needed rapid brand awareness and a pipeline of serious overseas job applicants within a very constrained budget.",
@@ -102,6 +120,36 @@ export default function CaseStudiesPage() {
                   </div>
                 </div>
               </div>
+
+              {/* Optional metadata bar */}
+              {(study.myRole || study.campaignDuration || study.adSpend || study.conversionDefinition) ? (
+                <div className="px-8 py-3 bg-white/[0.02] border-b border-white/8 flex flex-wrap gap-x-6 gap-y-2 text-xs text-white/50">
+                  {study.myRole && (
+                    <div>
+                      <span className="text-white/30 text-[10px] uppercase tracking-wider block">Role</span>
+                      <span className="text-white/80 font-medium">{study.myRole}</span>
+                    </div>
+                  )}
+                  {study.campaignDuration && (
+                    <div>
+                      <span className="text-white/30 text-[10px] uppercase tracking-wider block">Duration</span>
+                      <span className="text-white/80 font-medium">{study.campaignDuration}</span>
+                    </div>
+                  )}
+                  {study.adSpend && (
+                    <div>
+                      <span className="text-white/30 text-[10px] uppercase tracking-wider block">Ad Spend</span>
+                      <span className="text-[#3b82f6] font-semibold">{study.adSpend}</span>
+                    </div>
+                  )}
+                  {study.conversionDefinition && (
+                    <div className="w-full sm:w-auto">
+                      <span className="text-white/30 text-[10px] uppercase tracking-wider block">Conversion</span>
+                      <span className="text-white/70">{study.conversionDefinition}</span>
+                    </div>
+                  )}
+                </div>
+              ) : null}
 
               {/* ROI bar */}
               <div className="px-8 py-4 bg-[#3b82f6]/5 border-b border-white/8 flex items-center gap-3">

@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState } from "react";
-import { motion, useInView, AnimatePresence } from "framer-motion";
+import { motion, useInView } from "framer-motion";
 import { ChevronDown } from "lucide-react";
 import { homeFaqs as faqs } from "@/lib/data/faqs";
 
@@ -91,26 +91,22 @@ export default function FaqSection() {
                 </div>
               </button>
               
-              <AnimatePresence initial={false}>
-                {openIndex === index && (
-                  <motion.div
-                    id={`faq-answer-${index}`}
-                    role="region"
-                    aria-labelledby={`faq-question-${index}`}
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.35, ease: EASE }}
-                    className="overflow-hidden"
-                  >
-                    <div className="px-8 md:px-10 pb-8 md:pb-10 text-white/60 leading-[1.8] font-light text-base md:text-lg">
-                      <div className="border-t border-white/5 pt-6 md:pt-8">
-                        {faq.a}
-                      </div>
+              <div
+                id={`faq-answer-${index}`}
+                role="region"
+                aria-labelledby={`faq-question-${index}`}
+                className={`grid transition-[grid-template-rows,opacity] duration-300 ease-out overflow-hidden ${
+                  openIndex === index ? "grid-rows-[1fr] opacity-100" : "grid-rows-[0fr] opacity-0"
+                }`}
+              >
+                <div className="overflow-hidden">
+                  <div className="px-8 md:px-10 pb-8 md:pb-10 text-white/60 leading-[1.8] font-light text-base md:text-lg">
+                    <div className="border-t border-white/5 pt-6 md:pt-8">
+                      {faq.a}
                     </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
+                  </div>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>

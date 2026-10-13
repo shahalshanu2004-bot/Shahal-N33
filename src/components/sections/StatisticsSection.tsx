@@ -103,6 +103,7 @@ export default function StatisticsSection() {
           className="grid grid-cols-1 md:grid-cols-3 gap-10 md:gap-8 lg:gap-12 text-center"
         >
           {/* Stat 01: Clients Worked With (conditional) */}
+          {/* TODO: confirm the final numbers are accurate and match my case studies (currently 15+ clients, 20+ projects) */}
           {hasClients && (
             <motion.div variants={itemVariants} className="flex flex-col items-center">
               <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-white tracking-tight leading-none mb-3">

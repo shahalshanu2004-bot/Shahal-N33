@@ -60,11 +60,39 @@ export default function ExperienceSection() {
                     </div>
                   </div>
 
-                  {/* CENTER: Project Title */}
+                  {/* CENTER: Project Title & Optional Metadata */}
                   <div className="lg:col-span-5 flex flex-col justify-center h-full">
-                    <h3 className="font-heading text-2xl md:text-4xl font-bold text-white uppercase tracking-tight leading-[1.2] group-hover:translate-x-1.5 transition-transform duration-300">
+                    <h3 className="font-heading text-2xl md:text-4xl font-bold text-white uppercase tracking-tight leading-[1.2] group-hover:translate-x-1.5 transition-transform duration-300 mb-3">
                       {project.title}
                     </h3>
+
+                    {/* Optional metadata: My Role, Duration, Ad Spend */}
+                    <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/50">
+                      {(project.myRole || project.role) && (
+                        <div>
+                          <span className="text-white/30 uppercase tracking-wider text-[10px] block">Role</span>
+                          <span className="text-white/80 font-medium">{project.myRole || project.role}</span>
+                        </div>
+                      )}
+                      {(project.campaignDuration || project.timeline) && (
+                        <div>
+                          <span className="text-white/30 uppercase tracking-wider text-[10px] block">Duration</span>
+                          <span className="text-white/80 font-medium">{project.campaignDuration || project.timeline}</span>
+                        </div>
+                      )}
+                      {project.adSpend && (
+                        <div>
+                          <span className="text-white/30 uppercase tracking-wider text-[10px] block">Ad Spend</span>
+                          <span className="text-[#3b82f6] font-semibold">{project.adSpend}</span>
+                        </div>
+                      )}
+                    </div>
+
+                    {(project.conversionDefinition || project.metricDefinition) && (
+                      <p className="text-[11px] text-white/40 mt-3 font-light leading-relaxed">
+                        <span className="text-white/60 font-medium">Conversion:</span> {project.conversionDefinition || project.metricDefinition}
+                      </p>
+                    )}
                   </div>
 
                   {/* RIGHT: Key Metric */}
@@ -125,15 +153,17 @@ export default function ExperienceSection() {
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: index * 0.08, ease: EASE }}
                 viewport={{ once: true, margin: "-60px" }}
-                className="bg-[#08080b] border border-white/5 p-6 rounded-2xl hover:border-[#3b82f6]/30 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(59,130,246,0.08)] transition-all duration-300"
+                className="bg-[#08080b] border border-white/5 p-6 rounded-2xl hover:border-[#3b82f6]/30 hover:-translate-y-1 hover:shadow-[0_0_20px_rgba(59,130,246,0.08)] transition-all duration-300 flex flex-col justify-between"
               >
-                <p className="text-[#3b82f6] text-[10px] font-bold uppercase tracking-widest mb-4">{exp.type}</p>
-                <h4 className="text-xl font-bold text-white mb-2">{exp.client}</h4>
-                <p className="text-white/50 text-xs mb-4">{exp.role}</p>
+                <div>
+                  <p className="text-[#3b82f6] text-[10px] font-bold uppercase tracking-widest mb-4">{exp.type}</p>
+                  <h4 className="text-xl font-bold text-white mb-2">{exp.client}</h4>
+                  <p className="text-white/50 text-xs mb-4">{exp.role}</p>
+                </div>
                 <div className="pt-4 border-t border-white/10 mt-auto">
                   <p className="text-white/40 text-[10px] uppercase tracking-widest mb-1">{exp.objective}</p>
-                  {exp.metric ? (
-                    <p className="text-[#3b82f6] font-bold text-sm tracking-wide">{exp.metric}</p>
+                  {(exp.numericResult || exp.metric) ? (
+                    <p className="text-[#3b82f6] font-bold text-sm tracking-wide mt-1">{exp.numericResult || exp.metric}</p>
                   ) : null}
                 </div>
               </motion.div>

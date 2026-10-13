@@ -85,4 +85,23 @@ export const portfolioProjects = [
 ];
 
 export const projectCategories = ["All", ...new Set(portfolioProjects.map(p => p.category))];
-export type PortfolioProject = typeof portfolioProjects[0];
+
+export interface PortfolioProject {
+  slug: string;
+  title: string;
+  category: string;
+  tags: string[];
+  description: string;
+  myWork?: string[];
+  challenge: string;
+  result: string;
+  metric: string;
+  metricLabel: string;
+  image: string;
+  year: string;
+  myRole?: string;
+  campaignDuration?: string;
+  adSpend?: string;
+  conversionDefinition?: string;
+  myCampaignResults?: string;
+}

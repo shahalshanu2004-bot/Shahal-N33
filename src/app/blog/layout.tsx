@@ -1,15 +1,9 @@
 import { SITE_URL } from "../../lib/site";
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 
 export const metadata: Metadata = {
   title: "Digital Marketing Blog | Best Digital Marketing Expert In Malappuram, Kerala",
   description: "Read performance marketing insights, Meta Ads guides, Google PPC tactics, and SEO strategies by Shahal N — Best Digital Marketing Expert in Malappuram, Kerala.",
-  keywords: [
-    "Best Digital Marketing Expert In Malappuram, Kerala",
-    "Digital Marketing Blog Kerala",
-    "Meta Ads Strategy Guide",
-    "SEO Expert Insights Malappuram"
-  ],
   alternates: {
     canonical: `${SITE_URL}/blog`,
   },

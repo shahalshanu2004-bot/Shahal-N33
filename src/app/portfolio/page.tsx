@@ -1,18 +1,11 @@
 import { SITE_URL } from "../../lib/site";
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import { portfolioProjects, projectCategories } from "@/lib/data/portfolio";
 
 export const metadata: Metadata = {
   title: "Campaign Portfolio | Performance Marketer | Shahal N",
   description: "Explore performance marketing portfolio by Shahal N. View Meta Ads, Google Ads, App Marketing, and Lead Generation client projects and campaigns.",
-  keywords: [
-    "Performance Marketing Portfolio",
-    "Meta Ads Portfolio",
-    "App Marketing Portfolio",
-    "Lead Generation Projects",
-    "Shahal N Portfolio"
-  ],
   alternates: { canonical: `${SITE_URL}/portfolio` },
   openGraph: {
     title: "Campaign Portfolio | Performance Marketer | Shahal N",

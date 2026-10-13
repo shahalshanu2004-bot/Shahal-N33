@@ -1,5 +1,5 @@
 import { SITE_URL } from "../lib/site";
-﻿import { MetadataRoute } from "next";
+import { MetadataRoute } from "next";
 import { blogs } from "@/lib/data/blog";
 import { services } from "@/lib/data/services";
 import { experienceProjects } from "@/lib/data/experience";
