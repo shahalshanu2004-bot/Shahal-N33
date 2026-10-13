@@ -4,6 +4,7 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { siteConfig } from "@/lib/site";
+import { trackWhatsAppClick } from "@/lib/analytics";
 
 const navLinks = [
   { name: "Home", href: "/" },
@@ -143,7 +144,14 @@ export default function Navbar() {
               )}
             </div>
 
-            <a suppressHydrationWarning href={siteConfig.whatsappUrl} target="_blank" rel="noreferrer" className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase hover:bg-white hover:text-black hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white">
+            <a
+              suppressHydrationWarning
+              href={siteConfig.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => trackWhatsAppClick("navbar_desktop")}
+              className="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase hover:bg-white hover:text-black hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+            >
               Message on WhatsApp
             </a>
           </div>
@@ -201,7 +209,17 @@ export default function Navbar() {
                   )}
                 </div>
               ))}
-              <a suppressHydrationWarning href={siteConfig.whatsappUrl} target="_blank" rel="noreferrer" onClick={() => setMenuOpen(false)} className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase w-fit hover:bg-white hover:text-black transition-colors">
+              <a
+                suppressHydrationWarning
+                href={siteConfig.whatsappUrl}
+                target="_blank"
+                rel="noreferrer"
+                onClick={() => {
+                  trackWhatsAppClick("navbar_mobile");
+                  setMenuOpen(false);
+                }}
+                className="mt-2 inline-flex items-center justify-center px-6 py-3 rounded-full bg-[#3b82f6] text-white font-bold text-xs tracking-widest uppercase w-fit hover:bg-white hover:text-black transition-colors"
+              >
                 Message on WhatsApp
               </a>
             </div>

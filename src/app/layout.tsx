@@ -5,6 +5,9 @@ import SmoothScroll from "@/components/SmoothScroll";
 import { SITE_URL, siteConfig } from "@/lib/site";
 import { homeFaqs } from "@/lib/data/faqs";
 import JsonLd from "@/components/ui/JsonLd";
+import AnalyticsScripts from "@/components/analytics/AnalyticsScripts";
+import ScrollTracker from "@/components/analytics/ScrollTracker";
+import CookieConsent from "@/components/ui/CookieConsent";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -165,12 +168,15 @@ export default function RootLayout({
     <html lang="en" className="dark scroll-smooth" suppressHydrationWarning>
       <head>
         <JsonLd data={jsonLd} />
+        <AnalyticsScripts />
       </head>
       <body
         className={`${inter.variable} ${spaceGrotesk.variable} antialiased min-h-screen bg-[#050508] text-white selection:bg-[#3b82f6] selection:text-white overflow-x-hidden font-sans`}
         suppressHydrationWarning
       >
+        <ScrollTracker />
         <SmoothScroll>{children}</SmoothScroll>
+        <CookieConsent />
       </body>
     </html>
   );

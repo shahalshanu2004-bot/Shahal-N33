@@ -1,4 +1,8 @@
+"use client";
+
 import Link from "next/link";
+import { siteConfig } from "@/lib/site";
+import { trackEmailClick, trackPhoneClick, trackWhatsAppClick } from "@/lib/analytics";
 
 const LinkedinIcon = () => (
   <svg viewBox="0 0 24 24" width="15" height="15" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round">
@@ -63,11 +67,12 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3 mt-6">
               {[
-                { href: "https://www.linkedin.com/in/shahal-n/", Icon: LinkedinIcon, label: "LinkedIn" },
-                { href: "https://www.instagram.com/shahal_n/", Icon: InstagramIcon, label: "Instagram" },
-                { href: "mailto:shahalnwork@gmail.com", Icon: MailIcon, label: "Email" }
-              ].map(({ href, Icon, label }) => (
+                { href: siteConfig.socials.linkedin, Icon: LinkedinIcon, label: "LinkedIn", onClick: undefined },
+                { href: siteConfig.socials.instagram, Icon: InstagramIcon, label: "Instagram", onClick: undefined },
+                { href: `mailto:${siteConfig.email}`, Icon: MailIcon, label: "Email", onClick: () => trackEmailClick("footer_social") }
+              ].map(({ href, Icon, label, onClick }) => (
                 <a key={label} href={href} target={href.startsWith("http") ? "_blank" : undefined} rel="noreferrer" aria-label={label}
+                  onClick={onClick}
                   suppressHydrationWarning
                   className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#3b82f6]/60 hover:text-[#3b82f6] hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]">
                   <Icon />
@@ -104,11 +109,36 @@ export default function Footer() {
           <div>
             <h3 className="text-xs font-bold uppercase tracking-[0.25em] text-white/50 mb-5">Contact</h3>
             <ul className="space-y-3 text-sm text-white/40">
-              <li><a suppressHydrationWarning href="mailto:shahalnwork@gmail.com" className="hover:text-[#3b82f6] transition-colors duration-200">shahalnwork@gmail.com</a></li>
-              <li><a suppressHydrationWarning href="tel:+917593052256" className="hover:text-[#3b82f6] transition-colors duration-200">+91 759 305 2256</a></li>
-              <li>Malappuram, Kerala, India</li>
+              <li>
+                <a
+                  suppressHydrationWarning
+                  href={`mailto:${siteConfig.email}`}
+                  onClick={() => trackEmailClick("footer")}
+                  className="hover:text-[#3b82f6] transition-colors duration-200"
+                >
+                  {siteConfig.email}
+                </a>
+              </li>
+              <li>
+                <a
+                  suppressHydrationWarning
+                  href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+                  onClick={() => trackPhoneClick("footer")}
+                  className="hover:text-[#3b82f6] transition-colors duration-200"
+                >
+                  {siteConfig.phone}
+                </a>
+              </li>
+              <li>{siteConfig.location.locality}, {siteConfig.location.region}, {siteConfig.location.country}</li>
             </ul>
-            <a suppressHydrationWarning href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20visited%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer" className="inline-block mt-6 px-5 py-2.5 rounded-full bg-[#3b82f6] text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]">
+            <a
+              suppressHydrationWarning
+              href={siteConfig.whatsappUrl}
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => trackWhatsAppClick("footer")}
+              className="inline-block mt-6 px-5 py-2.5 rounded-full bg-[#3b82f6] text-white text-xs font-bold uppercase tracking-widest hover:bg-white hover:text-black hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300 shadow-sm hover:shadow-[0_0_20px_rgba(59,130,246,0.35)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
+            >
               Message on WhatsApp
             </a>
           </div>

@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { siteConfig } from "@/lib/site";
 import { ArrowRight, CheckCircle2, MessageSquare, Loader2, AlertCircle } from "lucide-react";
+import { trackFormSubmit, trackWhatsAppClick } from "@/lib/analytics";
 
 export default function AuditContactForm() {
   const [formData, setFormData] = useState({
@@ -67,14 +68,11 @@ export default function AuditContactForm() {
       setSubmittedData({ ...formData });
       setStatus("success");
 
-      // Optional window event for Phase 8 tracking
-      if (typeof window !== "undefined" && (window as unknown as { trackEvent?: (name: string, data?: unknown) => void }).trackEvent) {
-        (window as unknown as { trackEvent: (name: string, data?: unknown) => void }).trackEvent("form_submit", {
-          form_name: "ad_audit_form",
-          business_type: formData.businessType,
-          budget: formData.budget,
-        });
-      }
+      // Analytics conversion event
+      trackFormSubmit("ad_audit_form", {
+        business_type: formData.businessType,
+        budget: formData.budget,
+      });
     } catch (err: unknown) {
       setStatus("error");
       setErrorMessage(err instanceof Error ? err.message : "Something went wrong. Please reach out directly on WhatsApp.");
@@ -107,6 +105,7 @@ export default function AuditContactForm() {
             href={getWhatsAppFollowupUrl()}
             target="_blank"
             rel="noreferrer"
+            onClick={() => trackWhatsAppClick("audit_form_success")}
             className="w-full sm:w-auto inline-flex items-center justify-center gap-2.5 px-8 py-4 rounded-full bg-[#25D366] text-black font-bold uppercase tracking-wider text-xs hover:bg-white transition-all shadow-[0_0_25px_rgba(37,211,102,0.3)]"
           >
             <MessageSquare className="w-4 h-4" />

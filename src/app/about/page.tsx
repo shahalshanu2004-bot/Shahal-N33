@@ -1,5 +1,5 @@
-import { SITE_URL } from "../../lib/site";
-﻿import type { Metadata } from "next";
+import { SITE_URL, siteConfig } from "../../lib/site";
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
 import EducationSection from "@/components/sections/EducationSection";
@@ -7,14 +7,6 @@ import EducationSection from "@/components/sections/EducationSection";
 export const metadata: Metadata = {
   title: "About Shahal N | Performance Marketer & Paid Ads Specialist",
   description: "Learn more about Shahal N — Performance Marketer focused on Meta Ads, Google Ads, app user acquisition, lead generation, and conversion tracking.",
-  keywords: [
-    "About Shahal N",
-    "Performance Marketer",
-    "Performance Marketer in Kerala",
-    "Meta Ads Specialist",
-    "Google Ads Specialist",
-    "Digital Marketing Consultant"
-  ],
   alternates: { canonical: `${SITE_URL}/about` },
   openGraph: {
     title: "About Shahal N | Performance Marketer & Paid Ads Specialist",
@@ -262,8 +254,13 @@ export default function AboutPage() {
           <p className="text-white/50 mb-12 text-lg md:text-xl font-light leading-relaxed">
             Let&apos;s build campaigns that turn attention into measurable business outcomes.
           </p>
-          <a suppressHydrationWarning href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer" 
-             className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#3b82f6] text-white font-bold tracking-widest uppercase text-sm hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-white/20">
+          <a
+            suppressHydrationWarning
+            href={siteConfig.whatsappUrl}
+            target="_blank"
+            rel="noreferrer" 
+            className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#3b82f6] text-white font-bold tracking-widest uppercase text-sm hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-white/20"
+          >
             MESSAGE ON WHATSAPP &rarr;
           </a>
         </div>

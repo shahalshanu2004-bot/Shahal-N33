@@ -1,5 +1,5 @@
-import { SITE_URL } from "../../lib/site";
-﻿import type { Metadata } from "next";
+import { SITE_URL, siteConfig } from "../../lib/site";
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
 import { services } from "@/lib/data/services";
@@ -8,15 +8,6 @@ import Link from "next/link";
 export const metadata: Metadata = {
   title: "Performance Marketing Services | Meta & Google Ads | Shahal N",
   description: "Explore performance marketing services by Shahal N: Meta Ads, Google Ads, App Marketing, Lead Generation, Conversion Tracking, Campaign Optimization, and SEO.",
-  keywords: [
-    "Performance Marketing Services",
-    "Meta Ads Services",
-    "Google Ads Services",
-    "App Marketing Services",
-    "Lead Generation Services",
-    "Conversion Tracking Services",
-    "Shahal N Services"
-  ],
   alternates: { canonical: `${SITE_URL}/services` },
   openGraph: {
     title: "Performance Marketing Services | Meta & Google Ads | Shahal N",
@@ -117,7 +108,13 @@ export default function ServicesPage() {
           <p className="text-white/50 mb-10 text-lg font-light leading-relaxed">
             Tell me what you&apos;re trying to achieve and I&apos;ll help identify the right marketing approach.
           </p>
-          <a suppressHydrationWarning href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20need%20help%20figuring%20out%20the%20right%20approach%20for%20my%20business." target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#3b82f6] text-white font-bold tracking-widest uppercase text-sm hover:bg-white hover:text-black transition-colors duration-300">
+          <a
+            suppressHydrationWarning
+            href={siteConfig.whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#3b82f6] text-white font-bold tracking-widest uppercase text-sm hover:bg-white hover:text-black transition-colors duration-300"
+          >
             Let&apos;s Talk &rarr;
           </a>
         </div>

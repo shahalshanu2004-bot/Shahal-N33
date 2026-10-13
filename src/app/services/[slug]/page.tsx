@@ -1,4 +1,4 @@
-import { SITE_URL } from "../../../lib/site";
+import { SITE_URL, siteConfig } from "../../../lib/site";
 import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { services, getService } from "@/lib/data/services";
@@ -354,7 +354,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </p>
           <a
             suppressHydrationWarning
-            href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%27d%20like%20to%20discuss%20a%20project."
+            href={siteConfig.whatsappUrl}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-3 px-10 py-5 rounded-full bg-[#3b82f6] text-white font-bold tracking-widest uppercase text-sm hover:bg-white hover:text-black transition-all duration-300 shadow-[0_0_30px_rgba(59,130,246,0.3)] hover:shadow-white/20"
@@ -409,7 +409,7 @@ export default async function ServiceDetailPage({ params }: { params: Promise<{ 
           </p>
           <a
             suppressHydrationWarning
-            href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20need%20help%20figuring%20out%20the%20right%20approach%20for%20my%20business."
+            href={siteConfig.whatsappUrl}
             target="_blank"
             rel="noreferrer"
             className="inline-flex items-center gap-3 px-8 py-4 rounded-full border border-white/20 text-white font-bold tracking-widest uppercase text-xs hover:border-[#3b82f6] hover:bg-[#3b82f6]/10 hover:text-[#3b82f6] transition-all duration-300"

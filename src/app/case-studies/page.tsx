@@ -1,5 +1,5 @@
-import { SITE_URL } from "../../lib/site";
-﻿import type { Metadata } from "next";
+import { SITE_URL, siteConfig } from "../../lib/site";
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
 import { portfolioProjects } from "@/lib/data/portfolio";
@@ -7,13 +7,6 @@ import { portfolioProjects } from "@/lib/data/portfolio";
 export const metadata: Metadata = {
   title: "Performance Marketing Case Studies | Meta & Google Ads | Shahal N",
   description: "Explore performance marketing case studies by Shahal N. In-depth campaign breakdowns covering Meta Ads, App Acquisition, Lead Generation, and Conversion Tracking.",
-  keywords: [
-    "Performance Marketing Case Studies",
-    "Meta Ads Case Studies",
-    "Lead Generation Case Studies",
-    "App Marketing Case Studies",
-    "Shahal N"
-  ],
   alternates: { canonical: `${SITE_URL}/case-studies` },
   openGraph: {
     title: "Performance Marketing Case Studies | Meta & Google Ads | Shahal N",
@@ -160,7 +153,13 @@ export default function CaseStudiesPage() {
             Your business could be <span className="text-[#3b82f6] italic font-serif">the next case study.</span>
           </h2>
           <p className="text-white/50 mb-10">Let&apos;s build a strategy that generates measurable results you will want to share.</p>
-          <a suppressHydrationWarning href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%27d%20like%20to%20discuss%20a%20project." target="_blank" rel="noreferrer" className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#3b82f6] text-black font-bold tracking-widest uppercase text-sm hover:bg-white transition-colors duration-300">
+          <a
+            suppressHydrationWarning
+            href={siteConfig.whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-3 px-8 py-4 rounded-full bg-[#3b82f6] text-black font-bold tracking-widest uppercase text-sm hover:bg-white transition-colors duration-300"
+          >
             Message on WhatsApp
           </a>
         </div>

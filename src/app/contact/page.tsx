@@ -1,18 +1,11 @@
-import { SITE_URL } from "../../lib/site";
-﻿import type { Metadata } from "next";
+import { SITE_URL, siteConfig } from "../../lib/site";
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
 
 export const metadata: Metadata = {
   title: "Contact Shahal N | Performance Marketer | Meta & Google Ads",
   description: "Get in touch with Shahal N — Performance Marketer. Schedule a consultation for Meta Ads, Google Ads, app marketing, lead generation, and conversion tracking.",
-  keywords: [
-    "Contact Shahal N",
-    "Hire Performance Marketer",
-    "Performance Marketer in Kerala",
-    "Meta Ads Consultant",
-    "Google Ads Consultant"
-  ],
   alternates: { canonical: `${SITE_URL}/contact` },
   openGraph: {
     title: "Contact Shahal N | Performance Marketer | Meta & Google Ads",
@@ -107,7 +100,7 @@ export default function ContactPage() {
               {/* WhatsApp CTA */}
               <a
                 suppressHydrationWarning
-                href="https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20found%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project."
+                href={siteConfig.whatsappUrl}
                 target="_blank"
                 rel="noreferrer"
                 className="flex items-center justify-center gap-3 w-full py-4 rounded-full bg-[#25D366]/10 border border-[#25D366]/30 text-[#25D366] font-bold tracking-widest uppercase text-sm hover:bg-[#25D366]/20 hover:border-[#25D366] transition-all duration-300"

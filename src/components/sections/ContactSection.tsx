@@ -5,6 +5,7 @@ import { motion, useInView } from "framer-motion";
 import { siteConfig } from "@/lib/site";
 import AuditContactForm from "@/components/forms/AuditContactForm";
 import { PhoneCall, FileSearch, Sparkles, Rocket, Calendar } from "lucide-react";
+import { trackWhatsAppClick, trackEmailClick, trackPhoneClick } from "@/lib/analytics";
 
 const auditSteps = [
   {
@@ -162,6 +163,7 @@ export default function ContactSection() {
                 href={siteConfig.whatsappAuditUrl}
                 target="_blank"
                 rel="noreferrer"
+                onClick={() => trackWhatsAppClick("contact_section")}
                 className="w-full flex items-center justify-center gap-3 py-4 px-6 rounded-full bg-[#25D366] text-black font-bold tracking-widest uppercase text-xs hover:bg-white transition-all shadow-[0_0_25px_rgba(37,211,102,0.3)]"
               >
                 Chat on WhatsApp &rarr;
@@ -172,8 +174,22 @@ export default function ContactSection() {
             <div className="p-8 rounded-3xl bg-[#09090c] border border-white/5 space-y-4">
               <div>
                 <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">Direct Email</p>
-                <a href={`mailto:${siteConfig.email}`} className="text-white/80 hover:text-[#3b82f6] text-sm font-medium transition-colors">
+                <a
+                  href={`mailto:${siteConfig.email}`}
+                  onClick={() => trackEmailClick("contact_section")}
+                  className="text-white/80 hover:text-[#3b82f6] text-sm font-medium transition-colors"
+                >
                   {siteConfig.email}
+                </a>
+              </div>
+              <div className="pt-3 border-t border-white/5">
+                <p className="text-[10px] uppercase tracking-widest text-white/30 mb-1">Direct Phone</p>
+                <a
+                  href={`tel:${siteConfig.phone.replace(/\s+/g, "")}`}
+                  onClick={() => trackPhoneClick("contact_section")}
+                  className="text-white/80 hover:text-[#3b82f6] text-sm font-medium transition-colors"
+                >
+                  {siteConfig.phone}
                 </a>
               </div>
               <div className="pt-3 border-t border-white/5">

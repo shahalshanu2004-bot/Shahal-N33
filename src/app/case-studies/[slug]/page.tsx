@@ -8,6 +8,7 @@ import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/ui/JsonLd";
+import CaseStudyTracker from "@/components/analytics/CaseStudyTracker";
 
 export async function generateStaticParams() {
   return experienceProjects.map((p) => ({ slug: p.slug }));
@@ -355,6 +356,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   return (
     <main className="min-h-screen bg-[#050508] text-white">
       <JsonLd data={jsonLd} />
+      <CaseStudyTracker slug={project.slug} title={project.title} />
       <Navbar />
 
       <article className="pt-32 pb-24 border-b border-white/5">
