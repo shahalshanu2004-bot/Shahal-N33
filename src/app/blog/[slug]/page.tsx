@@ -27,7 +27,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   return {
     title: pageTitle,
     description: blog.metaDescription,
-    keywords: [blog.primaryKeyword, "Performance Marketing", "Shahal N"],
     alternates: { canonical: canonicalUrl },
     openGraph: {
       title: blog.title,
@@ -185,6 +184,32 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               prose-ol:text-white/70"
             dangerouslySetInnerHTML={{ __html: blog.content }}
           />
+
+          {/* Author Box */}
+          <div className="mt-16 p-8 bg-[#0c0c0e] rounded-3xl border border-white/10 flex flex-col sm:flex-row items-center gap-6 text-center sm:text-left shadow-lg">
+            <div className="w-20 h-20 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/30 flex items-center justify-center text-[#3b82f6] shrink-0">
+              <User className="w-10 h-10" />
+            </div>
+            <div className="flex-1">
+              <span className="text-[10px] uppercase tracking-widest text-[#3b82f6] font-bold block mb-1">
+                WRITTEN BY
+              </span>
+              <h3 className="font-heading text-xl font-bold text-white uppercase">
+                {blog.author}
+              </h3>
+              <p className="text-white/60 text-xs sm:text-sm mt-2 leading-relaxed">
+                Performance Marketer based in Malappuram, Kerala. Specializing in Meta Ads, Google Ads, App Install campaigns, and conversion tracking across India and GCC markets.
+              </p>
+              <div className="mt-4 flex items-center justify-center sm:justify-start gap-4 text-xs font-bold uppercase tracking-wider">
+                <Link href="/about" className="text-[#3b82f6] hover:underline">
+                  About Shahal &rarr;
+                </Link>
+                <Link href="/#contact" className="text-white/40 hover:text-white transition-colors">
+                  Request Ad Audit
+                </Link>
+              </div>
+            </div>
+          </div>
 
           {/* Contextual Service Callout */}
           {blog.relatedServiceSlug && (

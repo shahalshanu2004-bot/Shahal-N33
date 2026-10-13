@@ -1,5 +1,5 @@
 import { SITE_URL } from "../../lib/site";
-﻿import type { Metadata } from "next";
+import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
 import { blogs } from "@/lib/data/blog";
@@ -9,14 +9,6 @@ import { ArrowRight, Calendar, Tag } from "lucide-react";
 export const metadata: Metadata = {
   title: "Performance Marketing Blog & Insights | Shahal N",
   description: "Practical performance marketing insights by Shahal N: Meta Ads strategies, Google Ads optimization, conversion tracking, app marketing, and lead generation.",
-  keywords: [
-    "Performance Marketing Blog",
-    "Meta Ads Guide",
-    "Google Ads Optimization",
-    "Conversion Tracking Tips",
-    "Lead Generation Strategies",
-    "Shahal N"
-  ],
   alternates: { canonical: `${SITE_URL}/blog` },
   openGraph: {
     title: "Performance Marketing Blog & Insights | Shahal N",
