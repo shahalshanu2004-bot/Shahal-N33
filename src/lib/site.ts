@@ -3,10 +3,10 @@ export const SITE_URL =
 
 export const siteConfig = {
   name: "Shahal N",
-  title: "Performance Marketer in Kerala, India & GCC | Shahal N.",
+  title: "Performance Marketer in Kerala | Shahal N.",
   shortTitle: "Shahal N — Performance Marketer",
   description:
-    "Shahal N. is a performance marketer helping businesses across Kerala, India and GCC grow through Meta Ads, Google Ads, app marketing, lead generation and conversion tracking.",
+    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
   email: "shahalnwork@gmail.com",
   phone: "+91 759 305 2256",
   whatsappNumber: "917593052256",

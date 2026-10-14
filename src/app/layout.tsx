@@ -24,11 +24,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Performance Marketer in Kerala, India & GCC | Shahal N.",
+    default: "Performance Marketer in Kerala | Shahal N.",
     template: "%s | Shahal N",
   },
   description:
-    "Shahal N. is a performance marketer helping businesses across Kerala, India and GCC grow through Meta Ads, Google Ads, app marketing, lead generation and conversion tracking.",
+    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
   authors: [{ name: "Shahal N", url: SITE_URL }],
   creator: "Shahal N",
   publisher: "Shahal N",
@@ -41,9 +41,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Performance Marketer in Kerala, India & GCC | Shahal N.",
+    title: "Performance Marketer in Kerala | Shahal N.",
     description:
-      "Shahal N. is a performance marketer helping businesses across Kerala, India and GCC grow through Meta Ads, Google Ads, app marketing, lead generation and conversion tracking.",
+      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
     url: SITE_URL,
     siteName: "Shahal N — Performance Marketer",
     locale: "en_IN",
@@ -59,9 +59,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Performance Marketer in Kerala, India & GCC | Shahal N.",
+    title: "Performance Marketer in Kerala | Shahal N.",
     description:
-      "Shahal N. is a performance marketer helping businesses across Kerala, India and GCC grow through Meta Ads, Google Ads, app marketing, lead generation and conversion tracking.",
+      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
     images: [`${SITE_URL}/og-image.png`],
   },
   robots: {
