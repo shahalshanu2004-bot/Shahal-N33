@@ -188,11 +188,12 @@ export default function HeroSection() {
                 {/* Profile Image */}
                 <div className="w-full h-full relative transition-transform duration-700 ease-out group-hover:scale-[1.03]">
                    <Image 
-                     src="/images/profile.jpg" 
+                     src="/images/profile-hero.webp" 
                      alt="Shahal N - Performance Marketer, Meta & Google Ads Specialist" 
                      fill 
-                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 380px"
-                     className="object-cover object-[75%_top]"
+                     sizes="(max-width: 640px) 90vw, (max-width: 1024px) 50vw, 420px"
+                     quality={90}
+                     className="object-cover object-center"
                      priority
                    />
                 </div>
