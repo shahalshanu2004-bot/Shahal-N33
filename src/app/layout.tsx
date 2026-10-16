@@ -8,6 +8,7 @@ import JsonLd from "@/components/ui/JsonLd";
 import AnalyticsScripts from "@/components/analytics/AnalyticsScripts";
 import ScrollTracker from "@/components/analytics/ScrollTracker";
 import CookieConsent from "@/components/ui/CookieConsent";
+import MobileStickyBar from "@/components/layout/MobileStickyBar";
 
 const inter = Inter({
   variable: "--font-inter",
@@ -117,8 +118,8 @@ export default function RootLayout({
           "App Marketing",
           "Lead Generation",
           "Conversion Tracking",
-          "ROAS Optimization",
-          "Search Engine Optimization (SEO)",
+          "Campaign Optimization",
+          "Performance Strategy",
         ],
         sameAs: [
           siteConfig.socials.linkedin,
@@ -147,11 +148,11 @@ export default function RootLayout({
           { "@type": "Country", name: "India" },
         ],
         serviceType: [
-          "Meta Ads Management",
-          "Google Ads Management",
-          "App Performance Marketing",
-          "Lead Generation Funnels",
-          "Conversion Tracking & CAPI Setup",
+          "Meta Ads",
+          "Google Ads",
+          "App Marketing",
+          "Lead Generation",
+          "Conversion Tracking",
         ],
       },
       {
@@ -186,11 +187,12 @@ export default function RootLayout({
         <AnalyticsScripts />
       </head>
       <body
-        className={`${inter.variable} ${spaceGrotesk.variable} antialiased min-h-screen bg-[#050508] text-white selection:bg-[#3b82f6] selection:text-white overflow-x-hidden font-sans`}
+        className={`${inter.variable} ${spaceGrotesk.variable} antialiased min-h-screen bg-[#050508] text-white selection:bg-[#3b82f6] selection:text-white overflow-x-hidden font-sans pb-16 md:pb-0`}
         suppressHydrationWarning
       >
         <ScrollTracker />
         <SmoothScroll>{children}</SmoothScroll>
+        <MobileStickyBar />
         <CookieConsent />
       </body>
     </html>

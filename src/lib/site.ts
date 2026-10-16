@@ -1,3 +1,5 @@
+import { socialLinks } from "@/lib/data/socials";
+
 export const SITE_URL =
   process.env.NEXT_PUBLIC_SITE_URL || "https://shahaln.vercel.app";
 
@@ -21,9 +23,9 @@ export const siteConfig = {
     countryCode: "IN"
   },
   socials: {
-    linkedin: "https://www.linkedin.com/in/shahal-n/",
-    instagram: "https://www.instagram.com/shahal_n/",
-    github: "https://github.com/shahalshanu2004-bot/Shahal-N33"
+    linkedin: socialLinks.linkedin.url,
+    instagram: socialLinks.instagram.url,
+    github: socialLinks.github.url
   },
   currentRole: {
     title: "Digital Marketing Executive",

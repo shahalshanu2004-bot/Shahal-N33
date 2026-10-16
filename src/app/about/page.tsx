@@ -1,4 +1,5 @@
 import { SITE_URL, siteConfig } from "../../lib/site";
+import { socialLinks } from "@/lib/data/socials";
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
@@ -96,8 +97,8 @@ export default function AboutPage() {
         "jobTitle": "Performance Marketer",
         "url": `${SITE_URL}/about`,
         "sameAs": [
-          "https://www.linkedin.com/in/shahal-n/",
-          "https://www.instagram.com/shahal_n/"
+          socialLinks.linkedin.url,
+          socialLinks.instagram.url
         ]
       }
     ]

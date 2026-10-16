@@ -4,6 +4,7 @@ import { useRef, useEffect, useState } from "react";
 import { motion, useInView, useMotionValue, useSpring, useTransform } from "framer-motion";
 import { siteConfig } from "@/lib/site";
 
+// TODO(shahal): Confirm the final numbers for clientsWorkedWith, projectsCompleted, and ad spend in site.ts match actual client metrics.
 interface CounterProps {
   value: number;
   suffix?: string;
@@ -26,6 +27,8 @@ function Counter({ value, suffix = "+", duration = 2 }: CounterProps) {
   useEffect(() => {
     if (inView && !hasStarted) {
       setHasStarted(true);
+      // Start from 0 and animate up to value on scroll
+      motionVal.jump(0);
       motionVal.set(value);
     }
   }, [inView, hasStarted, motionVal, value]);
@@ -39,8 +42,9 @@ function Counter({ value, suffix = "+", duration = 2 }: CounterProps) {
     });
   }, [displayVal, suffix, hasStarted]);
 
+  // Server-rendered initial HTML displays the real final value directly for SEO & no flash of 0
   return (
-    <span ref={ref} className="tabular-nums">
+    <span ref={ref} className="tabular-nums" suppressHydrationWarning>
       {value}{suffix}
     </span>
   );

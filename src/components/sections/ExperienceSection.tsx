@@ -2,16 +2,28 @@
 
 import { useRef, useState } from "react";
 import { motion, useInView, AnimatePresence } from "framer-motion";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Eye } from "lucide-react";
 import { experienceProjects, additionalExperience } from "@/lib/data/experience";
+import { caseStudiesDetail, CaseStudyDetail } from "@/lib/data/case-studies-detail";
+import CaseStudyModal from "@/components/modals/CaseStudyModal";
 import Link from "next/link";
 
 export default function ExperienceSection() {
   const sectionRef = useRef(null);
   const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
   const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const [selectedModalDetail, setSelectedModalDetail] = useState<CaseStudyDetail | null>(null);
 
   const EASE = [0.16, 1, 0.3, 1] as [number, number, number, number];
+
+  const openModal = (e: React.MouseEvent, slug: string) => {
+    e.preventDefault();
+    e.stopPropagation();
+    const detail = caseStudiesDetail[slug];
+    if (detail) {
+      setSelectedModalDetail(detail);
+    }
+  };
 
   return (
     <section id="experience" className="py-28 md:py-36 bg-[#050508] relative border-b border-white/5" ref={sectionRef}>
@@ -43,7 +55,7 @@ export default function ExperienceSection() {
             >
               <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#3b82f6]/[0.04] to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none" />
 
-              <Link href={`/case-studies/${project.slug}`} className="block relative z-10 p-8 md:p-12">
+              <div className="block relative z-10 p-8 md:p-12">
                 <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start">
                   
                   {/* LEFT: Project Number & Category */}
@@ -62,9 +74,11 @@ export default function ExperienceSection() {
 
                   {/* CENTER: Project Title & Optional Metadata */}
                   <div className="lg:col-span-5 flex flex-col justify-center h-full">
-                    <h3 className="font-heading text-2xl md:text-4xl font-bold text-white uppercase tracking-tight leading-[1.2] group-hover:translate-x-1.5 transition-transform duration-300 mb-3">
-                      {project.title}
-                    </h3>
+                    <Link href={`/case-studies/${project.slug}`}>
+                      <h3 className="font-heading text-2xl md:text-4xl font-bold text-white uppercase tracking-tight leading-[1.2] group-hover:translate-x-1.5 transition-transform duration-300 mb-3 hover:text-[#3b82f6]">
+                        {project.title}
+                      </h3>
+                    </Link>
 
                     {/* Optional metadata: My Role, Duration, Ad Spend */}
                     <div className="flex flex-wrap gap-x-5 gap-y-2 text-xs text-white/50">
@@ -95,7 +109,7 @@ export default function ExperienceSection() {
                     )}
                   </div>
 
-                  {/* RIGHT: Key Metric */}
+                  {/* RIGHT: Key Metric & Buttons */}
                   <div className="lg:col-span-4 flex flex-col justify-between items-start lg:items-end h-full">
                     <div className="bg-[#111116] border border-white/5 p-6 rounded-2xl w-full group-hover:border-[#3b82f6]/30 transition-all duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_10px_25px_rgba(59,130,246,0.1)]">
                       <p className="text-[#3b82f6] font-heading text-2xl md:text-3xl font-black mb-2">
@@ -106,9 +120,23 @@ export default function ExperienceSection() {
                       </p>
                     </div>
                     
-                    <div className="flex items-center gap-2 text-white/40 mt-6 group-hover:text-white transition-colors duration-300">
-                      <span className="text-xs font-bold tracking-widest uppercase">Explore Case Study</span>
-                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1.5 transition-transform duration-300" />
+                    <div className="flex flex-wrap items-center gap-4 mt-6">
+                      <button
+                        type="button"
+                        onClick={(e) => openModal(e, project.slug)}
+                        className="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded-full bg-[#3b82f6]/10 hover:bg-[#3b82f6] border border-[#3b82f6]/30 text-[#3b82f6] hover:text-white text-xs font-bold uppercase tracking-wider transition-all duration-200 cursor-pointer"
+                      >
+                        <Eye className="w-3.5 h-3.5" />
+                        <span>View Full Breakdown</span>
+                      </button>
+
+                      <Link
+                        href={`/case-studies/${project.slug}`}
+                        className="flex items-center gap-1.5 text-white/40 hover:text-white transition-colors duration-200 text-xs font-bold tracking-widest uppercase"
+                      >
+                        <span>Details</span>
+                        <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -134,7 +162,7 @@ export default function ExperienceSection() {
                     </motion.div>
                   )}
                 </AnimatePresence>
-              </Link>
+              </div>
             </motion.div>
           ))}
         </div>
@@ -172,6 +200,15 @@ export default function ExperienceSection() {
         </div>
 
       </div>
+
+      {/* Case Study Modal */}
+      {selectedModalDetail && (
+        <CaseStudyModal
+          detail={selectedModalDetail}
+          isOpen={!!selectedModalDetail}
+          onClose={() => setSelectedModalDetail(null)}
+        />
+      )}
     </section>
   );
 }

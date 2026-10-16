@@ -1,4 +1,5 @@
 import { SITE_URL, siteConfig } from "../../lib/site";
+import { socialLinks } from "@/lib/data/socials";
 import type { Metadata } from "next";
 import PageHero from "@/components/ui/PageHero";
 import JsonLd from "@/components/ui/JsonLd";
@@ -114,10 +115,10 @@ export default function ContactPage() {
                 <p className="text-white/30 text-xs uppercase tracking-widest mb-4">Follow Along</p>
                 <div className="flex gap-3">
                   {[
-                    { href: "https://www.linkedin.com/in/shahal-n/", Icon: LinkedinIcon, label: "LinkedIn" },
-                    { href: "https://www.instagram.com/shahal_n/", Icon: InstagramIcon, label: "Instagram" }
+                    { href: socialLinks.linkedin.url, Icon: LinkedinIcon, label: socialLinks.linkedin.ariaLabel },
+                    { href: socialLinks.instagram.url, Icon: InstagramIcon, label: socialLinks.instagram.ariaLabel }
                   ].map(({ href, Icon, label }) => (
-                    <a key={label} suppressHydrationWarning href={href} target="_blank" rel="noreferrer" aria-label={label}
+                    <a key={label} suppressHydrationWarning href={href} target="_blank" rel="noopener noreferrer" aria-label={label}
                       className="w-11 h-11 rounded-full border border-white/10 flex items-center justify-center text-white/50 hover:border-[#3b82f6] hover:text-[#3b82f6] transition-all">
                       <Icon />
                     </a>

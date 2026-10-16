@@ -34,3 +34,12 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Custom Domain Migration Note (shahaln.com)
+The portfolio is currently configured with `NEXT_PUBLIC_SITE_URL=https://shahaln.vercel.app` as default.
+When connecting the production domain in Vercel:
+1. Add and verify `shahaln.com` and `www.shahaln.com` under **Project Settings → Domains** in Vercel.
+2. In **Project Settings → Environment Variables**, set `NEXT_PUBLIC_SITE_URL=https://shahaln.com`.
+3. Set `shahaln.com` as the primary domain in Vercel.
+4. Ensure Vercel automatically redirects `shahaln.vercel.app` to `shahaln.com` with a 301 permanent redirect.
+

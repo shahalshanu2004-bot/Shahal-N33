@@ -89,7 +89,7 @@ export default function HeroSection() {
 
             {/* Main Title (H1) with semantic text in DOM */}
             <h1 className="mb-5 sm:mb-6 flex flex-col font-heading font-black tracking-tighter uppercase text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]">
-              <span className="sr-only">Performance Marketer</span>
+              <span className="sr-only">PERFORMANCE MARKETER</span>
               <div className="overflow-hidden" aria-hidden="true">
                 <motion.span
                   initial={{ y: "115%", opacity: 0 }}
@@ -97,7 +97,7 @@ export default function HeroSection() {
                   transition={{ duration: 0.85, delay: 0.22, ease: EASE }}
                   className="inline-block text-white"
                 >
-                  Performance
+                  Performance{" "}
                 </motion.span>
               </div>
               <div className="overflow-hidden" aria-hidden="true">

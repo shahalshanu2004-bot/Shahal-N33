@@ -3,6 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { siteConfig } from "@/lib/site";
+import { socialLinks } from "@/lib/data/socials";
 import AuditContactForm from "@/components/forms/AuditContactForm";
 import { PhoneCall, FileSearch, Sparkles, Rocket, Calendar } from "lucide-react";
 import { trackWhatsAppClick, trackEmailClick, trackPhoneClick } from "@/lib/analytics";
@@ -50,8 +51,8 @@ const InstagramIcon = () => (
 );
 
 const socials = [
-  { icon: LinkedinIcon, label: "LinkedIn", href: siteConfig.socials.linkedin },
-  { icon: InstagramIcon, label: "Instagram", href: siteConfig.socials.instagram },
+  { icon: LinkedinIcon, label: socialLinks.linkedin.ariaLabel, href: socialLinks.linkedin.url },
+  { icon: InstagramIcon, label: socialLinks.instagram.ariaLabel, href: socialLinks.instagram.url },
 ];
 
 export default function ContactSection() {
@@ -242,7 +243,7 @@ export default function ContactSection() {
                 suppressHydrationWarning
                 href={s.href}
                 target="_blank"
-                rel="noreferrer"
+                rel="noopener noreferrer"
                 aria-label={s.label}
                 className="w-12 h-12 rounded-full border border-white/10 bg-white/[0.02] flex items-center justify-center text-white/50 transition-all duration-300 hover:border-[#3b82f6] hover:text-[#3b82f6] hover:bg-[#3b82f6]/10 hover:-translate-y-0.5"
               >

@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { siteConfig } from "@/lib/site";
+import { socialLinks } from "@/lib/data/socials";
 import { trackEmailClick, trackPhoneClick, trackWhatsAppClick } from "@/lib/analytics";
 
 const LinkedinIcon = () => (
@@ -61,14 +62,29 @@ export default function Footer() {
             </p>
             <div className="flex items-center gap-3 mt-6">
               {[
-                { href: siteConfig.socials.linkedin, Icon: LinkedinIcon, label: "LinkedIn", onClick: undefined },
-                { href: siteConfig.socials.instagram, Icon: InstagramIcon, label: "Instagram", onClick: undefined },
-              ].filter((item) => Boolean(item.href) && item.href !== "#")
-              .map(({ href, Icon, label, onClick }) => (
-                <a key={label} href={href} target="_blank" rel="noreferrer" aria-label={label}
+                {
+                  href: socialLinks.linkedin.url,
+                  Icon: LinkedinIcon,
+                  label: socialLinks.linkedin.ariaLabel,
+                  onClick: undefined,
+                },
+                {
+                  href: socialLinks.instagram.url,
+                  Icon: InstagramIcon,
+                  label: socialLinks.instagram.ariaLabel,
+                  onClick: undefined,
+                },
+              ].map(({ href, Icon, label, onClick }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
                   onClick={onClick}
                   suppressHydrationWarning
-                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#3b82f6]/60 hover:text-[#3b82f6] hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]">
+                  className="w-9 h-9 rounded-full border border-white/10 flex items-center justify-center text-white/40 hover:border-[#3b82f6]/60 hover:text-[#3b82f6] hover:-translate-y-0.5 hover:shadow-[0_0_15px_rgba(59,130,246,0.25)] transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#3b82f6]"
+                >
                   <Icon />
                 </a>
               ))}
