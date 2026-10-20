@@ -108,19 +108,18 @@ export const caseStudiesDetail: Record<string, CaseStudyDetail> = {
     title: "CuteKaari — App Performance Marketing",
     isAppMarketing: true,
     publicPlayDownloads: "50K+ (Publicly displayed Google Play figure)",
-    // Empty campaign results block with TODO
     myCampaignResults: {
-      // TODO(shahal): Provide verified paid campaign results for CuteKaari:
-      spend: undefined,
-      cpi: undefined,
-      purchaseCost: undefined,
-      roas: undefined,
+      spend: "₹27.83 lakh",
+      cpi: "₹30.76",
+      purchaseCost: "₹81.95",
+      roas: "6.88x",
     },
     overview: {
       clientIndustry: "CuteKaari (Mobile Application & Digital Entertainment)",
       objective: "Drive app acquisition and optimize for meaningful downstream actions and active in-app conversions.",
       role: "App Performance Marketer",
-      timeline: undefined, // // TODO(shahal): Add campaign timeline
+      timeline: "15 Apr 2026 – 20 Oct 2026",
+      adSpend: "₹27.83 lakh",
     },
     strategy: {
       strategyText: "Build campaigns around measurable app actions rather than optimizing only for reach. Structure ad sets around high-intent parent demographics.",
@@ -145,17 +144,17 @@ export const caseStudiesDetail: Record<string, CaseStudyDetail> = {
     isAppMarketing: true,
     publicPlayDownloads: "10K+ (Publicly displayed Google Play figure)",
     myCampaignResults: {
-      // TODO(shahal): Provide verified paid campaign results for Relax Call:
-      spend: undefined,
-      cpi: undefined,
-      purchaseCost: undefined,
-      roas: undefined,
+      spend: "₹18.66 lakh",
+      cpi: "₹53.91",
+      purchaseCost: "₹181.03",
+      roas: "1.87x",
     },
     overview: {
       clientIndustry: "Relax Call (Voice & Social Communication Mobile App)",
       objective: "App promotion campaigns focusing on downstream actions and purchase optimization rather than just installs.",
       role: "App Performance Marketer",
-      timeline: undefined, // // TODO(shahal): Add campaign timeline
+      timeline: "15 Apr 2026 – 20 Oct 2026",
+      adSpend: "₹18.66 lakh",
     },
     strategy: {
       strategyText: "Structure campaigns around meaningful downstream actions instead of focusing only on app installs. Align creative messaging with core app utility.",

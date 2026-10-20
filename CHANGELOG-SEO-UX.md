@@ -1,4 +1,4 @@
-# Changelog: Technical SEO, UX Conversion & Infrastructure Overhaul
+n# Changelog: Technical SEO, UX Conversion & Infrastructure Overhaul
 
 This document details all modifications completed across Phases 1 through 10 for the **Shahal N — Performance Marketer** portfolio codebase.
 

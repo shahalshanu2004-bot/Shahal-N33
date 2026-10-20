@@ -85,16 +85,28 @@ export default function AboutSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
               transition={{ duration: 0.75, delay: 0.4, ease: EASE }}
-              className="mt-12 overflow-x-auto pb-4 hide-scrollbar"
+              className="mt-12 w-full overflow-x-auto pb-3 pt-1 hide-scrollbar overscroll-x-contain"
+              role="region"
+              aria-label="Campaign optimization process sequence"
+              tabIndex={0}
             >
-              <div className="flex items-center gap-4 min-w-max text-[10px] md:text-xs font-bold tracking-widest text-white/40">
+              <ol className="flex items-center gap-2 sm:gap-2.5 md:gap-3 xl:gap-3.5 text-[10px] sm:text-[11px] xl:text-xs font-bold tracking-wider lg:tracking-widest text-white/40 whitespace-nowrap min-w-max xl:min-w-0 pr-4 sm:pr-0">
                 {["01 AUDIENCE", "02 CREATIVE", "03 CAMPAIGN", "04 TRACKING", "05 OPTIMIZE", "06 SCALE"].map((step, index, arr) => (
-                  <div key={step} className="flex items-center gap-4 group cursor-default">
-                    <span className="text-white/80 uppercase group-hover:text-white transition-colors">{step}</span>
-                    {index < arr.length - 1 && <span className="text-[#3b82f6] opacity-70 group-hover:opacity-100 transition-opacity">→</span>}
-                  </div>
+                  <li key={step} className="flex items-center gap-2 sm:gap-2.5 md:gap-3 xl:gap-3.5 group cursor-default shrink-0">
+                    <span className="text-white/80 uppercase group-hover:text-white transition-colors duration-200">
+                      {step}
+                    </span>
+                    {index < arr.length - 1 && (
+                      <span
+                        className="text-[#3b82f6] opacity-70 group-hover:opacity-100 transition-opacity select-none text-xs"
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    )}
+                  </li>
                 ))}
-              </div>
+              </ol>
             </motion.div>
 
             {/* Proof-Based Statement */}
