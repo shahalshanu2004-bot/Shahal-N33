@@ -86,12 +86,12 @@ export const experienceProjects: ExperienceProject[] = [
     role: "App Performance Marketer",
     myRole: "App Performance Marketer",
     myContribution: "Engineered paid user acquisition strategy on Meta Ads, implemented event measurement, tested regional Malayalam visual hooks, and optimized post-install purchase conversion events.",
-    campaignDuration: null, // // TODO: add campaign duration for CuteKaari
-    adSpend: null, // // TODO: add real ad spend for CuteKaari
-    cpi: null, // // TODO: add real CPI for CuteKaari
-    purchaseCpa: null, // // TODO: add real purchase CPA for CuteKaari
-    conversionDefinition: null, // // TODO: add what counts as a conversion for CuteKaari (e.g. In-App Purchase, Registration)
-    myCampaignResults: null, // // TODO: add real campaign results for CuteKaari (e.g. Paid Installs, In-App Purchases, CPI)
+    campaignDuration: "15 Apr 2026 – 20 Oct 2026",
+    adSpend: "₹27.83 lakh",
+    cpi: "₹30.76",
+    purchaseCpa: "₹81.95",
+    conversionDefinition: "Verified in-app purchase (Meta App Events / SDK default attribution).",
+    myCampaignResults: "90,465 Installs (₹30.76 CPI) | 33,961 Purchases (₹81.95 CPA) | 6.88x ROAS",
     objective: "Drive app acquisition and optimize for meaningful downstream actions and active in-app conversions.",
     strategy: "Build campaigns around measurable app actions rather than optimizing only for reach. Structure ad sets around high-intent parent demographics.",
     whatITested: "Tested short-form gameplay vs. feature demonstration reels, comparing App Install optimization vs. In-App Purchase event optimization.",
@@ -103,9 +103,9 @@ export const experienceProjects: ExperienceProject[] = [
       "Audience Testing & Lookalikes",
       "Malayalam-first Creative Angle Iterations"
     ],
-    result: "50K+ APP DOWNLOADS",
-    resultLabel: "Publicly displayed Google Play figure",
-    metricDefinition: "Publicly displayed Google Play figure (Note: Paid campaign installs & in-app purchases tracked in Meta Ads Manager).",
+    result: "6.88X ROAS",
+    resultLabel: "90,465 INSTALLED | ₹1.92 CR VALUE",
+    metricDefinition: "Meta Ads Manager verified: 90,465 app installs and 33,961 in-app purchases generating ₹1.92 crore in purchase value.",
     leadQualityNotes: "Focus placed on downstream retention signals and post-install activation rather than raw low-cost ghost installs.",
     keyLearnings: "Direct demonstration video hooks emphasizing app utility reduced CPI significantly while increasing Day-1 user retention.",
     relatedServiceSlug: "app-marketing",
@@ -113,7 +113,7 @@ export const experienceProjects: ExperienceProject[] = [
       { title: "OBJECTIVE", content: "Drive app acquisition and optimize for meaningful downstream actions for CuteKaari." },
       { title: "STRATEGY", content: "Build campaigns around measurable app actions rather than optimizing only for reach." },
       { title: "EXECUTION", content: "Test different audience and creative combinations, monitor conversion signals and move attention toward stronger-performing combinations. Focused on Malayalam-first messaging and creative testing." },
-      { title: "RESULT", content: "50K+ publicly displayed Google Play downloads. (Note: Campaign-attributed installs are verified via Ads Manager and AppsFlyer/SDK)." }
+      { title: "RESULT", content: "90,465 installs at ₹30.76 CPI, 33,961 purchases at ₹81.95 CPA, and ₹1.92 crore in revenue at 6.88x ROAS." }
     ]
   },
   {
@@ -126,12 +126,12 @@ export const experienceProjects: ExperienceProject[] = [
     role: "App Performance Marketer",
     myRole: "App Performance Marketer",
     myContribution: "Structured user acquisition funnels across Android and iOS, mapped in-app purchase events, and continuously iterated ad creatives to lower acquisition costs while maximizing downstream purchase value.",
-    campaignDuration: null, // // TODO: add campaign duration for Relax Call
-    adSpend: null, // // TODO: add real ad spend for Relax Call
-    cpi: null, // // TODO: add real CPI for Relax Call
-    purchaseCpa: null, // // TODO: add real purchase CPA for Relax Call
-    conversionDefinition: null, // // TODO: add what counts as a conversion for Relax Call (e.g. In-App Purchase)
-    myCampaignResults: null, // // TODO: add real campaign results for Relax Call (e.g. Paid Installs, Purchase CPA)
+    campaignDuration: "15 Apr 2026 – 20 Oct 2026",
+    adSpend: "₹18.66 lakh",
+    cpi: "₹53.91",
+    purchaseCpa: "₹181.03",
+    conversionDefinition: "Verified in-app purchase (Meta App Events default attribution).",
+    myCampaignResults: "34,618 Installs (₹53.91 CPI) | 10,309 Purchases (₹181.03 CPA) | 1.87x Account ROAS (up to 5.33x on top iOS)",
     objective: "App promotion campaigns focusing on downstream actions and purchase optimization rather than just installs.",
     strategy: "Structure campaigns around meaningful downstream actions instead of focusing only on app installs. Align creative messaging with core app utility.",
     whatITested: "Tested interest clusters in communication, entertainment, and social apps across diverse age brackets.",
@@ -143,9 +143,9 @@ export const experienceProjects: ExperienceProject[] = [
       "Iterative Creative & Hook Testing",
       "Budget Reallocation to High-LTV Cohorts"
     ],
-    result: "10K+ APP DOWNLOADS",
-    resultLabel: "Publicly displayed Google Play figure",
-    metricDefinition: "Publicly displayed Google Play figure (Campaign performance evaluated on verified in-app events).",
+    result: "1.87X ROAS",
+    resultLabel: "34,618 INSTALLED | ₹34.84 LAKH VALUE",
+    metricDefinition: "Meta Ads Manager verified: 34,618 app installs and 10,309 in-app purchases generating ₹34.84 lakh in purchase value.",
     leadQualityNotes: "Optimized specifically toward accounts completing user registration and in-app purchase triggers.",
     keyLearnings: "Downstream purchase optimization yields far higher lifetime value than raw install-volume bidding.",
     relatedServiceSlug: "app-marketing",
@@ -153,7 +153,7 @@ export const experienceProjects: ExperienceProject[] = [
       { title: "OBJECTIVE", content: "App promotion focusing on downstream actions and purchase optimization rather than just installs." },
       { title: "STRATEGY", content: "Structure campaigns around meaningful downstream actions instead of focusing only on app installs." },
       { title: "EXECUTION", content: "Track conversion events and evaluate the quality of acquisition across Android and iOS platforms. Optimize budget toward downstream action quality." },
-      { title: "RESULT", content: "10K+ publicly displayed Google Play downloads. Available on ANDROID + iOS." }
+      { title: "RESULT", content: "34,618 installs at ₹53.91 CPI, 10,309 purchases at ₹181.03 CPA, and ₹34.84 lakh in revenue at 1.87x account ROAS (with top iOS campaigns reaching up to 5.33x ROAS)." }
     ]
   },
   {

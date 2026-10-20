@@ -4,11 +4,17 @@ import { experienceProjects } from "@/lib/data/experience";
 import { notFound } from "next/navigation";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, CheckCircle2 } from "lucide-react";
+import { ArrowLeft, ArrowRight, CheckCircle2, ShieldCheck } from "lucide-react";
 import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import JsonLd from "@/components/ui/JsonLd";
 import CaseStudyTracker from "@/components/analytics/CaseStudyTracker";
+import { clientResults, getSourceNote } from "@/data/results";
+import { getProofScreenshots } from "@/lib/proof-screenshots";
+import ResultsLedger from "@/components/proof/ResultsLedger";
+import CampaignTable from "@/components/proof/CampaignTable";
+import ProofScreenshots from "@/components/proof/ProofScreenshots";
+import ChannelSplitTable from "@/components/proof/ChannelSplitTable";
 
 export async function generateStaticParams() {
   return experienceProjects.map((p) => ({ slug: p.slug }));
@@ -19,9 +25,41 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const project = experienceProjects.find((p) => p.slug === slug);
   if (!project) return {};
 
-  const pageTitle = `${project.title} | Case Study | Shahal N`;
+  const clientData = (clientResults as Record<string, typeof clientResults["cutekaari"] | undefined>)[slug];
+
+  let pageTitle = `${project.title} | Case Study | Shahal N`;
+  let description = `${project.title}: ${project.objective} Results: ${project.result} (${project.resultLabel}). Performance marketing breakdown by Shahal N.`;
+
+  if (slug === "cutekaari") {
+    pageTitle = "CuteKaari app marketing case study: 6.88x purchase ROAS | Shahal N";
+    description = "CuteKaari app marketing results: 90,465 installs at ₹30.76 CPI, 33,961 purchases at ₹81.95 CPA, and ₹1.92 Cr revenue at 6.88x ROAS. Meta Ads breakdown.";
+  } else if (slug === "relax-call") {
+    pageTitle = "Relax Call iOS and Android app install campaigns | Shahal N";
+    description = "Relax Call app marketing case study: 34,618 installs at ₹53.91 CPI, 10,309 purchases, and up to 5.33x ROAS on top iOS campaigns. Meta Ads breakdown.";
+  } else if (slug === "premium-real-estate") {
+    if (clientData?.verified) {
+      pageTitle = "Real estate lead generation case study: ₹142 cost per lead | Shahal N";
+      description = "Real estate lead generation case study: 239 verified buyer inquiries at ₹142 blended CPL via Meta Ads. Performance marketing breakdown by Shahal N.";
+    } else {
+      pageTitle = "Real estate lead generation case study | Shahal N";
+      description = "Meta Ads lead generation case study for a premium residential real estate development. Lead qualification architecture breakdown by Shahal N.";
+    }
+  } else if (slug === "rs-water-solutions") {
+    if (clientData?.verified) {
+      pageTitle = "Local lead generation on WhatsApp and Meta: ₹14.65 per inquiry | Shahal N";
+      description = "Local direct-response case study: 368 verified customer inquiries via WhatsApp (₹12.01) and Instant Forms (₹14.95). Breakdown by Shahal N.";
+    } else {
+      pageTitle = "Local direct-response case study: RS Water Solutions | Shahal N";
+      description = "Direct-response performance marketing case study: Driving customer inquiries on Meta and WhatsApp for RS Water Solutions by Shahal N.";
+    }
+  }
+
+  // Ensure description is under 158 characters
+  if (description.length > 158) {
+    description = description.slice(0, 155).trim() + "...";
+  }
+
   const canonicalUrl = `${SITE_URL}/case-studies/${slug}`;
-  const description = `${project.title}: ${project.objective} Results: ${project.result} (${project.resultLabel}). Performance marketing breakdown by Shahal N.`;
 
   return {
     title: pageTitle,
@@ -51,6 +89,16 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
   if (!project) {
     notFound();
   }
+
+  const resultsData =
+    slug === "cutekaari" ||
+    slug === "relax-call" ||
+    slug === "premium-real-estate" ||
+    slug === "rs-water-solutions"
+      ? clientResults[slug]
+      : null;
+
+  const proofScreenshots = getProofScreenshots(slug);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -282,19 +330,17 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
           </div>
 
           {/* App Marketing Case Studies: My Campaign Results Block */}
-          {/* // TODO: Add real campaign results for app case studies (CuteKaari, Relax Call) */}
           {(project.slug === "cutekaari" || project.slug === "relax-call") && (
             <div className="p-6 rounded-3xl bg-[#0c0c0e] border border-white/10">
               <span className="text-white/40 text-[10px] font-bold uppercase tracking-widest block mb-2">
-                My Campaign Results
+                Verified Campaign Performance
               </span>
               {project.myCampaignResults ? (
-                <p className="text-white font-heading text-2xl font-bold text-[#3b82f6]">
+                <p className="text-white font-heading text-xl sm:text-2xl font-bold text-[#3b82f6]">
                   {project.myCampaignResults}
                 </p>
               ) : (
                 <div className="py-2">
-                  {/* // TODO: Fill in real campaign results for this app (e.g. ad-attributed installs, CPI, purchase count) */}
                   <p className="text-white/30 text-xs italic">
                     Campaign results pending client data verification.
                   </p>
@@ -325,7 +371,122 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     });
   }
 
-  // 10. Lead Quality Notes
+  // 10. Results Breakdown Section (App Marketing, Lead Generation & Direct Response)
+  if (resultsData) {
+    const isApp = resultsData.category === "app-marketing";
+    const sourceText = getSourceNote(resultsData);
+
+    dynamicSections.push({
+      num: getNextNum(),
+      title: "RESULTS BREAKDOWN",
+      content: (
+        <div className="space-y-8">
+          <div className="space-y-3">
+            <div className="flex flex-wrap items-center justify-between gap-2">
+              <h3 className="font-heading text-lg sm:text-xl font-bold text-white tracking-tight flex items-center gap-2">
+                <ShieldCheck className="w-5 h-5 text-[#3b82f6]" />
+                {isApp
+                  ? `Account Totals ${resultsData.dateRange?.display ? `(${resultsData.dateRange.display})` : ""}`
+                  : `Campaign Performance Breakdown ${resultsData.dateRange?.display ? `(${resultsData.dateRange.display})` : ""}`}
+              </h3>
+
+              {/* Verified vs Unverified Neutral Badge */}
+              {resultsData.verified ? (
+                <span className="px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/30 text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                  Ads Manager Verified
+                </span>
+              ) : (
+                <span className="px-2.5 py-1 rounded-full bg-amber-500/10 border border-amber-500/30 text-[10px] font-bold uppercase tracking-wider text-amber-300">
+                  Pending Verification
+                </span>
+              )}
+            </div>
+
+            {/* Unverified Neutral Notice (Prominent while verified is false) */}
+            {!resultsData.verified && resultsData.unverifiedNotice && (
+              <div className="p-3.5 rounded-xl bg-white/[0.03] border border-white/10 text-white/70 text-xs sm:text-sm leading-relaxed">
+                <span className="text-[#3b82f6] font-semibold block mb-0.5">Verification Status:</span>
+                {resultsData.unverifiedNotice}
+              </div>
+            )}
+
+            <p className="text-white/60 text-xs sm:text-sm leading-relaxed">
+              {resultsData.platformSummary}
+            </p>
+          </div>
+
+          {/* 1. Results Ledger Grid */}
+          <ResultsLedger data={resultsData} />
+
+          {/* Lead Definition Quality Claim */}
+          {resultsData.leadDefinition && (
+            <div className="p-4 rounded-xl bg-[#0c0c0e] border border-white/10">
+              <span className="text-[#3b82f6] text-[10px] font-bold uppercase tracking-widest block mb-1">
+                Quality Claim &amp; Conversion Definition
+              </span>
+              <p className="text-white/80 text-xs sm:text-sm font-medium leading-relaxed">
+                {resultsData.leadDefinition}
+              </p>
+            </div>
+          )}
+
+          {/* 2. Channel Split Table (if present, e.g. RS Water Solutions) */}
+          {resultsData.channelSplit && resultsData.channelSplit.length > 0 && (
+            <div className="pt-2 border-t border-white/10">
+              <ChannelSplitTable channelSplit={resultsData.channelSplit} />
+            </div>
+          )}
+
+          {/* Selected Campaigns Table (for App Marketing clients) */}
+          {resultsData.selectedCampaigns && (
+            <div className="pt-2 border-t border-white/10">
+              <CampaignTable
+                title={resultsData.campaignsTableTitle || "Selected Campaigns"}
+                campaigns={resultsData.selectedCampaigns}
+                honestyNote={resultsData.honestyNote}
+                caption={`${resultsData.clientName} campaign performance metrics`}
+              />
+            </div>
+          )}
+
+          {/* 3. How the Result Was Achieved Block (Editable bullet points) */}
+          {resultsData.achievedThrough && resultsData.achievedThrough.length > 0 && (
+            <div className="pt-4 border-t border-white/10 space-y-3">
+              <h3 className="font-heading text-lg sm:text-xl font-bold text-white tracking-tight">
+                How the Result Was Achieved
+              </h3>
+              <ul className="space-y-2.5">
+                {resultsData.achievedThrough.map((point, pIdx) => (
+                  <li
+                    key={pIdx}
+                    className="flex items-start gap-3 p-3.5 rounded-xl bg-[#0c0c0e] border border-white/5 text-xs sm:text-sm text-white/80 leading-relaxed"
+                  >
+                    <CheckCircle2 className="w-4 h-4 text-[#3b82f6] shrink-0 mt-0.5" />
+                    <span>{point}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {/* 4. Screenshot Proof Gallery (Prominently rendered) */}
+          <div className="pt-4 border-t border-white/10">
+            <ProofScreenshots
+              screenshots={proofScreenshots}
+              title={`Meta Ads Manager Proof Screenshots (${resultsData.clientName})`}
+            />
+          </div>
+
+          {/* 5. Mandatory Source & Attribution Footer */}
+          <div className="p-4 rounded-xl bg-white/[0.02] border border-white/5 text-[11px] font-mono text-white/50 leading-relaxed">
+            {sourceText}
+          </div>
+        </div>
+      )
+    });
+  }
+
+  // 11. Lead Quality Notes
   if (project.leadQualityNotes) {
     dynamicSections.push({
       num: getNextNum(),
@@ -338,7 +499,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     });
   }
 
-  // 11. Screenshots Gallery (if provided)
+  // 12. Screenshots Gallery (if provided directly on project)
   if (project.screenshots && project.screenshots.length > 0) {
     dynamicSections.push({
       num: getNextNum(),
@@ -360,7 +521,7 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
     });
   }
 
-  // 12. Key Learnings
+  // 13. Key Learnings
   if (project.keyLearnings) {
     dynamicSections.push({
       num: getNextNum(),
@@ -427,22 +588,38 @@ export default async function CaseStudyPage({ params }: { params: Promise<{ slug
             ))}
           </div>
 
-          {/* Bottom CTA & Internal Linking */}
-          <div className="mt-20 pt-12 border-t border-white/10 flex flex-col sm:flex-row justify-between items-center gap-6">
-            <Link
-              href="/#contact"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-[#3b82f6] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)]"
-            >
-              Discuss Your Campaign &rarr;
-            </Link>
-            {project.relatedServiceSlug && (
+          {/* Bottom CTA & Internal Linking to Services */}
+          <div className="mt-20 pt-12 border-t border-white/10 flex flex-col gap-8">
+            <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-6">
               <Link
-                href={`/services/${project.relatedServiceSlug}`}
-                className="inline-flex items-center gap-2 text-white/50 hover:text-[#3b82f6] transition-colors text-xs uppercase tracking-widest font-bold"
+                href="/#contact"
+                className="inline-flex items-center gap-2 px-8 py-4 bg-[#3b82f6] text-white rounded-full font-bold uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all shadow-[0_0_20px_rgba(59,130,246,0.3)]"
               >
-                Related Service: {project.relatedServiceSlug.replace("-", " ")} <ArrowRight className="w-3.5 h-3.5" />
+                Discuss Your Campaign &rarr;
               </Link>
-            )}
+              <div className="flex flex-wrap items-center gap-3 sm:gap-4 text-xs font-bold uppercase tracking-widest">
+                <Link
+                  href="/#experience"
+                  className="inline-flex items-center gap-1.5 text-white/50 hover:text-white transition-colors"
+                >
+                  &larr; Selected Work
+                </Link>
+                <span className="text-white/20">|</span>
+                <Link
+                  href="/services/lead-generation"
+                  className="inline-flex items-center gap-1.5 text-white/60 hover:text-[#3b82f6] transition-colors"
+                >
+                  Lead Gen Service <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+                <span className="text-white/20">|</span>
+                <Link
+                  href="/services/meta-ads"
+                  className="inline-flex items-center gap-1.5 text-white/60 hover:text-[#3b82f6] transition-colors"
+                >
+                  Meta Ads Service <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </article>
