@@ -5,7 +5,6 @@ import HeroSection from "@/components/sections/HeroSection";
 import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
 import ExperienceSection from "@/components/sections/ExperienceSection";
-import VerifiedResultsSection from "@/components/sections/VerifiedResultsSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import TrackingCapabilitiesSection from "@/components/sections/TrackingCapabilitiesSection";
@@ -28,7 +27,6 @@ export default function Home() {
       <ServicesSection />
       <StatisticsSection />
       <ExperienceSection />
-      <VerifiedResultsSection />
       <TestimonialsSection />
       <ProcessSection />
       <SkillsSection />
