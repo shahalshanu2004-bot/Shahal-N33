@@ -131,7 +131,7 @@ export const experienceProjects: ExperienceProject[] = [
     cpi: "₹53.91",
     purchaseCpa: "₹181.03",
     conversionDefinition: "Verified in-app purchase (Meta App Events default attribution).",
-    myCampaignResults: "34,618 Installs (₹53.91 CPI) | 10,309 Purchases (₹181.03 CPA) | 1.87x Account ROAS (up to 5.33x on top iOS)",
+    myCampaignResults: "34,618 Installs (₹53.91 CPI) | 10,309 Purchases (₹181.03 CPA) | Up to 5.33x ROAS on Top iOS Campaigns",
     objective: "App promotion campaigns focusing on downstream actions and purchase optimization rather than just installs.",
     strategy: "Structure campaigns around meaningful downstream actions instead of focusing only on app installs. Align creative messaging with core app utility.",
     whatITested: "Tested interest clusters in communication, entertainment, and social apps across diverse age brackets.",
@@ -143,9 +143,9 @@ export const experienceProjects: ExperienceProject[] = [
       "Iterative Creative & Hook Testing",
       "Budget Reallocation to High-LTV Cohorts"
     ],
-    result: "1.87X ROAS",
-    resultLabel: "34,618 INSTALLED | ₹34.84 LAKH VALUE",
-    metricDefinition: "Meta Ads Manager verified: 34,618 app installs and 10,309 in-app purchases generating ₹34.84 lakh in purchase value.",
+    result: "5.33X ROAS",
+    resultLabel: "TOP IOS CAMPAIGN | ₹34.84 LAKH VALUE",
+    metricDefinition: "Meta Ads Manager verified: Top iOS acquisition campaigns delivered up to 5.33x ROAS, with 34,618 total app installs and 10,309 in-app purchases generating ₹34.84 lakh in purchase value.",
     leadQualityNotes: "Optimized specifically toward accounts completing user registration and in-app purchase triggers.",
     keyLearnings: "Downstream purchase optimization yields far higher lifetime value than raw install-volume bidding.",
     relatedServiceSlug: "app-marketing",
@@ -153,7 +153,7 @@ export const experienceProjects: ExperienceProject[] = [
       { title: "OBJECTIVE", content: "App promotion focusing on downstream actions and purchase optimization rather than just installs." },
       { title: "STRATEGY", content: "Structure campaigns around meaningful downstream actions instead of focusing only on app installs." },
       { title: "EXECUTION", content: "Track conversion events and evaluate the quality of acquisition across Android and iOS platforms. Optimize budget toward downstream action quality." },
-      { title: "RESULT", content: "34,618 installs at ₹53.91 CPI, 10,309 purchases at ₹181.03 CPA, and ₹34.84 lakh in revenue at 1.87x account ROAS (with top iOS campaigns reaching up to 5.33x ROAS)." }
+      { title: "RESULT", content: "34,618 installs at ₹53.91 CPI, 10,309 purchases at ₹181.03 CPA, and ₹34.84 lakh in revenue with top iOS campaigns achieving up to 5.33x ROAS." }
     ]
   },
   {

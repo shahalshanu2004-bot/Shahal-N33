@@ -411,13 +411,13 @@ export default function CaseStudiesSection() {
                         </span>
                       </div>
                       <div className="bg-[#111116] p-3.5 rounded-xl border border-white/5 col-span-2 sm:col-span-2 bg-gradient-to-r from-emerald-500/[0.08] to-transparent border-emerald-500/20">
-                        <span className="text-emerald-400 text-[10px] uppercase tracking-wider block mb-1 font-bold">Account ROAS</span>
+                        <span className="text-emerald-400 text-[10px] uppercase tracking-wider block mb-1 font-bold">Top Campaign ROAS</span>
                         <div className="flex items-baseline gap-2">
                           <span className="text-emerald-400 font-heading text-2xl font-black tabular-nums">
-                            {relaxCallResults.accountTotals.roas.toFixed(2)}x
+                            Up to 5.33x
                           </span>
                           <span className="text-white/40 text-xs">
-                            (Top iOS campaigns reached up to 5.33x)
+                            (Top iOS acquisition campaigns)
                           </span>
                         </div>
                       </div>
@@ -439,7 +439,7 @@ export default function CaseStudiesSection() {
                     <span>View Case Study</span>
                     <ArrowRight className="w-4 h-4" />
                   </Link>
-                  <span className="text-emerald-400 font-mono text-xs font-bold">1.87x ROAS</span>
+                  <span className="text-emerald-400 font-mono text-xs font-bold">Up to 5.33x ROAS</span>
                 </div>
               </div>
             </motion.div>

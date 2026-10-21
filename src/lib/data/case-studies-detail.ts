@@ -147,7 +147,7 @@ export const caseStudiesDetail: Record<string, CaseStudyDetail> = {
       spend: "₹18.66 lakh",
       cpi: "₹53.91",
       purchaseCost: "₹181.03",
-      roas: "1.87x",
+      roas: "Up to 5.33x (Top iOS)",
     },
     overview: {
       clientIndustry: "Relax Call (Voice & Social Communication Mobile App)",
