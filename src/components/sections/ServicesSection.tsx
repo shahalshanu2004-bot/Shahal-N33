@@ -3,22 +3,7 @@
 import { useRef } from "react";
 import { motion, useInView, Variants } from "framer-motion";
 import Link from "next/link";
-import dynamic from "next/dynamic";
 import { ArrowRight, Sparkles } from "lucide-react";
-
-const RoiCalculator = dynamic(
-  () => import("@/components/calculator/RoiCalculator"),
-  {
-    loading: () => (
-      <div className="w-full max-w-4xl mx-auto my-16 p-12 rounded-3xl bg-[#0c0c0e]/50 border border-white/5 animate-pulse text-center">
-        <span className="text-white/40 text-xs font-bold uppercase tracking-widest">
-          Loading ROI & Budget Estimator...
-        </span>
-      </div>
-    ),
-    ssr: false,
-  }
-);
 
 // Core 7 Performance Marketing Services
 const coreServices = [
@@ -250,9 +235,6 @@ export default function ServicesSection() {
             })}
           </motion.div>
         </div>
-
-        {/* ROI and Budget Estimator (Lazy Loaded) */}
-        <RoiCalculator />
 
         {/* 02 - ALSO OFFERED (SECONDARY GROUP) */}
         <div>
