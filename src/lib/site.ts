@@ -5,15 +5,15 @@ export const SITE_URL =
 
 export const siteConfig = {
   name: "Shahal N",
-  title: "Performance Marketer in Kerala | Shahal N.",
+  title: "Shahal N. | Performance Marketer in Kerala | Meta & Google Ads",
   shortTitle: "Shahal N — Performance Marketer",
   description:
-    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
+    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
   email: "shahalnwork@gmail.com",
   phone: "+91 759 305 2256",
   whatsappNumber: "917593052256",
   whatsappUrl:
-    "https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20visited%20your%20portfolio%20and%20I%27d%20like%20to%20discuss%20a%20project.",
+    "https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%27m%20interested%20in%20discussing%20performance%20marketing%20services%20for%20my%20business.",
   whatsappAuditUrl:
     "https://wa.me/917593052256?text=Hi%20Shahal%2C%20I%20would%20like%20to%20request%20a%20Free%20Ad%20Account%20Audit.",
   location: {

@@ -2,9 +2,7 @@ import Navbar from "@/components/layout/Navbar";
 import Footer from "@/components/layout/Footer";
 import CursorSpotlight from "@/components/ui/CursorSpotlight";
 import HeroSection from "@/components/sections/HeroSection";
-import AboutSection from "@/components/sections/AboutSection";
 import ServicesSection from "@/components/sections/ServicesSection";
-import ExperienceSection from "@/components/sections/ExperienceSection";
 import ProcessSection from "@/components/sections/ProcessSection";
 import SkillsSection from "@/components/sections/SkillsSection";
 import TrackingCapabilitiesSection from "@/components/sections/TrackingCapabilitiesSection";
@@ -13,6 +11,8 @@ import CertificationsSection from "@/components/sections/CertificationsSection";
 import TestimonialsSection from "@/components/sections/TestimonialsSection";
 import FaqSection from "@/components/sections/FaqSection";
 import ContactSection from "@/components/sections/ContactSection";
+import CaseStudiesSection from "@/components/sections/CaseStudiesSection";
+import WhyChooseSection from "@/components/sections/WhyChooseSection";
 
 export default function Home() {
   return (
@@ -20,19 +20,36 @@ export default function Home() {
       <CursorSpotlight />
       <Navbar />
 
-      {/* The streamlined homepage experience */}
+      {/* 1. Hero */}
       <HeroSection />
-      {/* Marquee is inside HeroSection */}
-      <AboutSection />
-      <ServicesSection />
+
+      {/* 2. Experience and Statistics */}
       <StatisticsSection />
-      <ExperienceSection />
-      <TestimonialsSection />
+
+      {/* 3. Selected Case Studies */}
+      <CaseStudiesSection />
+
+      {/* 4. Core Services */}
+      <ServicesSection />
+
+      {/* 5. Marketing Process */}
       <ProcessSection />
-      <SkillsSection />
+
+      {/* 6. Why Work With Shahal N. */}
+      <WhyChooseSection />
+
+      {/* 7. Tracking, Skills & Certifications */}
       <TrackingCapabilitiesSection />
+      <SkillsSection />
       <CertificationsSection />
+
+      {/* 8. Genuine Testimonials (renders nothing if array is empty) */}
+      <TestimonialsSection />
+
+      {/* 9. FAQs */}
       <FaqSection />
+
+      {/* 10. Free Ad Account Audit & Contact */}
       <ContactSection />
 
       <Footer />

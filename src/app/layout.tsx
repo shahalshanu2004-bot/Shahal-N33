@@ -25,11 +25,11 @@ const spaceGrotesk = Space_Grotesk({
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
   title: {
-    default: "Performance Marketer in Kerala | Shahal N.",
+    default: "Shahal N. | Performance Marketer in Kerala | Meta & Google Ads",
     template: "%s | Shahal N",
   },
   description:
-    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
+    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
   authors: [{ name: "Shahal N", url: SITE_URL }],
   creator: "Shahal N",
   publisher: "Shahal N",
@@ -42,9 +42,9 @@ export const metadata: Metadata = {
     canonical: SITE_URL,
   },
   openGraph: {
-    title: "Performance Marketer in Kerala | Shahal N.",
+    title: "Shahal N. | Performance Marketer in Kerala | Meta & Google Ads",
     description:
-      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
+      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
     url: SITE_URL,
     siteName: "Shahal N — Performance Marketer",
     locale: "en_IN",
@@ -60,9 +60,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Performance Marketer in Kerala | Shahal N.",
+    title: "Shahal N. | Performance Marketer in Kerala | Meta & Google Ads",
     description:
-      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, app marketing, lead generation and conversion tracking to help businesses achieve measurable growth.",
+      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
     images: [`${SITE_URL}/og-image.png`],
   },
   robots: {

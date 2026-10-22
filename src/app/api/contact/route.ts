@@ -5,13 +5,14 @@ interface ContactRequestBody {
   phone: string;
   businessType?: string;
   budget?: string;
+  marketingGoal?: string;
   message?: string;
 }
 
 export async function POST(request: Request) {
   try {
     const body: ContactRequestBody = await request.json();
-    const { name, phone, businessType, budget, message } = body;
+    const { name, phone, businessType, budget, marketingGoal, message } = body;
 
     // Server-side validation
     if (!name || name.trim().length < 2) {
@@ -53,6 +54,7 @@ export async function POST(request: Request) {
       phone: phone.trim(),
       businessType: businessType || "Not specified",
       budget: budget || "Not specified",
+      marketingGoal: marketingGoal || "Not specified",
       message: message || "None",
       timestamp: new Date().toISOString(),
     });

@@ -79,11 +79,11 @@ export default function ContactSection() {
           <div className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-[#3b82f6]/10 border border-[#3b82f6]/30 text-[#3b82f6] text-xs font-bold uppercase tracking-widest mb-4">
             <Sparkles className="w-3.5 h-3.5" /> FREE AD ACCOUNT AUDIT
           </div>
-          <h2 className="font-heading text-4xl sm:text-5xl md:text-6xl font-black uppercase tracking-tighter leading-tight text-white mb-6">
-            GET A FREE <span className="text-[#3b82f6]">AD ACCOUNT AUDIT</span>
+          <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-black uppercase tracking-tighter leading-tight text-white mb-6">
+            FIND OUT WHAT&apos;S HOLDING BACK YOUR <span className="text-[#3b82f6]">AD PERFORMANCE.</span>
           </h2>
           <p className="text-white/60 text-base sm:text-lg font-light leading-relaxed">
-            Stop wondering where your ad spend is leaking. Request an honest evaluation of your campaigns, tracking accuracy, and growth opportunities.
+            Get a practical review of your campaign structure, conversion tracking, creative strategy, and opportunities to improve cost per result.
           </p>
         </motion.div>
 

@@ -131,7 +131,7 @@ export default function StatisticsSection() {
             </motion.div>
           )}
 
-          {/* Stat 03: Total Ad Spend Managed (conditional) or DATA-DRIVEN banner */}
+          {/* Stat 03: Verified Campaign Results */}
           {hasAdSpend ? (
             <motion.div variants={itemVariants} className="flex flex-col items-center">
               <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-[#3b82f6] tracking-tight leading-none mb-3">
@@ -143,11 +143,11 @@ export default function StatisticsSection() {
             </motion.div>
           ) : (
             <motion.div variants={itemVariants} className="flex flex-col items-center">
-              <div className="font-heading text-3xl sm:text-4xl md:text-4xl lg:text-5xl font-black text-white tracking-wider leading-none mb-3 pt-2 md:pt-3">
-                <span className="text-[#3b82f6]">DATA-</span>DRIVEN
+              <div className="font-heading text-5xl sm:text-6xl md:text-6xl lg:text-7xl font-black text-[#3b82f6] tracking-tight leading-none mb-3">
+                100%
               </div>
               <p className="text-white/60 text-xs sm:text-sm md:text-sm uppercase tracking-widest font-medium">
-                Performance Focused
+                Verified Campaign Results
               </p>
             </motion.div>
           )}

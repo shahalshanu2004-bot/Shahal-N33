@@ -73,23 +73,40 @@ export default function HeroSection() {
             style={{ y: yContent }}
             className="lg:col-span-7 flex flex-col justify-center order-2 lg:order-1"
           >
-            {/* Availability Indicator */}
+            {/* Availability Indicator & Location */}
             <motion.div
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.7, delay: 0.15, ease: EASE }}
-              className="flex items-center gap-3 mb-6 sm:mb-8 w-max px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm shadow-sm"
+              className="flex flex-wrap items-center gap-3 mb-6 sm:mb-8"
             >
-              <span className="relative flex h-2 w-2">
-                <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
-                <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+              <div className="flex items-center gap-2.5 px-4 py-2 rounded-full border border-white/10 bg-white/[0.04] backdrop-blur-sm shadow-sm">
+                <span className="relative flex h-2 w-2">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                </span>
+                <p className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/90">
+                  AVAILABLE FOR FREELANCE PROJECTS
+                </p>
+              </div>
+              <span className="text-white/40 text-[11px] sm:text-xs font-medium tracking-wider">
+                Malappuram, Kerala, India
               </span>
-              <p className="text-[10px] sm:text-xs font-semibold tracking-widest uppercase text-white/90">AVAILABLE FOR FREELANCE PROJECTS</p>
             </motion.div>
 
-            {/* Main Title (H1) with semantic text in DOM */}
-            <h1 className="mb-5 sm:mb-6 flex flex-col font-heading font-black tracking-tighter uppercase text-[11vw] leading-[0.92] sm:text-[9vw] md:text-6xl lg:text-7xl xl:text-[5.5rem]">
-              <span className="sr-only">PERFORMANCE MARKETER</span>
+            {/* Eyebrow */}
+            <motion.p
+              initial={{ opacity: 0, y: 12 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.2, ease: EASE }}
+              className="text-[#3b82f6] text-xs sm:text-sm font-bold tracking-[0.2em] uppercase mb-4"
+            >
+              SHAHAL N. | PERFORMANCE MARKETING
+            </motion.p>
+
+            {/* Main Title (H1) with semantic text */}
+            <h1 className="mb-5 sm:mb-6 flex flex-col font-heading font-black tracking-tighter uppercase text-[10vw] leading-[0.95] sm:text-[8vw] md:text-5xl lg:text-6xl xl:text-[4.5rem]">
+              <span className="sr-only">Turn Ad Spend Into Measurable Business Growth</span>
               <div className="overflow-hidden" aria-hidden="true">
                 <motion.span
                   initial={{ y: "115%", opacity: 0 }}
@@ -97,7 +114,7 @@ export default function HeroSection() {
                   transition={{ duration: 0.85, delay: 0.22, ease: EASE }}
                   className="inline-block text-white"
                 >
-                  Performance{" "}
+                  Turn Ad Spend Into{" "}
                 </motion.span>
               </div>
               <div className="overflow-hidden" aria-hidden="true">
@@ -107,20 +124,20 @@ export default function HeroSection() {
                   transition={{ duration: 0.85, delay: 0.30, ease: EASE }}
                   className="inline-block text-[#3b82f6]"
                 >
-                  Marketer
+                  Measurable Growth.
                 </motion.span>
               </div>
             </h1>
 
-            {/* Supporting Headline */}
-            <motion.p
+            {/* Supporting Heading */}
+            <motion.h2
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.55, ease: EASE }}
               className="text-white/90 font-heading text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-5 max-w-xl"
             >
-              Driving Measurable Growth Through Paid Media.
-            </motion.p>
+              Performance Marketer & App Growth Specialist
+            </motion.h2>
 
             {/* Supporting Description */}
             <motion.div
@@ -128,11 +145,14 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.72, ease: EASE }}
             >
-              <p className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mb-4 font-light">
-                Data-driven campaigns across Meta Ads, Google Ads, and app marketing &mdash; focused on customer acquisition, conversion tracking, and sustainable growth.
+              <p className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mb-3 font-light">
+                I help businesses generate qualified leads, acquire customers, and grow mobile apps through data-driven Meta Ads, Google Ads, and conversion tracking.
               </p>
-              <p className="text-white/40 text-xs md:text-sm font-medium tracking-widest uppercase mb-10">
-                SHAHAL N — PERFORMANCE MARKETER
+              <p className="text-white/50 text-xs sm:text-sm leading-relaxed max-w-xl mb-5 font-light">
+                From campaign strategy and creative testing to attribution and optimization, every decision is focused on improving acquisition efficiency and measurable business results.
+              </p>
+              <p className="text-white/40 text-xs md:text-sm font-medium tracking-widest uppercase mb-8">
+                Meta Ads &middot; Google Ads &middot; App Marketing &middot; Conversion Tracking
               </p>
             </motion.div>
 
@@ -141,7 +161,7 @@ export default function HeroSection() {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.9, ease: EASE }}
-              className="flex flex-col sm:flex-row gap-5"
+              className="flex flex-col sm:flex-row items-stretch sm:items-center gap-4"
             >
               <Link 
                 href="#contact"
@@ -153,15 +173,22 @@ export default function HeroSection() {
                 </span>
               </Link>
               
+              <Link 
+                href="#case-studies"
+                className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:border-white hover:bg-white/5 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white"
+              >
+                <span className="relative z-10">VIEW CASE STUDIES &rarr;</span>
+              </Link>
+
               <a 
                 suppressHydrationWarning
                 href={siteConfig.whatsappAuditUrl}
                 target="_blank"
                 rel="noreferrer"
                 onClick={() => trackWhatsAppClick("hero")}
-                className="group relative flex items-center justify-center gap-3 px-8 py-4 bg-transparent border border-white/20 text-white rounded-full font-bold uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:border-[#25D366] hover:text-[#25D366] hover:bg-[#25D366]/[0.05] hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
+                className="group relative flex items-center justify-center gap-2 px-6 py-4 bg-transparent border border-[#25D366]/30 text-[#25D366] rounded-full font-bold uppercase tracking-widest text-xs overflow-hidden transition-all duration-300 hover:border-[#25D366] hover:bg-[#25D366]/10 hover:-translate-y-0.5 active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#25D366]"
               >
-                <span className="relative z-10">CHAT ON WHATSAPP &rarr;</span>
+                <span className="relative z-10">WhatsApp &rarr;</span>
               </a>
             </motion.div>
           </motion.div>

@@ -11,12 +11,23 @@ export default function AuditContactForm() {
     phone: "",
     businessType: "",
     budget: "",
+    marketingGoal: "Generate more leads",
     message: "",
   });
 
   const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
   const [errorMessage, setErrorMessage] = useState("");
   const [submittedData, setSubmittedData] = useState<typeof formData | null>(null);
+
+  const marketingGoalOptions = [
+    "Generate more leads",
+    "Reduce cost per lead",
+    "Increase sales",
+    "Improve app installs",
+    "Increase in-app purchases",
+    "Fix conversion tracking",
+    "Other",
+  ];
 
   const budgetOptions = [
     "< ₹50,000 / month",
@@ -115,7 +126,7 @@ export default function AuditContactForm() {
             type="button"
             onClick={() => {
               setStatus("idle");
-              setFormData({ name: "", phone: "", businessType: "", budget: "", message: "" });
+              setFormData({ name: "", phone: "", businessType: "", budget: "", marketingGoal: "Generate more leads", message: "" });
             }}
             className="w-full sm:w-auto px-6 py-4 rounded-full border border-white/10 text-white/60 text-xs uppercase tracking-widest font-bold hover:text-white hover:border-white/20 transition-all"
           >
@@ -205,6 +216,24 @@ export default function AuditContactForm() {
             ))}
           </select>
         </div>
+      </div>
+
+      <div>
+        <label htmlFor="audit-goal" className="block text-white/50 text-[10px] font-bold uppercase tracking-widest mb-1.5">
+          Primary Marketing Goal
+        </label>
+        <select
+          id="audit-goal"
+          value={formData.marketingGoal}
+          onChange={(e) => setFormData({ ...formData, marketingGoal: e.target.value })}
+          className="w-full bg-[#09090c] border border-white/10 rounded-xl px-4 py-3.5 text-white text-sm focus:outline-none focus:border-[#3b82f6] transition-colors cursor-pointer"
+        >
+          {marketingGoalOptions.map((goal) => (
+            <option key={goal} value={goal} className="bg-[#09090c]">
+              {goal}
+            </option>
+          ))}
+        </select>
       </div>
 
       <div>

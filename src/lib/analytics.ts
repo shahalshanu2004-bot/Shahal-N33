@@ -77,6 +77,15 @@ export function trackFormSubmit(formName: string, details: Record<string, unknow
     form_name: formName,
     ...details,
   });
+  // Send standard generate_lead and audit_form_submit events for GA4/Meta Pixel
+  trackEvent("generate_lead", {
+    lead_source: formName,
+    ...details,
+  });
+  trackEvent("audit_form_submit", {
+    form_name: formName,
+    ...details,
+  });
 }
 
 export function trackPhoneClick(location: string) {
