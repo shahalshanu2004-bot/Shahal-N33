@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     template: "%s | Shahal N",
   },
   description:
-    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
+    "Looking for a performance marketer in Kerala? Shahal N. specializes in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
   authors: [{ name: "Shahal N", url: SITE_URL }],
   creator: "Shahal N",
   publisher: "Shahal N",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Shahal N. | Performance Marketer in Kerala | Meta & Google Ads",
     description:
-      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
+      "Looking for a performance marketer in Kerala? Shahal N. specializes in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
     url: SITE_URL,
     siteName: "Shahal N — Performance Marketer",
     locale: "en_IN",
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Shahal N. | Performance Marketer in Kerala | Meta & Google Ads",
     description:
-      "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
+      "Looking for a performance marketer in Kerala? Shahal N. specializes in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
     images: [`${SITE_URL}/og-image.png`],
   },
   robots: {

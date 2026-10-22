@@ -8,7 +8,7 @@ export const siteConfig = {
   title: "Shahal N. | Performance Marketer in Kerala | Meta & Google Ads",
   shortTitle: "Shahal N — Performance Marketer",
   description:
-    "Shahal N. is a performance marketer in Kerala specializing in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
+    "Looking for a performance marketer in Kerala? Shahal N. specializes in Meta Ads, Google Ads, mobile app marketing, lead generation, and conversion tracking.",
   email: "shahalnwork@gmail.com",
   phone: "+91 759 305 2256",
   whatsappNumber: "917593052256",

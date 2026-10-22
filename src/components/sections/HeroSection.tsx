@@ -104,17 +104,17 @@ export default function HeroSection() {
               SHAHAL N. | PERFORMANCE MARKETING
             </motion.p>
 
-            {/* Main Title (H1) with semantic text */}
-            <h1 className="mb-5 sm:mb-6 flex flex-col font-heading font-black tracking-tighter uppercase text-[10vw] leading-[0.95] sm:text-[8vw] md:text-5xl lg:text-6xl xl:text-[4.5rem]">
-              <span className="sr-only">Turn Ad Spend Into Measurable Business Growth</span>
+            {/* Main Title (H1) - semantic and visible */}
+            <h1 className="mb-5 sm:mb-6 font-heading font-black tracking-tighter uppercase text-[8.5vw] leading-[1.0] sm:text-[6.5vw] md:text-5xl lg:text-5xl xl:text-[3.75rem]">
+              <span className="sr-only">Performance Marketer in Kerala | Meta Ads & Google Ads</span>
               <div className="overflow-hidden" aria-hidden="true">
                 <motion.span
                   initial={{ y: "115%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
                   transition={{ duration: 0.85, delay: 0.22, ease: EASE }}
-                  className="inline-block text-white"
+                  className="block text-white"
                 >
-                  Turn Ad Spend Into{" "}
+                  Performance Marketer{" "}
                 </motion.span>
               </div>
               <div className="overflow-hidden" aria-hidden="true">
@@ -122,21 +122,24 @@ export default function HeroSection() {
                   initial={{ y: "115%", opacity: 0 }}
                   animate={{ y: "0%", opacity: 1 }}
                   transition={{ duration: 0.85, delay: 0.30, ease: EASE }}
-                  className="inline-block text-[#3b82f6]"
+                  className="block text-[#3b82f6]"
                 >
-                  Measurable Growth.
+                  In Kerala{" "}
+                  <span className="text-white/60 font-medium text-[0.65em] tracking-tight block sm:inline">
+                    | Meta Ads & Google Ads
+                  </span>
                 </motion.span>
               </div>
             </h1>
 
-            {/* Supporting Heading */}
+            {/* Supporting Heading (H2) */}
             <motion.h2
               initial={{ opacity: 0, y: 18 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.55, ease: EASE }}
               className="text-white/90 font-heading text-lg sm:text-xl md:text-2xl font-bold tracking-tight mb-5 max-w-xl"
             >
-              Performance Marketer & App Growth Specialist
+              Turn Ad Spend Into Measurable Business Growth.
             </motion.h2>
 
             {/* Supporting Description */}
@@ -145,14 +148,11 @@ export default function HeroSection() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.75, delay: 0.72, ease: EASE }}
             >
-              <p className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mb-3 font-light">
-                I help businesses generate qualified leads, acquire customers, and grow mobile apps through data-driven Meta Ads, Google Ads, and conversion tracking.
-              </p>
-              <p className="text-white/50 text-xs sm:text-sm leading-relaxed max-w-xl mb-5 font-light">
-                From campaign strategy and creative testing to attribution and optimization, every decision is focused on improving acquisition efficiency and measurable business results.
+              <p className="text-white/70 text-sm sm:text-base md:text-lg leading-relaxed max-w-xl mb-4 font-light">
+                I help businesses generate qualified leads, acquire customers, and grow mobile apps through Meta Ads, Google Ads, performance marketing, and conversion tracking.
               </p>
               <p className="text-white/40 text-xs md:text-sm font-medium tracking-widest uppercase mb-8">
-                Meta Ads &middot; Google Ads &middot; App Marketing &middot; Conversion Tracking
+                Meta Ads &middot; Google Ads &middot; App Marketing &middot; Lead Generation &middot; Conversion Tracking
               </p>
             </motion.div>
 
